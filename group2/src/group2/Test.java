@@ -5,4 +5,5 @@ public class Test {
 	public String something = "sdfsdfd";
 	public String something2 = "lkjalfkja";
 	public  String somedthing3 = "Mina is the best";
+	public String orange = "ksdjflskdfj";
 }
