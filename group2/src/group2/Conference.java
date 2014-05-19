@@ -23,8 +23,8 @@ public class Conference {
 		users.add(theStarter);
 	}
 	
-	public void setPC(User starter) {
-		programChair = starter;
+	public void setPC(final User theStarter) {
+		programChair = theStarter;
 	}
 	
 	public boolean checkExist(String data) {
