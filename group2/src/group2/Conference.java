@@ -16,16 +16,17 @@ public class Conference {
 	List<User> users;
 	
 	Conference(final User theStarter, final String theDate, final String theDeadline) {
-		//programChair = theStarter;
+		programChair = theStarter;
 		date = theDate;
 		deadline = theDeadline;
 		users = new LinkedList<User>();
 		users.add(theStarter);
 	}
 	
+	/*
 	public void setPC(final User theStarter) {
 		programChair = theStarter;
-	}
+	}*/
 	
 	public boolean checkExist(String data) {
 		
@@ -34,4 +35,6 @@ public class Conference {
 	checkIfReviewed(String title) {
 		
 	}
+	
+	
 }
