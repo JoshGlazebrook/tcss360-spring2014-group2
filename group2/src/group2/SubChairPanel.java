@@ -18,18 +18,18 @@ public class SubChairPanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 		
-		JLabel lblSubProgramChair = new JLabel("Sub Program Chair");
-		lblSubProgramChair.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblSubProgramChair.setBounds(124, 29, 251, 37);
-		add(lblSubProgramChair);
+		JLabel titleLabel = new JLabel("Sub Program Chair");
+		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		titleLabel.setBounds(124, 29, 251, 37);
+		add(titleLabel);
 		
 		JButton btnAssignReviewers = new JButton("Assign Reviewers");
-		btnAssignReviewers.setBounds(330, 345, 155, 29);
+		btnAssignReviewers.setBounds(330, 330, 155, 29);
 		add(btnAssignReviewers);
 		
 		JButton btnOpenFile = new JButton("Open File");
 	
-		btnOpenFile.setBounds(15, 345, 115, 29);
+		btnOpenFile.setBounds(15, 330, 99, 29);
 		add(btnOpenFile);
 		
 		JTextArea textArea = new JTextArea();
@@ -38,12 +38,12 @@ public class SubChairPanel extends JPanel {
 		
 		ButtonGroup bg = new ButtonGroup();
 		JRadioButton rdbtnRecomend = new JRadioButton("Recomend");
-		rdbtnRecomend.setBounds(15, 431, 155, 29);
+		rdbtnRecomend.setBounds(128, 330, 107, 29);
 		bg.add(rdbtnRecomend);
 		add(rdbtnRecomend);
 		
 		JRadioButton rdbtnDecline = new JRadioButton("Decline");
-		rdbtnDecline.setBounds(330, 431, 155, 29);
+		rdbtnDecline.setBounds(236, 330, 83, 29);
 		bg.add(rdbtnDecline);
 		add(rdbtnDecline);
 		

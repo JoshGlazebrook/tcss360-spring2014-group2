@@ -2,11 +2,22 @@ package group2;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class NewUserPanel extends JPanel {
 	private JTextField txtName;
@@ -70,6 +81,27 @@ public class NewUserPanel extends JPanel {
 		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
 		UserTypes.setBounds(242, 341, 146, 26);
 		add(UserTypes);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSave.setBounds(192, 422, 115, 29);
+		add(btnSave);
 
+	}
+	
+	public void show(){
+		JFrame frame = new JFrame("New User");
+		frame.setResizable(false);
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setSize(500, 500);
+		frame.getContentPane().add(this);
+		frame.show();
+		
 	}
 }

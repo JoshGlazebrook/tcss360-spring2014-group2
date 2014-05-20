@@ -25,13 +25,9 @@ public class AuthorPanel extends JPanel {
 		setLayout(null);
 		setSize(500, 500);
 		
-		JLabel lblUthor = new JLabel("Author");
 		final JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 84, 470, 240);
+		textArea.setBounds(15, 58, 470, 240);
 		add(textArea);
-		lblUthor.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblUthor.setBounds(205, 31, 89, 37);
-		add(lblUthor);
 		
 		JButton btnGetFile = new JButton("Upload File...");
 		btnGetFile.addActionListener(new ActionListener() {
@@ -46,11 +42,11 @@ public class AuthorPanel extends JPanel {
 				textArea.setText(sb.toString());
 			}
 		});
-		btnGetFile.setBounds(358, 340, 127, 29);
+		btnGetFile.setBounds(358, 330, 127, 29);
 		add(btnGetFile);
 		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(370, 385, 115, 29);
+		btnSubmit.setBounds(370, 375, 115, 29);
 		add(btnSubmit);
 		
 		JButton btnRemoveFile = new JButton("Remove File...");
@@ -58,24 +54,26 @@ public class AuthorPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnRemoveFile.setBounds(15, 385, 133, 29);
+		btnRemoveFile.setBounds(15, 375, 133, 29);
 		add(btnRemoveFile);
 		
 		JButton btnSelectConfrence = new JButton("Select Confrence");
-		btnSelectConfrence.setBounds(15, 340, 149, 29);
+		btnSelectConfrence.setBounds(15, 330, 149, 29);
 		add(btnSelectConfrence);
 		
 		JLabel lblConfrence = new JLabel("Confrence Name");
-		lblConfrence.setBounds(191, 340, 117, 20);
+		lblConfrence.setBounds(191, 330, 117, 20);
 		add(lblConfrence);
 		
 		JLabel lblDeadline = new JLabel("Deadline");
-		lblDeadline.setBounds(215, 389, 69, 20);
+		lblDeadline.setBounds(215, 379, 69, 20);
 		add(lblDeadline);
 		
-		JButton btnReviewSheet = new JButton("Review Sheet");
-		btnReviewSheet.setBounds(186, 439, 127, 29);
-		add(btnReviewSheet);
+		
+		JLabel lblAuthor = new JLabel("Author");
+		lblAuthor.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblAuthor.setBounds(205, 16, 89, 37);
+		add(lblAuthor);
 
 	}
 	
