@@ -14,7 +14,7 @@ public class Conference {
 	private final String date;
 	private final String deadline;
 	private List<User> users;
-	private List<Paper> papers;
+	private PaperManager papers;
 	
 	public Conference(final User theStarter, final String theDate, final String theDeadline) {
 		programChair = (ProgramChair) theStarter;
@@ -22,7 +22,7 @@ public class Conference {
 		deadline = theDeadline;
 		users = new ArrayList<User>();
 		users.add(theStarter);
-		papers = new ArrayList<Paper>();
+		papers = new PaperManager();
 	}
 	
 	/*
@@ -30,12 +30,12 @@ public class Conference {
 		programChair = theStarter;
 	}*/
 	
-	public boolean checkPaperExists(String data) {
-		
+	public boolean checkPaperExists(Paper paper) {
+		return papers.hasPaper(paper);
 	}
 	
-	public boolean checkIfReviewed(String title) {
-		
+	public boolean checkIfReviewed(Paper paper) {
+		return paper.getReviewed();
 	}
 	
 	public User getProgramChair() {

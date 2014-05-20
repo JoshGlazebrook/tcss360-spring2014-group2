@@ -23,4 +23,8 @@ public class PaperManager {
 		papers.remove(papers.get(paper_id));
 		return true;
 	}
+	
+	public boolean hasPaper(Paper paper) {
+		return papers.containsValue(paper);
+	}
 }
