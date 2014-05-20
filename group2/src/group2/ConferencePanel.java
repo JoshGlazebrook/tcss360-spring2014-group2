@@ -6,9 +6,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JTextPane;
+import javax.swing.JFormattedTextField;
 
 
 public class ConferencePanel extends JPanel {
+	private JTextField txtDate;
+	private JTextField txtDeadline;
 
 	/**
 	 * Create the panel.
@@ -40,6 +44,20 @@ public class ConferencePanel extends JPanel {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(189, 398, 122, 29);
 		add(btnSave);
+		
+		txtDate = new JTextField();
+		txtDate.setBounds(237, 159, 146, 26);
+		add(txtDate);
+		txtDate.setColumns(10);
+		
+		JLabel lblDeadline = new JLabel("Deadline:");
+		lblDeadline.setBounds(118, 198, 69, 20);
+		add(lblDeadline);
+		
+		txtDeadline = new JTextField();
+		txtDeadline.setBounds(237, 195, 146, 26);
+		add(txtDeadline);
+		txtDeadline.setColumns(10);
 
 	}
 }
