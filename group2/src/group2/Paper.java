@@ -1,18 +1,12 @@
 package group2;
 
 public class Paper {
-	private int paper_id;
 	private Author author;
 	private String data;
 	
-	public Paper(int paper_id, Author author, String data) {
-		this.paper_id = paper_id;
+	public Paper(Author author, String data) {
 		this.author = author;
 		this.data = data;
-	}
-	
-	public int getID() {
-		return this.paper_id;
 	}
 	
 	public Author getAuthor() {
@@ -21,5 +15,9 @@ public class Paper {
 	
 	public String getData() {
 		return this.data;
+	}
+	
+	public int getID() {
+		return this.data.hashCode();
 	}
 }
