@@ -15,7 +15,7 @@ public class Conference {
 	String deadline;
 	List<User> users;
 	
-	Conference(final User theStarter, final String theDate, final String theDeadline) {
+	public Conference(final User theStarter, final String theDate, final String theDeadline) {
 		programChair = theStarter;
 		date = theDate;
 		deadline = theDeadline;
