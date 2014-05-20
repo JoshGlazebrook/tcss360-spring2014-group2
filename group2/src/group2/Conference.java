@@ -17,7 +17,7 @@ public class Conference {
 	private List<Paper> papers;
 	
 	public Conference(final User theStarter, final String theDate, final String theDeadline) {
-		programChair = theStarter;
+		programChair = (ProgramChair) theStarter;
 		date = theDate;
 		deadline = theDeadline;
 		users = new ArrayList<User>();
