@@ -22,7 +22,7 @@ public class MainGUI extends JFrame {
 	private JPanel subPM = new SubChairPanel();
 	private JPanel newUser = new NewUserPanel();
 	private JPanel programChair = new ProgramChairPanel();
-	private JPanel confrence = new ConfrencePanel();
+	private JPanel confrence = new ConferencePanel();
 
 	/**
 	 * Launch the application.

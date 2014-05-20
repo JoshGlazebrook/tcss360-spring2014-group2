@@ -8,12 +8,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 
-public class ConfrencePanel extends JPanel {
+public class ConferencePanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public ConfrencePanel() {
+	public ConferencePanel() {
 		setLayout(null);
 		setSize(500, 500);
 		
