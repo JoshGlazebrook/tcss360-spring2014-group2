@@ -1,6 +1,6 @@
 package group2;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,17 +10,19 @@ import java.util.List;
  */
 public class Conference {
 	
-	ProgramChair programChair;
-	String date;
-	String deadline;
-	List<User> users;
+	private final ProgramChair programChair;
+	private final String date;
+	private final String deadline;
+	private List<User> users;
+	private List<Paper> papers;
 	
 	public Conference(final User theStarter, final String theDate, final String theDeadline) {
 		programChair = theStarter;
 		date = theDate;
 		deadline = theDeadline;
-		users = new LinkedList<User>();
+		users = new ArrayList<User>();
 		users.add(theStarter);
+		papers = new ArrayList<Paper>();
 	}
 	
 	/*
@@ -50,5 +52,9 @@ public class Conference {
 	
 	public List<User> getUsers() {
 		return users;
+	}
+	
+	public List<Paper> getPapers() {
+		return papers;
 	}
 }

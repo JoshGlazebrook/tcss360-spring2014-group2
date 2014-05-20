@@ -52,9 +52,14 @@ public class ConferenceTest {
 
 	@Test
 	public void testGetUsers() {
-		List<User> list = new LinkedList<User>();
-		list.add(user);
+		List<User> list = conf.getUsers();
 		assertSame(list, conf.getUsers());
+	}
+	
+	@Test
+	public void testGetPapers() {
+		List<Paper> list = conf.getPapers();
+		assertSame(list, conf.getPapers());
 	}
 
 }

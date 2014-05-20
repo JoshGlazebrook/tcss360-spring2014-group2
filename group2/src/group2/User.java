@@ -1,8 +1,8 @@
 package group2;
 
 public class User {
-	private String id;
-	private String pass;
+	final String id;
+	String pass;
 	
 	public User(String the_id, String the_pass){
 		
