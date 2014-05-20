@@ -125,7 +125,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 		
-		JMenuItem mntmCreateANew = new JMenuItem("Create a New Confrence");
+		JMenuItem mntmCreateANew = new JMenuItem("Create a New Conference");
 		mntmCreateANew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setPanel(confrence);
