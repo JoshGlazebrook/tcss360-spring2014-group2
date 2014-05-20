@@ -13,5 +13,8 @@ public class User {
 	public void startConference(){
 		
 	}
+	
+	public String getID() { return id; }
+	public String getPass() { return pass; }
 
 }
