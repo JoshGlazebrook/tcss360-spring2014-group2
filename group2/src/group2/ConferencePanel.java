@@ -1,23 +1,26 @@
 package group2;
 
 import java.awt.Font;
+import java.util.Date;
 
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JFormattedTextField;
 
 
 public class ConferencePanel extends JPanel {
-	private JTextField txtDate;
-	private JTextField txtDeadline;
+	private JFormattedTextField txtDate;
+	private JFormattedTextField txtDeadline;
 
 	/**
 	 * Create the panel.
 	 */
 	public ConferencePanel() {
+		
 		setLayout(null);
 		setSize(500, 500);
 		
@@ -45,7 +48,7 @@ public class ConferencePanel extends JPanel {
 		btnSave.setBounds(189, 398, 122, 29);
 		add(btnSave);
 		
-		txtDate = new JTextField();
+		txtDate = new JFormattedTextField();
 		txtDate.setBounds(237, 159, 146, 26);
 		add(txtDate);
 		txtDate.setColumns(10);
@@ -54,7 +57,7 @@ public class ConferencePanel extends JPanel {
 		lblDeadline.setBounds(118, 198, 69, 20);
 		add(lblDeadline);
 		
-		txtDeadline = new JTextField();
+		txtDeadline = new JFormattedTextField();
 		txtDeadline.setBounds(237, 195, 146, 26);
 		add(txtDeadline);
 		txtDeadline.setColumns(10);
