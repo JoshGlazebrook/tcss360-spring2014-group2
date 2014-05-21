@@ -141,7 +141,7 @@ public class MainGUI extends JFrame {
 		mntmAbout.addActionListener(new ActionListener() {
 			public void
 			actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(subPM, "Scrum It Up! \n Spring 2014");
+				JOptionPane.showMessageDialog(subPM, "Scrum It Up! \nSpring 2014");
 			}
 		});
 		mnHelp.add(mntmAbout);
