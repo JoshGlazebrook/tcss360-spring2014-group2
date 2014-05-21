@@ -18,8 +18,6 @@ public class Author extends User{
 		}
 		
 		public void askForReview(int paper_id) {
-			
-		}
 		
 		
 	}
