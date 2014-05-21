@@ -16,7 +16,6 @@ public class Conference {
 	private final String name;
 	private List<User> users;
 	private PaperManager paperManager;
-	//private List<Paper> papers;
 	
 	public Conference(final User theStarter, final String theName, final String theDate, final String theDeadline) {
 		programChair = (ProgramChair) theStarter;
@@ -25,7 +24,6 @@ public class Conference {
 		deadline = theDeadline;
 		users = new ArrayList<User>();
 		users.add(theStarter);
-		papers = new ArrayList<Paper>();
 		paperManager = new PaperManager();
 	}
 	
@@ -38,8 +36,8 @@ public class Conference {
 		return paper.getReviewed();
 	}*/
 	
-	public void addPaper() {
-		
+	public void addPaper(Paper paper) {
+		paperManager.addPaper(paper);
 	}
 	
 	public User getProgramChair() {

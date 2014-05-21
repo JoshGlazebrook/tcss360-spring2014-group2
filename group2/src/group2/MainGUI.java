@@ -102,7 +102,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 		mnUsers.add(mntmProgramChair);
-;
+
 		
 		JMenu mnOther = new JMenu("Other");
 		menuBar.add(mnOther);
