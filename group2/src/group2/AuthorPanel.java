@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class AuthorPanel extends JPanel {
@@ -24,10 +26,14 @@ public class AuthorPanel extends JPanel {
 	
 		setLayout(null);
 		setSize(500, 500);
-		
-		final JTextArea textArea = new JTextArea();
+				
+//		final JTextArea textArea = new JTextArea();
+		final JEditorPane textArea = new JEditorPane();
 		textArea.setBounds(15, 58, 470, 240);
-		add(textArea);
+		
+		JScrollPane pane = new JScrollPane(textArea);
+		pane.setBounds(15, 58, 470, 240);
+		add(pane);
 		
 		JButton btnGetFile = new JButton("Upload File...");
 		btnGetFile.addActionListener(new ActionListener() {
@@ -72,7 +78,7 @@ public class AuthorPanel extends JPanel {
 		
 		JLabel lblAuthor = new JLabel("Author");
 		lblAuthor.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblAuthor.setBounds(205, 16, 89, 37);
+		lblAuthor.setBounds(205, 15, 89, 37);
 		add(lblAuthor);
 
 	}

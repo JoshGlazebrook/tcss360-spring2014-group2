@@ -1,10 +1,15 @@
 package group2;
 
+import javax.swing.JEditorPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -48,14 +53,17 @@ public class ReviewerPanel extends JPanel {
 		JButton btnReview = new JButton("Review Sheet");
 		btnReview.setBounds(186, 435, 127, 29);
 		add(btnReview);
-		
-		JTextArea textArea = new JTextArea();
+		JEditorPane textArea = new JEditorPane();
+		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 58, 470, 240);
-		add(textArea);
+
+		JScrollPane pane = new JScrollPane(textArea);
+		pane.setBounds(15, 58, 470, 240);
+		add(pane);
 		
 		JLabel lblReviewer = new JLabel("Reviewer");
 		lblReviewer.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblReviewer.setBounds(189, 16, 122, 37);
+		lblReviewer.setBounds(189, 15, 122, 37);
 		add(lblReviewer);
 
 	}

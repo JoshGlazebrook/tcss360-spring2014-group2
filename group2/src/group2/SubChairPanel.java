@@ -4,9 +4,11 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class SubChairPanel extends JPanel {
@@ -20,7 +22,7 @@ public class SubChairPanel extends JPanel {
 		
 		JLabel titleLabel = new JLabel("Sub Program Chair");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		titleLabel.setBounds(124, 29, 251, 37);
+		titleLabel.setBounds(124, 15, 251, 37);
 		add(titleLabel);
 		
 		JButton btnAssignReviewers = new JButton("Assign Reviewers");
@@ -32,9 +34,13 @@ public class SubChairPanel extends JPanel {
 		btnOpenFile.setBounds(15, 330, 99, 29);
 		add(btnOpenFile);
 		
-		JTextArea textArea = new JTextArea();
+		JEditorPane textArea = new JEditorPane();
+		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 71, 470, 240);
-		add(textArea);
+
+		JScrollPane pane = new JScrollPane(textArea);
+		pane.setBounds(15, 58, 470, 240);
+		add(pane);
 		
 		ButtonGroup bg = new ButtonGroup();
 		JRadioButton rdbtnRecomend = new JRadioButton("Recomend");
