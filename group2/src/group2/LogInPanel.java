@@ -32,6 +32,11 @@ public class LogInPanel extends JPanel {
 		
 		JButton logInBtn = new JButton("Log In");
 		logInBtn.setBounds(82, 326, 115, 29);
+		logInBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+			}
+		});
 		add(logInBtn);
 		
 		JButton addUserBtn = new JButton("Add User");
