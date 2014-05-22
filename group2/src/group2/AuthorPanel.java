@@ -29,10 +29,10 @@ public class AuthorPanel extends JPanel {
 				
 //		final JTextArea textArea = new JTextArea();
 		final JEditorPane textArea = new JEditorPane();
-		textArea.setBounds(15, 58, 470, 240);
+		textArea.setBounds(15, 58, 460, 240);
 		
 		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 58, 470, 240);
+		pane.setBounds(15, 58, 480, 240);
 		add(pane);
 		
 		JButton btnGetFile = new JButton("Upload File...");

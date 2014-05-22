@@ -55,10 +55,10 @@ public class ReviewerPanel extends JPanel {
 		add(btnReview);
 		JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 58, 470, 240);
+		textArea.setBounds(15, 58, 460, 240);
 
 		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 58, 470, 240);
+		pane.setBounds(15, 58, 480, 240);
 		add(pane);
 		
 		JLabel lblReviewer = new JLabel("Reviewer");

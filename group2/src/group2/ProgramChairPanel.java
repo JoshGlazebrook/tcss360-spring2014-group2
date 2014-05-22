@@ -36,9 +36,9 @@ public class ProgramChairPanel extends JPanel {
 		
 		JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 71, 470, 240);
+		textArea.setBounds(15, 71, 460, 240);
 		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 58, 470, 240);
+		pane.setBounds(15, 71, 480, 240);
 		add(pane);
 		
 		ButtonGroup bg = new ButtonGroup();
