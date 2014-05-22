@@ -1,19 +1,22 @@
 package group2;
 
-import javax.swing.JEditorPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class ReviewerPanel extends JPanel {
+	
+	final StringBuilder stringBuilder = new StringBuilder();
+	final JFileChooser fileChooser = new JFileChooser();
 
 	/**
 	 * Create the panel.
@@ -22,38 +25,7 @@ public class ReviewerPanel extends JPanel {
 		setLayout(null);
 		setSize(500, 500);
 		
-		JButton btnFindFile = new JButton("Find File...");
-		btnFindFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnFindFile.setBounds(15, 392, 115, 29);
-		add(btnFindFile);
-		
-		JButton btnEdit = new JButton("Submit Edits");
-		btnEdit.setBounds(367, 392, 121, 29);
-		add(btnEdit);
-		
-		JButton btnConfrence = new JButton("Select Confrence");
-		btnConfrence.setBounds(15, 330, 149, 29);
-		add(btnConfrence);
-		
-		JLabel lblConfrenceName = new JLabel("Confrence Name");
-		lblConfrenceName.setBounds(193, 334, 117, 20);
-		add(lblConfrenceName);
-		
-		JLabel lblDeadline = new JLabel("Deadline");
-		lblDeadline.setBounds(217, 396, 69, 20);
-		add(lblDeadline);
-		
-		JButton btnUpload = new JButton("Upload");
-		btnUpload.setBounds(373, 330, 115, 29);
-		add(btnUpload);
-		
-		JButton btnReview = new JButton("Review Sheet");
-		btnReview.setBounds(186, 435, 127, 29);
-		add(btnReview);
-		JEditorPane textArea = new JEditorPane();
+		final JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 58, 460, 240);
 
@@ -61,11 +33,64 @@ public class ReviewerPanel extends JPanel {
 		pane.setBounds(15, 58, 480, 240);
 		add(pane);
 		
+		JButton btnOpenFile = new JButton("Open File...");
+		btnOpenFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					getFile();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				textArea.setText(stringBuilder.toString());
+			}
+		});
+		btnOpenFile.setBounds(15, 392, 115, 29);
+		add(btnOpenFile);
+		
+		JButton btnEdit = new JButton("Submit Edits");
+		btnEdit.setBounds(364, 330, 121, 29);
+		add(btnEdit);
+		
+		JButton btnConfrence = new JButton("Select Confrence");
+		btnConfrence.setBounds(15, 330, 149, 29);
+		add(btnConfrence);
+		
+		JLabel lblConfrenceName = new JLabel("Confrence Name");
+		lblConfrenceName.setBounds(191, 334, 117, 20);
+		add(lblConfrenceName);
+		
+		JLabel lblDeadline = new JLabel("Deadline");
+		lblDeadline.setBounds(219, 396, 61, 20);
+		add(lblDeadline);
+		
+		JButton btnReview = new JButton("Review Sheet");
+		btnReview.setBounds(358, 392, 127, 29);
+		add(btnReview);
+		
 		JLabel lblReviewer = new JLabel("Reviewer");
 		lblReviewer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblReviewer.setBounds(189, 15, 122, 37);
 		add(lblReviewer);
 
+	}
+	
+	public void getFile() throws Exception{
+		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+			
+			java.io.File file = fileChooser.getSelectedFile();
+			
+			Scanner input = new Scanner(file);
+			
+			while(input.hasNext()){
+				stringBuilder.append(input.nextLine());
+				stringBuilder.append("\n");
+			}
+			input.close();
+		}else {
+			JOptionPane.showMessageDialog(this, "Please Select a File!");
+		}
 	}
 
 }

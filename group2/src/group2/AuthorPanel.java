@@ -9,15 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.text.EditorKit;
 
 public class AuthorPanel extends JPanel {
 	
 	
-	JFileChooser jf = new JFileChooser();
-	StringBuilder sb = new StringBuilder();
+	final JFileChooser fileChooser = new JFileChooser();
+	final StringBuilder stringBuilder = new StringBuilder();
 
 	/**
 	 * Create the panel.
@@ -26,7 +28,7 @@ public class AuthorPanel extends JPanel {
 	
 		setLayout(null);
 		setSize(500, 500);
-				
+		EditorKit kc;
 //		final JTextArea textArea = new JTextArea();
 		final JEditorPane textArea = new JEditorPane();
 		textArea.setBounds(15, 58, 460, 240);
@@ -35,8 +37,8 @@ public class AuthorPanel extends JPanel {
 		pane.setBounds(15, 58, 480, 240);
 		add(pane);
 		
-		JButton btnGetFile = new JButton("Upload File...");
-		btnGetFile.addActionListener(new ActionListener() {
+		JButton btnOpenFile = new JButton("Open File...");
+		btnOpenFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					getFile();
@@ -45,11 +47,11 @@ public class AuthorPanel extends JPanel {
 					e1.printStackTrace();
 				}
 				
-				textArea.setText(sb.toString());
+				textArea.setText(stringBuilder.toString());
 			}
 		});
-		btnGetFile.setBounds(358, 330, 127, 29);
-		add(btnGetFile);
+		btnOpenFile.setBounds(358, 330, 127, 29);
+		add(btnOpenFile);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(370, 375, 115, 29);
@@ -72,7 +74,7 @@ public class AuthorPanel extends JPanel {
 		add(lblConfrence);
 		
 		JLabel lblDeadline = new JLabel("Deadline");
-		lblDeadline.setBounds(215, 379, 69, 20);
+		lblDeadline.setBounds(219, 379, 61, 20);
 		add(lblDeadline);
 		
 		
@@ -84,19 +86,19 @@ public class AuthorPanel extends JPanel {
 	}
 	
 	public void getFile() throws Exception{
-		if(jf.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 			
-			java.io.File file = jf.getSelectedFile();
+			java.io.File file = fileChooser.getSelectedFile();
 			
 			Scanner input = new Scanner(file);
 			
 			while(input.hasNext()){
-				sb.append(input.nextLine());
-				sb.append("\n");
+				stringBuilder.append(input.nextLine());
+				stringBuilder.append("\n");
 			}
 			input.close();
 		}else {
-			sb.append("No file Was chosen!");
+			JOptionPane.showMessageDialog(this, "Please Select a File!");
 		}
 	}
 }
