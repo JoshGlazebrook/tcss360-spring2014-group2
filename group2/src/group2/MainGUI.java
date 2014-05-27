@@ -86,6 +86,9 @@ public class MainGUI extends JFrame {
 
 		JMenuItem mntmSubChair = new JMenuItem("Sub Program Chair");
 		mntmSubChair.addActionListener(new ActionListener() {
+			/**
+			 * Action Listener for button press. 
+			 */
 			public void actionPerformed(ActionEvent e) {
 				if(loggedIn) setPanel(subPM);
 				else{
@@ -163,13 +166,14 @@ public class MainGUI extends JFrame {
 		
 	}
 	/**
-	 * 
+	 * Method that switches the panels in order to operate in different ways. 
+	 * Removes the old panel and replaces is with one that is being passed in. 
 	 * @param the_panel
 	 */
 	public void setPanel(JPanel the_panel){
-		getContentPane().removeAll();
-		repaint();
-		getContentPane().add(the_panel).setLocation(50, 0);
+		getContentPane().removeAll(); //Get current Panel
+		repaint(); //Refresh
+		getContentPane().add(the_panel).setLocation(50, 0); //Add new panel
 		repaint();
 		revalidate();
 	}
