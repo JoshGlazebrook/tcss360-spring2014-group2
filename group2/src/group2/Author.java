@@ -2,8 +2,11 @@ package group2;
 
 
 public class Author extends User{
-	public Author() {
-		
+	PaperManager papers;
+	
+	public Author(PaperManager manager) {
+		papers = manager;
+		super(null);
 	}
 	
 	public int submitPaper(String data) {
