@@ -27,7 +27,6 @@ public class NewUserPanel extends JPanel {
 	private JTextField txtName;
 	private JTextField txtUserName;
 	private JTextField txtPassword;
-	private JTextField txtAddress;
 	private ConferencePanel conferencePanel = new ConferencePanel();
 
 	/**
@@ -54,12 +53,8 @@ public class NewUserPanel extends JPanel {
 		lblPassword.setBounds(123, 227, 73, 20);
 		add(lblPassword);
 		
-		JLabel lblAddress = new JLabel("Address:");
-		lblAddress.setBounds(123, 285, 63, 20);
-		add(lblAddress);
-		
 		JLabel lblUserType = new JLabel("User Type:");
-		lblUserType.setBounds(123, 344, 78, 20);
+		lblUserType.setBounds(123, 276, 78, 20);
 		add(lblUserType);
 		
 		txtName = new JTextField();
@@ -77,26 +72,21 @@ public class NewUserPanel extends JPanel {
 		add(txtPassword);
 		txtPassword.setColumns(10);
 		
-		txtAddress = new JTextField();
-		txtAddress.setBounds(242, 282, 146, 26);
-		add(txtAddress);
-		txtAddress.setColumns(10);
-		
 		JComboBox UserTypes = new JComboBox();
 		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
-		UserTypes.setBounds(242, 341, 146, 26);
+		UserTypes.setBounds(242, 273, 146, 26);
 		add(UserTypes);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(123, 448, 69, 28);
+		btnSave.setBounds(123, 380, 69, 28);
 		add(btnSave);
 		
 		JLabel lblConfrence = new JLabel("Confrence:");
-		lblConfrence.setBounds(123, 398, 69, 16);
+		lblConfrence.setBounds(123, 330, 69, 16);
 		add(lblConfrence);
 		
 		JComboBox confrences = new JComboBox();
-		confrences.setBounds(242, 393, 146, 26);
+		confrences.setBounds(242, 325, 146, 26);
 		add(confrences);
 		
 		JButton btnNewConfrence = new JButton("New Confrence");
@@ -105,7 +95,7 @@ public class NewUserPanel extends JPanel {
 				conferencePanel.show();
 			}
 		});
-		btnNewConfrence.setBounds(275, 448, 113, 28);
+		btnNewConfrence.setBounds(261, 380, 127, 28);
 		add(btnNewConfrence);
 
 	}
@@ -117,7 +107,7 @@ public class NewUserPanel extends JPanel {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 //		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setSize(500, 600);
+		frame.setSize(500, 500);
 		frame.getContentPane().add(this);
 		frame.show();
 		
