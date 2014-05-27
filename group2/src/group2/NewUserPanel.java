@@ -18,6 +18,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 /**
  * 
  * @author Mina Messak
@@ -26,7 +27,7 @@ import java.awt.event.ActionEvent;
 public class NewUserPanel extends JPanel {
 	private JTextField txtName;
 	private JTextField txtUserName;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	private ConferencePanel conferencePanel = new ConferencePanel();
 
 	/**
@@ -67,12 +68,12 @@ public class NewUserPanel extends JPanel {
 		add(txtUserName);
 		txtUserName.setColumns(10);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(242, 224, 146, 26);
 		add(txtPassword);
 		txtPassword.setColumns(10);
 		
-		JComboBox UserTypes = new JComboBox();
+		final JComboBox UserTypes = new JComboBox();
 		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
 		UserTypes.setBounds(242, 273, 146, 26);
 		add(UserTypes);
@@ -93,6 +94,7 @@ public class NewUserPanel extends JPanel {
 		btnNewConfrence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conferencePanel.show();
+				UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Program Chair"}));
 			}
 		});
 		btnNewConfrence.setBounds(261, 380, 127, 28);
