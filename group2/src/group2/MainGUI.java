@@ -13,7 +13,11 @@ import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class MainGUI extends JFrame {
 	private boolean loggedIn = true;
 	private JPanel login = new LogInPanel();
@@ -158,7 +162,10 @@ public class MainGUI extends JFrame {
 		getContentPane().add(login).setLocation(50, 0);
 		
 	}
-	
+	/**
+	 * 
+	 * @param the_panel
+	 */
 	public void setPanel(JPanel the_panel){
 		getContentPane().removeAll();
 		repaint();

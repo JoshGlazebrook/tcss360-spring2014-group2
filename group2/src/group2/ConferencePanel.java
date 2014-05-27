@@ -1,17 +1,18 @@
 package group2;
 
 import java.awt.Font;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTextField;
 
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class ConferencePanel extends JPanel {
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;

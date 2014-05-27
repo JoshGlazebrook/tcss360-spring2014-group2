@@ -12,7 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class ReviewerPanel extends JPanel {
 	
 	final StringBuilder stringBuilder = new StringBuilder();
@@ -75,7 +79,10 @@ public class ReviewerPanel extends JPanel {
 		add(lblReviewer);
 
 	}
-	
+	/**
+	 * File display from text file. 
+	 * @throws Exception
+	 */
 	public void getFile() throws Exception{
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 			

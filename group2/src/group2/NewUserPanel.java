@@ -18,7 +18,11 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class NewUserPanel extends JPanel {
 	private JTextField txtName;
 	private JTextField txtUserName;

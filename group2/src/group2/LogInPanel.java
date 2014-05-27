@@ -11,7 +11,11 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class LogInPanel extends JPanel {
 	private NewUserPanel newUser = new NewUserPanel();
 	public String userType = "null";

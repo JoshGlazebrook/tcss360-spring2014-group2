@@ -14,7 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.text.EditorKit;
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class AuthorPanel extends JPanel {
 	
 	

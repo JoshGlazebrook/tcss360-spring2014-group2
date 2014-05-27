@@ -1,5 +1,9 @@
 package group2;
-
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 import java.awt.Font;
 import java.util.Scanner;
 
@@ -74,7 +78,10 @@ public class SubChairPanel extends JPanel {
 		add(rdbtnDecline);
 
 	}
-	
+	/**
+	 * File display from text file. 
+	 * @throws Exception
+	 */
 	public void getFile() throws Exception{
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 			
