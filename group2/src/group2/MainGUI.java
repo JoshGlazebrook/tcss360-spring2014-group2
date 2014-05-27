@@ -21,11 +21,11 @@ import javax.swing.JPanel;
 public class MainGUI extends Observable {
 	private JFrame frame = new JFrame();
 	private boolean loggedIn = true;
-	private JPanel login = new LogInPanel();
+	private LogInPanel login = new LogInPanel();
 	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
 	private JPanel subPM = new SubChairPanel();
-	private JPanel newUser = new NewUserPanel();
+	private JPanel newUser = new NewUserPanel(login.userManager);
 	private JPanel deleteUser = new DeleteUserPanel();
 	private JPanel programChair = new ProgramChairPanel();
 	private JPanel confrence = new ConferencePanel();
