@@ -72,7 +72,7 @@ public class MainGUI extends Observable {
 				}
 			}
 		});
-		mnUsers.add(mntmAuthor);
+		mnUsers.add(mntmAuthor);//
 		
 		JMenuItem mntmReviewer = new JMenuItem("Reviewer");
 		mntmReviewer.addActionListener(new ActionListener() {
