@@ -1,6 +1,8 @@
-package group2;
+package test;
 
 import static org.junit.Assert.*;
+import group2.User;
+import group2.UserManager;
 
 import java.util.HashMap;
 

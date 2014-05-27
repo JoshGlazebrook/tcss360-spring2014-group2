@@ -59,6 +59,4 @@ public class Conference {
 	public List<User> getUsers() {
 		return users;
 	}
-	
-	
 }
