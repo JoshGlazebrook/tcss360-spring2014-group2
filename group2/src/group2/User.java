@@ -1,20 +1,38 @@
 package group2;
 
 public class User {
-	final String id;
-	String pass;
 	
-	public User(String the_id, String the_pass){
-		
-		id = the_id;
-		pass = the_pass;
+	/**
+	 * The ID.
+	 */
+	final String userName;
+	
+	/**
+	 * The password.
+	 */
+	String password;
+	
+	/**
+	 * A constructor for User.
+	 * @param the_id, the id
+	 * @param the_pass, the password
+	 */
+	public User(String theUserName, String thePassword) {
+		userName = theUserName;
+		password = thePassword;
 	}
 	
+	/*
 	public void startConference(){
 		
+	}*/
+	
+	public String getUserName() { 
+		return userName; 
 	}
 	
-	public String getID() { return id; }
-	public String getPass() { return pass; }
+	public String getPassword() { 
+		return password; 
+	}
 
 }
