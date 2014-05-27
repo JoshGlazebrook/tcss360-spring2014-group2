@@ -25,7 +25,7 @@ import javax.swing.JPasswordField;
  * @version 5.22.2014
  */
 public class NewUserPanel extends JPanel {
-	private JTextField txtName;
+	//private JTextField txtName;
 	private JTextField txtUserName;
 	private JPasswordField txtPassword;
 	private ConferencePanel conferencePanel = new ConferencePanel();
@@ -41,10 +41,10 @@ public class NewUserPanel extends JPanel {
 		lblNewUser.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewUser.setBounds(186, 16, 127, 37);
 		add(lblNewUser);
-		
+		/*
 		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(123, 112, 69, 20);
-		add(lblName);
+		add(lblName);*/
 		
 		JLabel lblUserName = new JLabel("User Name:");
 		lblUserName.setBounds(123, 168, 84, 20);
@@ -58,10 +58,10 @@ public class NewUserPanel extends JPanel {
 		lblUserType.setBounds(123, 276, 78, 20);
 		add(lblUserType);
 		
-		txtName = new JTextField();
+		/*txtName = new JTextField();
 		txtName.setBounds(242, 109, 146, 26);
 		add(txtName);
-		txtName.setColumns(10);
+		txtName.setColumns(10);*/
 		
 		txtUserName = new JTextField();
 		txtUserName.setBounds(242, 165, 146, 26);

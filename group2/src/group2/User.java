@@ -5,21 +5,21 @@ public class User {
 	/**
 	 * The ID.
 	 */
-	final String id;
+	final String userName;
 	
 	/**
 	 * The password.
 	 */
-	String pass;
+	String password;
 	
 	/**
 	 * A constructor for User.
 	 * @param the_id, the id
 	 * @param the_pass, the password
 	 */
-	public User(String the_id, String the_pass) {
-		id = the_id;
-		pass = the_pass;
+	public User(String theUserName, String thePassword) {
+		userName = theUserName;
+		password = thePassword;
 	}
 	
 	/*
@@ -27,12 +27,12 @@ public class User {
 		
 	}*/
 	
-	public String getID() { 
-		return id; 
+	public String getUserName() { 
+		return userName; 
 	}
 	
-	public String getPass() { 
-		return pass; 
+	public String getPassword() { 
+		return password; 
 	}
 
 }
