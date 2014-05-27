@@ -4,9 +4,8 @@ package group2;
 public class Author extends User{
 	PaperManager papers;
 	
-	public Author(PaperManager manager) {
-		papers = manager;
-		super(null);
+	public Author() {
+		
 	}
 	
 	public int submitPaper(String data) {
