@@ -9,7 +9,7 @@ import java.util.List;
  * @version 17 May, 2014
  */
 public class Conference {
-	// lkadjflakjfl
+	
 	/**
 	 * The ProgramChair of this conference.
 	 */
