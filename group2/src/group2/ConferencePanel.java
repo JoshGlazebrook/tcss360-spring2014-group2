@@ -3,6 +3,9 @@ package group2;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -19,11 +22,13 @@ import javax.swing.JTextField;
 public class ConferencePanel extends JPanel {
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;
+	//private ArrayList<Conference> confrences;
 
 	/**
 	 * Create the panel.
 	 */
 	public ConferencePanel() {
+		
 		
 		setLayout(null);
 		setSize(500, 500);
@@ -50,6 +55,14 @@ public class ConferencePanel extends JPanel {
 		
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(189, 398, 122, 29);
+		btnSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//confrences.add(new Conference(new User("MinaM", "mina"), "Confrence 1", "05/11/2014", "05/30/2014"));
+				
+			}
+		});
 		add(btnSave);
 		
 		txtDate = new JFormattedTextField();

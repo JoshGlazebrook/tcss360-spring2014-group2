@@ -13,13 +13,16 @@ import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 /**
  * 
  * @author Mina Messak
  * @version 5.22.2014
  */
 public class MainGUI {
-	JFrame frame = new JFrame();
+	//private ArrayList<Conference> confrences = new ArrayList<Conference>();
+	
+	private JFrame frame = new JFrame();
 	private boolean loggedIn = true;
 	private JPanel login = new LogInPanel();
 	private JPanel author = new AuthorPanel();
