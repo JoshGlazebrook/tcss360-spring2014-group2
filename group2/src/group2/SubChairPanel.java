@@ -5,6 +5,7 @@ package group2;
  * @version 5.22.2014
  */
 import java.awt.Font;
+import java.awt.Frame;
 import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -46,6 +48,18 @@ public class SubChairPanel extends JPanel {
 		add(titleLabel);
 		
 		JButton btnAssignReviewers = new JButton("Assign Reviewers");
+		btnAssignReviewers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
+				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
+				        "Please select a reviewer! ",
+				        "Reviewers",
+				        JOptionPane.QUESTION_MESSAGE, 
+				        null, 
+				        reviewers, 
+				        reviewers[0]);
+			}
+		});
 		btnAssignReviewers.setBounds(330, 330, 155, 29);
 		add(btnAssignReviewers);
 		

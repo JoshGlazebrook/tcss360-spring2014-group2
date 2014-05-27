@@ -1,6 +1,7 @@
 package group2;
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
@@ -58,6 +59,18 @@ public class ReviewerPanel extends JPanel {
 		add(btnEdit);
 		
 		JButton btnConfrence = new JButton("Select Confrence");
+		btnConfrence.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] conferences = { "conference 1", "conference 2", "conference 3", "conference 4" };
+				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
+				        "Please select a conference! ",
+				        "Conferences",
+				        JOptionPane.QUESTION_MESSAGE, 
+				        null, 
+				        conferences, 
+				        conferences[0]);	
+			}
+		});
 		btnConfrence.setBounds(15, 330, 149, 29);
 		add(btnConfrence);
 		
@@ -70,6 +83,12 @@ public class ReviewerPanel extends JPanel {
 		add(lblDeadline);
 		
 		JButton btnReview = new JButton("Review Sheet");
+		btnReview.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.removeAll();
+				textArea.setText(" Review Sheet\n\n Paper Name:\n\n Review Date:\n\n Comments:\n\n");
+			}
+		});
 		btnReview.setBounds(358, 392, 127, 29);
 		add(btnReview);
 		
