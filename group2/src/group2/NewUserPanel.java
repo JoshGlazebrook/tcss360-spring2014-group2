@@ -25,6 +25,7 @@ import javax.swing.JPasswordField;
  * @version 5.22.2014
  */
 public class NewUserPanel extends JPanel {
+	private JFrame frame = new JFrame("New User");
 	private JTextField txtName;
 	private JTextField txtUserName;
 	private JPasswordField txtPassword;
@@ -79,6 +80,12 @@ public class NewUserPanel extends JPanel {
 		add(UserTypes);
 		
 		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Save it first! 
+				frame.dispose();
+			}
+		});
 		btnSave.setBounds(123, 380, 69, 28);
 		add(btnSave);
 		
@@ -103,7 +110,6 @@ public class NewUserPanel extends JPanel {
 	}
 	
 	public void show(){
-		JFrame frame = new JFrame("New User");
 		frame.setResizable(false);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

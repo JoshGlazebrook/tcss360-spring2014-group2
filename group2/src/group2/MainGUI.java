@@ -19,13 +19,14 @@ import javax.swing.JPanel;
  * @version 5.22.2014
  */
 public class MainGUI extends Observable {
-	JFrame frame = new JFrame();
+	private JFrame frame = new JFrame();
 	private boolean loggedIn = true;
 	private JPanel login = new LogInPanel();
 	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
 	private JPanel subPM = new SubChairPanel();
 	private JPanel newUser = new NewUserPanel();
+	private JPanel deleteUser = new DeleteUserPanel();
 	private JPanel programChair = new ProgramChairPanel();
 	private JPanel confrence = new ConferencePanel();
 
@@ -124,6 +125,13 @@ public class MainGUI extends Observable {
 		mnOther.add(mntmAddUser);
 		
 		JMenuItem mntmDeleteUser = new JMenuItem("Delete User");
+		mntmDeleteUser.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				deleteUser.show();
+			}
+		});
 		mnOther.add(mntmDeleteUser);
 		
 		JMenuItem mntmLogOut = new JMenuItem("Log Out");

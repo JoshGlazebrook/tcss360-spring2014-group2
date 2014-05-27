@@ -20,6 +20,7 @@ import javax.swing.JTextField;
  * @version 5.22.2014
  */
 public class ConferencePanel extends JPanel {
+	private JFrame frame = new JFrame("Conference");
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;
 	//private ArrayList<Conference> confrences;
@@ -59,6 +60,8 @@ public class ConferencePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//Save it first! 
+				frame.dispose();
 				//confrences.add(new Conference(new User("MinaM", "mina"), "Confrence 1", "05/11/2014", "05/30/2014"));
 				
 			}
@@ -82,7 +85,6 @@ public class ConferencePanel extends JPanel {
 	}
 	
 	public void show(){
-		JFrame frame = new JFrame("Conference");
 		frame.setResizable(false);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

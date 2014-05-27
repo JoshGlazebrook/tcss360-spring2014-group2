@@ -11,14 +11,17 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JComboBox;
 /**
  * 
  * @author Mina Messak
  * @version 5.22.2014
  */
 public class LogInPanel extends JPanel {
+	
+	private ConferencePanel conferencePanel = new ConferencePanel();
 	private NewUserPanel newUser = new NewUserPanel();
-	public String userType = "null";
 
 	/**
 	 * Create the panel.
@@ -35,7 +38,7 @@ public class LogInPanel extends JPanel {
 		add(titleLabel);
 		
 		JButton logInBtn = new JButton("Log In");
-		logInBtn.setBounds(82, 326, 115, 29);
+		logInBtn.setBounds(74, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO
@@ -49,11 +52,11 @@ public class LogInPanel extends JPanel {
 				newUser.show();
 			}
 		});
-		addUserBtn.setBounds(319, 326, 115, 29);
+		addUserBtn.setBounds(339, 326, 87, 28);
 		add(addUserBtn);
 		
 		JPanel panel2 = new JPanel();
-		panel2.setBounds(122, 159, 269, 92);
+		panel2.setBounds(115, 159, 269, 138);
 		add(panel2);
 		panel2.setLayout(null);
 		
@@ -75,6 +78,22 @@ public class LogInPanel extends JPanel {
 		panel2.add(passwordField);
 		passwordField.setColumns(10);
 		
+		JLabel conferenceLabel = new JLabel("Confrence:");
+		conferenceLabel.setBounds(15, 91, 69, 16);
+		panel2.add(conferenceLabel);
+		
+		JComboBox conferenceComboBox = new JComboBox();
+		conferenceComboBox.setBounds(110, 86, 146, 26);
+		panel2.add(conferenceComboBox);
+		
+		JButton newConferenceBtn = new JButton("New Confrence");
+		newConferenceBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				conferencePanel.show();
+			}
+		});
+		newConferenceBtn.setBounds(186, 326, 127, 28);
+		add(newConferenceBtn);
+		
 	}
-
 }
