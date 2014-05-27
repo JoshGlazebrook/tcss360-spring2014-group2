@@ -67,22 +67,42 @@ public class Conference {
 		paperManager.addPaper(paper);
 	}
 	
+	/**
+	 * Returns a ProgramChair.
+	 * @return programChair
+	 */
 	public User getProgramChair() {
 		return programChair;
 	}
 	
+	/**
+	 * Returns the date.
+	 * @return date
+	 */
 	public String getDate() {
 		return date;
 	}
 	
+	/**
+	 * Returns the deadline.
+	 * @return deadline
+	 */
 	public String getDeadline() {
 		return deadline;
 	}
 	
+	/**
+	 * Returns the name.
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * Returns the list of Users
+	 * @return users
+	 */
 	public List<User> getUsers() {
 		return users;
 	}
