@@ -94,7 +94,7 @@ public class NewUserPanel extends JPanel {
 		btnNewConfrence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				conferencePanel.show();
-				UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Program Chair"})); //Change combo box
+				UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Program Chair"}));
 			}
 		});
 		btnNewConfrence.setBounds(261, 380, 127, 28);
