@@ -17,7 +17,7 @@ import org.junit.Test;
  */
 public class ConferenceTest {
 	User user = new User("Jay", "tcss360");
-	Conference conf = new Conference(user, "May 17", "May 19");
+	Conference conf = new Conference(user, "May 17", "May 19", null);
 	
 	@Test
 	public void testConference() {

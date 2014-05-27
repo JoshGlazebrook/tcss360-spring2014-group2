@@ -1,10 +1,6 @@
 package group2;
 
-/**
- * 
- * @author Josh
- *
- */
+
 public class Author extends User{
 	public Author() {
 		
