@@ -13,12 +13,13 @@ import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Observable;
 /**
  * 
  * @author Mina Messak
  * @version 5.22.2014
  */
-public class MainGUI {
+public class MainGUI extends Observable {
 	JFrame frame = new JFrame();
 	private boolean loggedIn = true;
 	private JPanel login = new LogInPanel();
