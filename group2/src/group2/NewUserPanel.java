@@ -28,6 +28,7 @@ public class NewUserPanel extends JPanel {
 	private JTextField txtUserName;
 	private JTextField txtPassword;
 	private JTextField txtAddress;
+	private ConferencePanel conferencePanel = new ConferencePanel();
 
 	/**
 	 * Create the panel.
@@ -87,12 +88,25 @@ public class NewUserPanel extends JPanel {
 		add(UserTypes);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnSave.setBounds(123, 448, 69, 28);
+		add(btnSave);
+		
+		JLabel lblConfrence = new JLabel("Confrence:");
+		lblConfrence.setBounds(123, 398, 69, 16);
+		add(lblConfrence);
+		
+		JComboBox confrences = new JComboBox();
+		confrences.setBounds(242, 393, 146, 26);
+		add(confrences);
+		
+		JButton btnNewConfrence = new JButton("New Confrence");
+		btnNewConfrence.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				conferencePanel.show();
 			}
 		});
-		btnSave.setBounds(192, 422, 115, 29);
-		add(btnSave);
+		btnNewConfrence.setBounds(275, 448, 113, 28);
+		add(btnNewConfrence);
 
 	}
 	
@@ -103,7 +117,7 @@ public class NewUserPanel extends JPanel {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 //		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setSize(500, 500);
+		frame.setSize(500, 600);
 		frame.getContentPane().add(this);
 		frame.show();
 		

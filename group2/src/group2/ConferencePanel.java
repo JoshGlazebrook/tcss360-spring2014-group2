@@ -1,9 +1,12 @@
 package group2;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -63,5 +66,17 @@ public class ConferencePanel extends JPanel {
 		add(txtDeadline);
 		txtDeadline.setColumns(10);
 
+	}
+	
+	public void show(){
+		JFrame frame = new JFrame("Conference");
+		frame.setResizable(false);
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setSize(500, 500);
+		frame.getContentPane().add(this);
+		frame.show();
 	}
 }

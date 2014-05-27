@@ -136,7 +136,8 @@ public class MainGUI {
 		JMenuItem mntmCreateANew = new JMenuItem("Create a New Conference");
 		mntmCreateANew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setPanel(confrence);
+//				setPanel(confrence);
+				confrence.show();
 			}
 		});
 		mnOther.add(mntmCreateANew);
