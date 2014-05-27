@@ -18,7 +18,8 @@ import java.awt.event.ActionEvent;
  * @author Mina Messak
  * @version 5.22.2014
  */
-public class MainGUI extends JFrame {
+public class MainGUI {
+	JFrame frame = new JFrame();
 	private boolean loggedIn = true;
 	private JPanel login = new LogInPanel();
 	private JPanel author = new AuthorPanel();
@@ -36,7 +37,7 @@ public class MainGUI extends JFrame {
 			public void run() {
 				try {
 					MainGUI gui = new MainGUI();
-					gui.setVisible(true);
+					gui.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,17 +48,17 @@ public class MainGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainGUI() {
-		setTitle("Confrence Manager");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600, 600);
+		frame.setTitle("Confrence Manager");
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(600, 600);
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
 		
 		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
+		frame.setJMenuBar(menuBar);
 		
 		JMenu mnUsers = new JMenu("Users");
 		menuBar.add(mnUsers);
@@ -160,9 +161,9 @@ public class MainGUI extends JFrame {
 			}
 		});
 		mnHelp.add(mntmExit);
-		getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(null);
 		
-		getContentPane().add(login).setLocation(50, 0);
+		frame.getContentPane().add(login).setLocation(50, 0);
 		
 	}
 	/**
@@ -171,10 +172,10 @@ public class MainGUI extends JFrame {
 	 * @param the_panel
 	 */
 	public void setPanel(JPanel the_panel){
-		getContentPane().removeAll(); //Get current Panel
-		repaint(); //Refresh
-		getContentPane().add(the_panel).setLocation(50, 0); //Add new panel
-		repaint();
-		revalidate();
+		frame.getContentPane().removeAll(); //Get current Panel
+		frame.repaint(); //Refresh
+		frame.getContentPane().add(the_panel).setLocation(50, 0); //Add new panel
+		frame.repaint();
+		frame.revalidate();
 	}
 }
