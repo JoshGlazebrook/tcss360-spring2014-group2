@@ -10,11 +10,34 @@ import java.util.List;
  */
 public class Conference {
 	
+	/**
+	 * The ProgramChair of this conference.
+	 */
 	private final ProgramChair programChair;
+	
+	/**
+	 * The date (mmddyy) of this conference..
+	 */
 	private final String date;
+	
+	/**
+	 * The deadline (mmddyy) of this conference.
+	 */
 	private final String deadline;
+	
+	/**
+	 * The name of this conference.
+	 */
 	private final String name;
+	
+	/**
+	 * A list of Users for this conference.
+	 */
 	private List<User> users;
+	
+	/**
+	 * A PaperManager for this conference.
+	 */
 	private PaperManager paperManager;
 	
 	public Conference(final User theStarter, final String theName, final String theDate, final String theDeadline) {
@@ -36,6 +59,10 @@ public class Conference {
 		return paper.getReviewed();
 	}*/
 	
+	/**
+	 * Add a paper to the PaperManager.
+	 * @param paper, the paper
+	 */
 	public void addPaper(Paper paper) {
 		paperManager.addPaper(paper);
 	}
