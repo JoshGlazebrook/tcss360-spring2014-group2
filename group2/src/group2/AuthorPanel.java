@@ -1,11 +1,13 @@
 package group2;
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -64,12 +66,33 @@ public class AuthorPanel extends JPanel {
 		JButton btnRemoveFile = new JButton("Remove File...");
 		btnRemoveFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String[] files = { "File 1", "File 2", "File 3", "File 4" };
+				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
+				        "Please select a paper! ",
+				        "Submited Files",
+				        JOptionPane.QUESTION_MESSAGE, 
+				        null, 
+				        files, 
+				        files[0]);	
 			}
 		});
 		btnRemoveFile.setBounds(15, 375, 133, 29);
 		add(btnRemoveFile);
 		
 		JButton btnSelectConfrence = new JButton("Select Confrence");
+		btnSelectConfrence.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] conferences = { "conference 1", "conference 2", "conference 3", "conference 4" };
+				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
+				        "Please select a conference! ",
+				        "Conferences",
+				        JOptionPane.QUESTION_MESSAGE, 
+				        null, 
+				        conferences, 
+				        conferences[0]);	
+			}
+			
+		});
 		btnSelectConfrence.setBounds(15, 330, 149, 29);
 		add(btnSelectConfrence);
 		
