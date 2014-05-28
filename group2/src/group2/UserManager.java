@@ -3,9 +3,11 @@ package group2;
 import java.util.HashMap;
 
 public class UserManager {
-	HashMap<String, User> allUsers = new HashMap<String, User>();
+	HashMap<String, String> allUsers = new HashMap<String, String>();
 	
-	User findID(String id) {
+	
+	
+	String findID(String id) {
 		if(allUsers.containsKey(id)) {
 			return allUsers.get(id);
 		}
@@ -14,10 +16,7 @@ public class UserManager {
 	
 	boolean signUp(String id, String pass) {
 		if(allUsers.containsKey(id)) return false;
-		
-		User cur = new User(id, pass);
-		
-		allUsers.put(id, cur);
+		allUsers.put(id, pass);
 		return true;
 	}
 }
