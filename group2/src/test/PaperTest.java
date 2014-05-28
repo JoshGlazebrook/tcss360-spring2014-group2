@@ -1,5 +1,7 @@
 package test;
 import static org.junit.Assert.*;
+import group2.Author;
+import group2.Paper;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,19 +12,19 @@ import org.junit.Test;
  */
 public class PaperTest {
 
+	Author author;
+	String paper_data;
+	Paper paper;
+	
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	/**
-	 * Test method for {@link group2.Paper#Paper(group2.Author, java.lang.String)}.
-	 */
-	@Test
-	public void testPaper() {
-		fail("Not yet implemented");
+		author = new Author("name", "password");
+		paper_data = "some paper data";
+		paper = new Paper(author, paper_data);
 	}
 
 	/**
@@ -30,7 +32,7 @@ public class PaperTest {
 	 */
 	@Test
 	public void testGetAuthor() {
-		fail("Not yet implemented");
+		assertEquals(author, paper.getAuthor());
 	}
 
 	/**
@@ -38,7 +40,7 @@ public class PaperTest {
 	 */
 	@Test
 	public void testGetData() {
-		fail("Not yet implemented");
+		assertEquals(paper_data, paper.getData());
 	}
 
 	/**
@@ -46,7 +48,7 @@ public class PaperTest {
 	 */
 	@Test
 	public void testGetReviewed() {
-		fail("Not yet implemented");
+		assertFalse(paper.getReviewed());
 	}
 
 	/**
@@ -54,7 +56,8 @@ public class PaperTest {
 	 */
 	@Test
 	public void testSetReviewedState() {
-		fail("Not yet implemented");
+		paper.setReviewedState(true);
+		assertTrue(paper.getReviewed());
 	}
 
 	/**
@@ -62,7 +65,7 @@ public class PaperTest {
 	 */
 	@Test
 	public void testGetID() {
-		fail("Not yet implemented");
+		assertEquals(paper_data.hashCode() ,paper.getID());
 	}
 
 }

@@ -35,7 +35,7 @@ public class PaperManager {
 	 * @return True if the paper was removed or doesn't exist, false otherwise.
 	 */
 	public void removePaper(int paper_id) {
-		papers.remove(papers.get(paper_id));
+		papers.remove(paper_id);
 	}
 	
 	/**
