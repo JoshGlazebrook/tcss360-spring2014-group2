@@ -29,7 +29,7 @@ public class LogInPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public LogInPanel(final MainGUI gui, final JFrame frame) {
+	public LogInPanel(final MainGUI gui) {
 		setSize(500, 500);
 		setLayout(null);
 	
@@ -41,10 +41,10 @@ public class LogInPanel extends JPanel {
 		add(titleLabel);
 		
 		JButton logInBtn = new JButton("Log In");
-		logInBtn.setBounds(74, 326, 68, 28);
+		logInBtn.setBounds(150, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.getContentPane().add(conferencePanel).setLocation(50, 0);
+				gui.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
 				gui.setPanel(conferencePanel);
 			}
 		});
@@ -57,7 +57,7 @@ public class LogInPanel extends JPanel {
 				newUser.show();
 			}
 		});
-		addUserBtn.setBounds(339, 326, 87, 28);
+		addUserBtn.setBounds(250, 326, 87, 28);
 		add(addUserBtn);
 		
 		JPanel panel2 = new JPanel();
@@ -85,14 +85,16 @@ public class LogInPanel extends JPanel {
 		passwordField.setColumns(10);
 	    password = new String(passwordField.getPassword());
 		
+	    /*
 		JLabel conferenceLabel = new JLabel("Confrence:");
 		conferenceLabel.setBounds(15, 91, 69, 16);
 		panel2.add(conferenceLabel);
 		
 		JComboBox conferenceComboBox = new JComboBox();
 		conferenceComboBox.setBounds(110, 86, 146, 26);
-		panel2.add(conferenceComboBox);
+		panel2.add(conferenceComboBox);*/
 		
+		/*
 		JButton newConferenceBtn = new JButton("New Conference");
 		newConferenceBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -100,7 +102,7 @@ public class LogInPanel extends JPanel {
 			}
 		});
 		newConferenceBtn.setBounds(186, 326, 127, 28);
-		add(newConferenceBtn);
+		add(newConferenceBtn);*/
 	}
 	
 	public UserManager getUserManager() {

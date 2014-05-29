@@ -19,9 +19,9 @@ import javax.swing.JPanel;
  * @version 5.22.2014
  */
 public class MainGUI extends Observable {
-	private JFrame frame = new JFrame();
+	public JFrame frame = new JFrame();
 	private boolean loggedIn = true;
-	private LogInPanel login = new LogInPanel(this, frame);
+	private LogInPanel login = new LogInPanel(this);
 	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
 	private JPanel subPM = new SubChairPanel();

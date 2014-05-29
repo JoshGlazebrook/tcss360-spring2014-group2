@@ -47,16 +47,18 @@ public class NewUserPanel extends JPanel {
 		add(lblName);*/
 		
 		JLabel lblUserName = new JLabel("User Name:");
-		lblUserName.setBounds(123, 168, 84, 20);
+		lblUserName.setBounds(123, 112, 84, 20);
 		add(lblUserName);
-		
+		//168
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(123, 227, 73, 20);
+		lblPassword.setBounds(123, 168, 73, 20);
 		add(lblPassword);
+		//227
 		
+		/*
 		JLabel lblUserType = new JLabel("User Type:");
 		lblUserType.setBounds(123, 276, 78, 20);
-		add(lblUserType);
+		add(lblUserType);*/
 		
 		/*txtName = new JTextField();
 		txtName.setBounds(242, 109, 146, 26);
@@ -64,21 +66,22 @@ public class NewUserPanel extends JPanel {
 		txtName.setColumns(10);*/
 		
 		JTextField txtUserName = new JTextField();
-		txtUserName.setBounds(242, 165, 146, 26);
+		txtUserName.setBounds(242, 112, 146, 26);
 		add(txtUserName);
 		txtUserName.setColumns(10);
 		userName = txtUserName.getText();
 		
 		JPasswordField txtPassword = new JPasswordField();
-		txtPassword.setBounds(242, 224, 146, 26);
+		txtPassword.setBounds(242, 168, 146, 26);
 		add(txtPassword);
 		txtPassword.setColumns(10);
 		password = new String(txtPassword.getPassword());
 		
+		/*
 		final JComboBox UserTypes = new JComboBox();
 		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
 		UserTypes.setBounds(242, 273, 146, 26);
-		add(UserTypes);
+		add(UserTypes);*/
 		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
@@ -95,17 +98,19 @@ public class NewUserPanel extends JPanel {
 				}
 			}
 		});
-		btnSave.setBounds(123, 380, 69, 28);
+		btnSave.setBounds(210, 240, 69, 28);
 		add(btnSave);
 		
+		/*
 		JLabel lblConfrence = new JLabel("Confrence:");
 		lblConfrence.setBounds(123, 330, 69, 16);
 		add(lblConfrence);
 		
 		JComboBox confrences = new JComboBox();
 		confrences.setBounds(242, 325, 146, 26);
-		add(confrences);
+		add(confrences);*/
 		
+		/*
 		JButton btnNewConfrence = new JButton("New Confrence");
 		btnNewConfrence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -114,7 +119,7 @@ public class NewUserPanel extends JPanel {
 			}
 		});
 		btnNewConfrence.setBounds(261, 380, 127, 28);
-		add(btnNewConfrence);
+		add(btnNewConfrence);*/
 
 	}
 	

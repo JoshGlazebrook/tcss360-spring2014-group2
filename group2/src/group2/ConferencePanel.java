@@ -9,11 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,13 +33,21 @@ public class ConferencePanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 		
-		
+		/*
 		final JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 71, 460, 240);
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 71, 480, 240);
-		add(pane);
+		add(pane);*/
+		
+		String[] array = {"a", "b", "c"};
+		final JList list = new JList(array);
+		list.setVisibleRowCount(3);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setBounds(15, 71, 480, 240);
+		add(list);
+		//JPanel listPanel = new JPanel();
 		
 		JLabel titleLabel = new JLabel("Conferences");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));

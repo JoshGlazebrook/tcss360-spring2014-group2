@@ -106,4 +106,12 @@ public class Conference {
 	public List<User> getUsers() {
 		return users;
 	}
+	
+	/**
+	 * String representation of a conference.
+	 * @return the name of the conference
+	 */
+	public String toString() {
+		return getName();
+	}
 }
