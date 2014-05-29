@@ -132,7 +132,7 @@ public class NewUserPanel extends JPanel {
 	/**
 	 * Checks if a User can be created. 
 	 * @author Jugbir Singh - Jay 
-	 * @return whether or not user was created
+	 * @return whether or not user can be created
 	 */
 	public boolean createUser() {
 		if(userName != null && password != null) {
