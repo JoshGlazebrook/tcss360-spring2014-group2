@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -21,15 +22,18 @@ import javax.swing.JTextField;
  */
 public class NewUserPanel extends JPanel {
 	private JFrame frame = new JFrame("New User");
-	private JTextField txtName;
-	private JTextField txtUserName;
-	private JPasswordField txtPassword;
+	//private JTextField txtName;
+	private String userName;
+	private String password;
+	private User user;
+	public UserManager userManager;
 	private ConferencePanel conferencePanel = new ConferencePanel();
 
 	/**
 	 * Create the panel.
 	 */
-	public NewUserPanel() {
+	public NewUserPanel(UserManager theUserManager) {
+		userManager = theUserManager;
 		setSize(500, 500);
 		setLayout(null);
 		
@@ -59,15 +63,17 @@ public class NewUserPanel extends JPanel {
 		add(txtName);
 		txtName.setColumns(10);*/
 		
-		txtUserName = new JTextField();
+		JTextField txtUserName = new JTextField();
 		txtUserName.setBounds(242, 165, 146, 26);
 		add(txtUserName);
 		txtUserName.setColumns(10);
+		userName = txtUserName.getText();
 		
-		txtPassword = new JPasswordField();
+		JPasswordField txtPassword = new JPasswordField();
 		txtPassword.setBounds(242, 224, 146, 26);
 		add(txtPassword);
 		txtPassword.setColumns(10);
+		password = new String(txtPassword.getPassword());
 		
 		final JComboBox UserTypes = new JComboBox();
 		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
@@ -77,8 +83,11 @@ public class NewUserPanel extends JPanel {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Save it first! 
-				frame.dispose();
+				if(createUser()) {
+					frame.dispose();
+				} else {
+					showMessage();
+				}
 			}
 		});
 		btnSave.setBounds(123, 380, 69, 28);
@@ -113,6 +122,20 @@ public class NewUserPanel extends JPanel {
 		frame.setSize(500, 500);
 		frame.getContentPane().add(this);
 		frame.show();
-		
+	}
+	
+	public boolean createUser() {
+		if(userName != null && password != null) {
+			return userManager.signUp(userName, password);
+		}
+		return false;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void showMessage() {
+		JOptionPane.showMessageDialog(this, "Username is unavailable: please select a different username");
 	}
 }

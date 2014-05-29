@@ -1,13 +1,11 @@
 package group2;
 
-/**
- * 
- * @author Josh
- *
- */
+
 public class Author extends User{
-	public Author() {
-		
+	PaperManager papers;
+	
+	public Author(String username, String password) {
+		super(username, password);
 	}
 	
 	public int submitPaper(String data) {

@@ -19,10 +19,12 @@ import javax.swing.JComboBox;
  * @version 5.22.2014
  */
 public class LogInPanel extends JPanel {
-	
+	public UserManager userManager = new UserManager();
 	private ConferencePanel conferencePanel = new ConferencePanel();
-	private NewUserPanel newUser = new NewUserPanel();
-
+	private NewUserPanel newUser = new NewUserPanel(userManager);
+	private String userName;
+	private String password;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -41,7 +43,7 @@ public class LogInPanel extends JPanel {
 		logInBtn.setBounds(74, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				
 			}
 		});
 		add(logInBtn);
@@ -49,6 +51,7 @@ public class LogInPanel extends JPanel {
 		JButton addUserBtn = new JButton("Add User");
 		addUserBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				newUser = new NewUserPanel(userManager);
 				newUser.show();
 			}
 		});
@@ -68,6 +71,7 @@ public class LogInPanel extends JPanel {
 		usernameField.setBounds(110, 16, 146, 26);
 		panel2.add(usernameField);
 		usernameField.setColumns(10);
+		userName = usernameField.getText();
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setBounds(15, 52, 69, 20);
@@ -77,6 +81,7 @@ public class LogInPanel extends JPanel {
 		passwordField.setBounds(110, 52, 146, 26);
 		panel2.add(passwordField);
 		passwordField.setColumns(10);
+	    password = new String(passwordField.getPassword());
 		
 		JLabel conferenceLabel = new JLabel("Confrence:");
 		conferenceLabel.setBounds(15, 91, 69, 16);
@@ -94,6 +99,9 @@ public class LogInPanel extends JPanel {
 		});
 		newConferenceBtn.setBounds(186, 326, 127, 28);
 		add(newConferenceBtn);
-		
+	}
+	
+	public UserManager getUserManager() {
+		return userManager;
 	}
 }
