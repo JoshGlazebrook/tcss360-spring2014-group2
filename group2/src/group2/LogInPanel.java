@@ -22,9 +22,10 @@ public class LogInPanel extends JPanel {
 	public UserManager userManager = new UserManager();
 	private NewConferencePanel newConferencePanel = new NewConferencePanel();
 	private NewUserPanel newUser = new NewUserPanel(userManager);
+	private ConferencePanel conferencePanel = new ConferencePanel();
 	private String userName;
 	private String password;
-	private ConferencePanel conferencePanel = new ConferencePanel();
+	private User currentUser;
 	
 	/**
 	 * Create the panel.
@@ -107,5 +108,9 @@ public class LogInPanel extends JPanel {
 	
 	public UserManager getUserManager() {
 		return userManager;
+	}
+	
+	public User getCurrentUser() {
+		return currentUser;
 	}
 }
