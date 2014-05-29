@@ -21,14 +21,14 @@ import javax.swing.JPanel;
 public class MainGUI extends Observable {
 	private JFrame frame = new JFrame();
 	private boolean loggedIn = true;
-	private LogInPanel login = new LogInPanel();
+	private LogInPanel login = new LogInPanel(this, frame);
 	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
 	private JPanel subPM = new SubChairPanel();
 	private JPanel newUser = new NewUserPanel(login.userManager);
 	private JPanel deleteUser = new DeleteUserPanel();
 	private JPanel programChair = new ProgramChairPanel();
-	private JPanel confrence = new ConferencePanel();
+	private JPanel newConference = new ConferencePanel();
 
 	/**
 	 * Launch the application.
@@ -145,7 +145,7 @@ public class MainGUI extends Observable {
 		mntmCreateANew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				setPanel(confrence);
-				confrence.show();
+				newConference.show();
 			}
 		});
 		mnOther.add(mntmCreateANew);
@@ -171,7 +171,6 @@ public class MainGUI extends Observable {
 		});
 		mnHelp.add(mntmExit);
 		frame.getContentPane().setLayout(null);
-		
 		frame.getContentPane().add(login).setLocation(50, 0);
 		
 	}

@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  * @version 5.22.2014
  */
 public class NewConferencePanel extends JPanel {
-	private JFrame frame = new JFrame("Conference");
+	private JFrame frame = new JFrame("New Conference");
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;
 	//private ArrayList<Conference> conferences;

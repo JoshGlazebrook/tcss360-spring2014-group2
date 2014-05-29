@@ -20,15 +20,16 @@ import javax.swing.JComboBox;
  */
 public class LogInPanel extends JPanel {
 	public UserManager userManager = new UserManager();
-	private NewConferencePanel conferencePanel = new NewConferencePanel();
+	private NewConferencePanel newConferencePanel = new NewConferencePanel();
 	private NewUserPanel newUser = new NewUserPanel(userManager);
 	private String userName;
 	private String password;
+	private ConferencePanel conferencePanel = new ConferencePanel();
 	
 	/**
 	 * Create the panel.
 	 */
-	public LogInPanel() {
+	public LogInPanel(final MainGUI gui, final JFrame frame) {
 		setSize(500, 500);
 		setLayout(null);
 	
@@ -43,7 +44,8 @@ public class LogInPanel extends JPanel {
 		logInBtn.setBounds(74, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				frame.getContentPane().add(conferencePanel).setLocation(50, 0);
+				gui.setPanel(conferencePanel);
 			}
 		});
 		add(logInBtn);
@@ -91,10 +93,10 @@ public class LogInPanel extends JPanel {
 		conferenceComboBox.setBounds(110, 86, 146, 26);
 		panel2.add(conferenceComboBox);
 		
-		JButton newConferenceBtn = new JButton("New Confrence");
+		JButton newConferenceBtn = new JButton("New Conference");
 		newConferenceBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				conferencePanel.show();
+				newConferencePanel.show();
 			}
 		});
 		newConferenceBtn.setBounds(186, 326, 127, 28);
