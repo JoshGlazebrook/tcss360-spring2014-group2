@@ -27,7 +27,7 @@ public class NewUserPanel extends JPanel {
 	private String password;
 	private User user;
 	public UserManager userManager;
-	private ConferencePanel conferencePanel = new ConferencePanel();
+	private NewConferencePanel conferencePanel = new NewConferencePanel();
 
 	/**
 	 * Create the panel.
