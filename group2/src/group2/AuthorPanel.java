@@ -7,14 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.text.EditorKit;
 /**
  * 
@@ -24,8 +22,11 @@ import javax.swing.text.EditorKit;
 public class AuthorPanel extends JPanel {
 	
 	
-	final JFileChooser fileChooser = new JFileChooser();
-	final StringBuilder stringBuilder = new StringBuilder();
+	private final JFileChooser fileChooser = new JFileChooser();
+	private final StringBuilder stringBuilder = new StringBuilder();
+	private JLabel lblConfrence = new JLabel("Confrence Name");
+	private JLabel lblDeadline = new JLabel("Deadline");
+	private boolean submitted = false;
 
 	/**
 	 * Create the panel.
@@ -61,6 +62,18 @@ public class AuthorPanel extends JPanel {
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(370, 375, 115, 29);
+		btnSubmit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(!submitted){
+					JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
+					submitted = true;
+				}else{
+					JOptionPane.showMessageDialog(new Frame(), "You have already submitted a paper for this conference");
+				}
+			}
+		});
 		add(btnSubmit);
 		
 		JButton btnRemoveFile = new JButton("Remove File...");
@@ -82,26 +95,27 @@ public class AuthorPanel extends JPanel {
 		JButton btnSelectConfrence = new JButton("Select Confrence");
 		btnSelectConfrence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] conferences = { "conference 1", "conference 2", "conference 3", "conference 4" };
+				String[] conferences = { "Conference 1", "conference 2", "conference 3", "conference 4" };
 				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
 				        "Please select a conference! ",
 				        "Conferences",
 				        JOptionPane.QUESTION_MESSAGE, 
 				        null, 
 				        conferences, 
-				        conferences[0]);	
+				        conferences[0]);
+						
+				changeLabel(lblConfrence, dialogBox);
+				changeLabel(lblDeadline, "10/12/2014");
 			}
-			
 		});
 		btnSelectConfrence.setBounds(15, 330, 149, 29);
 		add(btnSelectConfrence);
 		
-		JLabel lblConfrence = new JLabel("Confrence Name");
-		lblConfrence.setBounds(191, 330, 117, 20);
+		
+		lblConfrence.setBounds(186, 330, 127, 20);
 		add(lblConfrence);
 		
-		JLabel lblDeadline = new JLabel("Deadline");
-		lblDeadline.setBounds(219, 379, 61, 20);
+		lblDeadline.setBounds(208, 379, 83, 20);
 		add(lblDeadline);
 		
 		
@@ -110,6 +124,10 @@ public class AuthorPanel extends JPanel {
 		lblAuthor.setBounds(205, 15, 89, 37);
 		add(lblAuthor);
 
+	}
+	
+	private void changeLabel(JLabel label, String text){
+		label.setText(text);
 	}
 	
 	public void getFile() throws Exception{
