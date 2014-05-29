@@ -82,6 +82,11 @@ public class NewUserPanel extends JPanel {
 		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
+			/**
+			 * If save button is clicked, either a user will be created or a message dialog will pop-up.
+			 * @author Jugbir Singh - Jay
+			 * @param e
+			 */
 			public void actionPerformed(ActionEvent e) {
 				if(createUser()) {
 					frame.dispose();
@@ -124,6 +129,11 @@ public class NewUserPanel extends JPanel {
 		frame.show();
 	}
 	
+	/**
+	 * Checks if a User can be created. 
+	 * @author Jugbir Singh - Jay 
+	 * @return whether or not user was created
+	 */
 	public boolean createUser() {
 		if(userName != null && password != null) {
 			return userManager.signUp(userName, password);
@@ -131,10 +141,19 @@ public class NewUserPanel extends JPanel {
 		return false;
 	}
 	
+	/**
+	 * Get the User.
+	 * @author Jugbir Singh - Jay
+	 * @return user
+	 */
 	public User getUser() {
 		return user;
 	}
 	
+	/**
+	 * A message dialog (when username is unavailable).
+	 * @author Jugbir Singh - Jay
+	 */
 	public void showMessage() {
 		JOptionPane.showMessageDialog(this, "Username is unavailable: please select a different username");
 	}
