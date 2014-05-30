@@ -2,6 +2,7 @@ package group2;
 
 import java.awt.Font;
 import java.awt.Frame;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
@@ -25,6 +26,8 @@ public class ConferencePanel extends JPanel {
 	final StringBuilder stringBuilder = new StringBuilder();
 	final JFileChooser fileChooser = new JFileChooser();
 	*/
+	private NewConferencePanel newConferencePanel;
+	private ArrayList<Conference> conferenceList = new ArrayList<Conference>();
 	
 	/**
 	 * Create the panel.
@@ -74,7 +77,8 @@ public class ConferencePanel extends JPanel {
 		JButton btnOpenFile = new JButton("Create New Conference");
 		btnOpenFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				newConferencePanel = new NewConferencePanel(conferenceList);
+				newConferencePanel.show();
 			}
 		});
 	
@@ -120,4 +124,8 @@ public class ConferencePanel extends JPanel {
 			JOptionPane.showMessageDialog(this, "Please Select a File!");
 		}
 	}*/
+	
+	public ArrayList getConferenceList() {
+		return conferenceList;
+	}
 }

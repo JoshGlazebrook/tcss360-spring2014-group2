@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -21,20 +22,19 @@ import javax.swing.JTextField;
  */
 public class NewConferencePanel extends JPanel {
 	private JFrame frame = new JFrame("New Conference");
+	private JTextField txtName;
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;
-	//private ArrayList<Conference> conferences;
+	private ArrayList<Conference> conferenceList;
 
 	/**
 	 * Create the panel.
 	 */
-	public NewConferencePanel() {
-		
+	public NewConferencePanel(ArrayList<Conference> theConferenceList) {
+		conferenceList = theConferenceList;
 		
 		setLayout(null);
 		setSize(500, 500);
-		
-		JTextField txtName;
 		
 		JLabel lblNewConfrence = new JLabel("New Confrence");
 		lblNewConfrence.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -60,10 +60,8 @@ public class NewConferencePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//Save it first! 
+				//save first
 				frame.dispose();
-				//confrences.add(new Conference(new User("MinaM", "mina"), "Confrence 1", "05/11/2014", "05/30/2014"));
-				
 			}
 		});
 		add(btnSave);

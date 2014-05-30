@@ -69,8 +69,6 @@ public class NewUserPanel extends JPanel {
 		txtUserName.setColumns(10);
 		userName = txtUserName.getSelectedText();
 		
-		System.out.println(txtUserName.getSelectedText());
-		
 		JPasswordField txtPassword = new JPasswordField();
 		txtPassword.setBounds(242, 168, 146, 26);
 		add(txtPassword);
@@ -91,13 +89,11 @@ public class NewUserPanel extends JPanel {
 			 * @param e
 			 */
 			public void actionPerformed(ActionEvent e) {
-				/*
 				if(createUser() == true) {
 					frame.dispose();
 				} else {
 					showMessage();
-				}*/
-				System.out.println(userName);
+				}
 			}
 		});
 		btnSave.setBounds(210, 240, 69, 28);

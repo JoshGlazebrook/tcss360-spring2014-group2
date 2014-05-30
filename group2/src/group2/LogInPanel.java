@@ -20,8 +20,9 @@ import javax.swing.JComboBox;
  */
 public class LogInPanel extends JPanel {
 	public UserManager userManager = new UserManager();
-	private NewConferencePanel newConferencePanel = new NewConferencePanel();
 	private ConferencePanel conferencePanel = new ConferencePanel();
+	private NewConferencePanel newConferencePanel = new 
+			NewConferencePanel(conferencePanel.getConferenceList());
 	private String userName;
 	private String password;
 	private User currentUser;
