@@ -22,17 +22,15 @@ import javax.swing.JTextField;
  */
 public class NewUserPanel extends JPanel {
 	private JFrame frame = new JFrame("New User");
-	//private JTextField txtName;
 	private String userName;
 	private String password;
 	private User user;
 	public UserManager userManager;
-	private NewConferencePanel conferencePanel = new NewConferencePanel();
 
 	/**
 	 * Create the panel.
 	 */
-	public NewUserPanel(UserManager theUserManager) {
+	public NewUserPanel(final UserManager theUserManager) {
 		userManager = theUserManager;
 		setSize(500, 500);
 		setLayout(null);

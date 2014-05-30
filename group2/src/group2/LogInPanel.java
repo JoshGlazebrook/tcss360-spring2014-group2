@@ -21,16 +21,16 @@ import javax.swing.JComboBox;
 public class LogInPanel extends JPanel {
 	public UserManager userManager = new UserManager();
 	private NewConferencePanel newConferencePanel = new NewConferencePanel();
-	private NewUserPanel newUser = new NewUserPanel(userManager);
 	private ConferencePanel conferencePanel = new ConferencePanel();
 	private String userName;
 	private String password;
 	private User currentUser;
+	private NewUserPanel newUser;
 	
 	/**
 	 * Create the panel.
 	 */
-	public LogInPanel(final MainGUI gui) {
+	public LogInPanel(final MainGUI theGUI) {
 		setSize(500, 500);
 		setLayout(null);
 	
@@ -45,8 +45,10 @@ public class LogInPanel extends JPanel {
 		logInBtn.setBounds(150, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
-				gui.setPanel(conferencePanel);
+				
+				//theGUI.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
+				//theGUI.setPanel(conferencePanel);
+				theGUI.setPanel(conferencePanel);
 			}
 		});
 		add(logInBtn);
