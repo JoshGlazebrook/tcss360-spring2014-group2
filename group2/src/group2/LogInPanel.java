@@ -107,6 +107,9 @@ public class LogInPanel extends JPanel {
 		newConferenceBtn.setBounds(186, 326, 127, 28);
 		add(newConferenceBtn);*/
 	}
+	public boolean validUser() {
+		
+	}
 	
 	public UserManager getUserManager() {
 		return userManager;

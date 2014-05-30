@@ -22,8 +22,8 @@ import javax.swing.JTextField;
  */
 public class NewUserPanel extends JPanel {
 	private JFrame frame = new JFrame("New User");
-	private String userName;
-	private String password;
+	public String userName;
+	public String password;
 	private User user;
 	public UserManager userManager;
 
@@ -67,13 +67,15 @@ public class NewUserPanel extends JPanel {
 		txtUserName.setBounds(242, 112, 146, 26);
 		add(txtUserName);
 		txtUserName.setColumns(10);
-		userName = txtUserName.getText();
+		userName = txtUserName.getSelectedText();
+		
+		System.out.println(txtUserName.getSelectedText());
 		
 		JPasswordField txtPassword = new JPasswordField();
 		txtPassword.setBounds(242, 168, 146, 26);
 		add(txtPassword);
 		txtPassword.setColumns(10);
-		password = new String(txtPassword.getPassword());
+		password = txtPassword.getSelectedText();
 		
 		/*
 		final JComboBox UserTypes = new JComboBox();
@@ -89,11 +91,13 @@ public class NewUserPanel extends JPanel {
 			 * @param e
 			 */
 			public void actionPerformed(ActionEvent e) {
-				if(createUser()) {
+				/*
+				if(createUser() == true) {
 					frame.dispose();
 				} else {
 					showMessage();
-				}
+				}*/
+				System.out.println(userName);
 			}
 		});
 		btnSave.setBounds(210, 240, 69, 28);
@@ -138,10 +142,10 @@ public class NewUserPanel extends JPanel {
 	 * @return whether or not user can be created
 	 */
 	public boolean createUser() {
-		if(userName != null && password != null) {
-			return userManager.signUp(userName, password);
+		if(userName.equals(null) && password.equals(null)) {
+			return false;
 		}
-		return false;
+		return userManager.signUp(userName, password);
 	}
 	
 	/**
