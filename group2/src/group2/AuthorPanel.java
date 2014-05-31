@@ -29,7 +29,8 @@ public class AuthorPanel extends JPanel {
 	private boolean submitted = false;
 
 	/**
-	 * Create the panel.
+	 * Create the Author Panel and align everything. 
+	 * @author Mina Messak
 	 */
 	public AuthorPanel() {
 	
@@ -125,12 +126,15 @@ public class AuthorPanel extends JPanel {
 		add(lblAuthor);
 
 	}
-	
 	private void changeLabel(JLabel label, String text){
 		label.setText(text);
 	}
-	
-	public void getFile() throws Exception{
+	/**
+	 * Get file and make it into a string that can be seen in the text area. 
+	 * @throws Exception
+	 * @author Mina Messak
+	 */
+	private void getFile() throws Exception{
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 			
 			java.io.File file = fileChooser.getSelectedFile();
