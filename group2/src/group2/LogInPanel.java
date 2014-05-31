@@ -5,6 +5,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -28,6 +29,9 @@ public class LogInPanel extends JPanel {
 	private User currentUser;
 	private NewUserPanel newUser;
 	
+	JTextField usernameField;
+	JPasswordField passwordField;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -35,8 +39,7 @@ public class LogInPanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 	
-		JPasswordField passwordField;
-		JTextField usernameField;
+
 		JLabel titleLabel = new JLabel("Welcome To Scrum It Up! ");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		titleLabel.setBounds(74, 44, 352, 37);
@@ -46,10 +49,12 @@ public class LogInPanel extends JPanel {
 		logInBtn.setBounds(150, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				//theGUI.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
 				//theGUI.setPanel(conferencePanel);
-				theGUI.setPanel(conferencePanel);
+				
+				if(validUser() == true){
+					theGUI.setPanel(conferencePanel);
+				}
 			}
 		});
 		add(logInBtn);
@@ -77,7 +82,7 @@ public class LogInPanel extends JPanel {
 		usernameField.setBounds(110, 16, 146, 26);
 		panel2.add(usernameField);
 		usernameField.setColumns(10);
-		userName = usernameField.getText();
+		//userName = usernameField.getText();
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setBounds(15, 52, 69, 20);
@@ -87,7 +92,7 @@ public class LogInPanel extends JPanel {
 		passwordField.setBounds(110, 52, 146, 26);
 		panel2.add(passwordField);
 		passwordField.setColumns(10);
-	    password = new String(passwordField.getPassword());
+	    //password = new String(passwordField.getPassword());
 		
 	    /*
 		JLabel conferenceLabel = new JLabel("Confrence:");
@@ -109,7 +114,25 @@ public class LogInPanel extends JPanel {
 		add(newConferenceBtn);*/
 	}
 	public boolean validUser() {
-		
+		usernameField.selectAll();
+		userName = usernameField.getSelectedText();
+		passwordField.selectAll();
+		password = passwordField.getSelectedText();
+
+		if(userName.equals(null) && password.equals(null)) {
+			JOptionPane.showMessageDialog(this, "Either username or password is incorrect."
+					+ " Please try again.");
+			return false;
+		} else if(userManager.allUsers.size() > 0) {
+			if(userManager.findID(userName).equals(password)) {
+				return true;
+			}
+			return false;
+		} else {
+			JOptionPane.showMessageDialog(this, "Either username or password is incorrect."
+					+ " Please try again.");
+			return false;
+		}
 	}
 	
 	public UserManager getUserManager() {

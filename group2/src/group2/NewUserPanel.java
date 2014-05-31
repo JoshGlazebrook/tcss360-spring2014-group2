@@ -24,10 +24,11 @@ public class NewUserPanel extends JPanel {
 	private JFrame frame = new JFrame("New User");
 	private String userName;
 	private String password;
-	private User user;
-	public UserManager userManager;
 	private JTextField txtUserName;
 	private JPasswordField txtPassword;
+	private User user;
+	public UserManager userManager;
+	
 	
 	/**
 	 * Create the panel.
