@@ -86,4 +86,8 @@ public class NewConferencePanel extends JPanel {
 		frame.getContentPane().add(this);
 		frame.show();
 	}
+	
+	public void createConference() {
+		
+	}
 }

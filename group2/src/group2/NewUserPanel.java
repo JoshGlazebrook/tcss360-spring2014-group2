@@ -22,11 +22,13 @@ import javax.swing.JTextField;
  */
 public class NewUserPanel extends JPanel {
 	private JFrame frame = new JFrame("New User");
-	public String userName;
-	public String password;
+	private String userName;
+	private String password;
 	private User user;
 	public UserManager userManager;
-
+	private JTextField txtUserName;
+	private JPasswordField txtPassword;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -63,17 +65,15 @@ public class NewUserPanel extends JPanel {
 		add(txtName);
 		txtName.setColumns(10);*/
 		
-		JTextField txtUserName = new JTextField();
+		txtUserName = new JTextField();
 		txtUserName.setBounds(242, 112, 146, 26);
 		add(txtUserName);
 		txtUserName.setColumns(10);
-		userName = txtUserName.getSelectedText();
 		
-		JPasswordField txtPassword = new JPasswordField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(242, 168, 146, 26);
 		add(txtPassword);
 		txtPassword.setColumns(10);
-		password = txtPassword.getSelectedText();
 		
 		/*
 		final JComboBox UserTypes = new JComboBox();
@@ -138,6 +138,10 @@ public class NewUserPanel extends JPanel {
 	 * @return whether or not user can be created
 	 */
 	public boolean createUser() {
+		txtUserName.selectAll();
+		userName = txtUserName.getSelectedText();
+		txtPassword.selectAll();
+		password = txtPassword.getSelectedText();
 		if(userName.equals(null) && password.equals(null)) {
 			return false;
 		}

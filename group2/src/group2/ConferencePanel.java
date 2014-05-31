@@ -125,7 +125,7 @@ public class ConferencePanel extends JPanel {
 		}
 	}*/
 	
-	public ArrayList getConferenceList() {
+	public ArrayList<Conference> getConferenceList() {
 		return conferenceList;
 	}
 }
