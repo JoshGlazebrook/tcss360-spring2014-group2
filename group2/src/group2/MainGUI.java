@@ -28,7 +28,7 @@ public class MainGUI extends Observable {
 	private JPanel newUser = new NewUserPanel(login.userManager);
 	private JPanel deleteUser = new DeleteUserPanel();
 	private JPanel programChair = new ProgramChairPanel();
-	private JPanel newConference = new ConferencePanel();
+	//private JPanel newConference = new NewConferencePanel();
 
 	/**
 	 * Launch the application.
@@ -145,7 +145,7 @@ public class MainGUI extends Observable {
 		mntmCreateANew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				setPanel(confrence);
-				newConference.show();
+				//newConference.show();
 			}
 		});
 		mnOther.add(mntmCreateANew);
