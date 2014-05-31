@@ -26,7 +26,6 @@ public class NewUserPanel extends JPanel {
 	private String password;
 	private JTextField txtUserName;
 	private JPasswordField txtPassword;
-	private User user;
 	public UserManager userManager;
 	
 	
@@ -147,15 +146,6 @@ public class NewUserPanel extends JPanel {
 			return false;
 		}
 		return userManager.signUp(userName, password);
-	}
-	
-	/**
-	 * Get the User.
-	 * @author Jugbir Singh - Jay
-	 * @return user
-	 */
-	public User getUser() {
-		return user;
 	}
 	
 	/**

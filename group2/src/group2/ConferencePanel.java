@@ -28,11 +28,13 @@ public class ConferencePanel extends JPanel {
 	*/
 	private NewConferencePanel newConferencePanel;
 	private ArrayList<Conference> conferenceList = new ArrayList<Conference>();
+	User currentUser;
 	
 	/**
 	 * Create the panel.
 	 */
-	public ConferencePanel() {
+	public ConferencePanel(User theCurrentUser) {
+		currentUser = theCurrentUser;
 		setSize(500, 500);
 		setLayout(null);
 		
@@ -44,7 +46,13 @@ public class ConferencePanel extends JPanel {
 		pane.setBounds(15, 71, 480, 240);
 		add(pane);*/
 		
-		String[] array = {"a", "b", "c"};
+		String[] array = new String[conferenceList.size()+1];
+		for(int i=0; i<conferenceList.size(); i++) {
+			array[i] = conferenceList.get(i).toString();
+		}
+		
+		//String[] array = {"a", "b", "c"};
+		//final JList list = new JList(array);
 		final JList list = new JList(array);
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -77,8 +85,10 @@ public class ConferencePanel extends JPanel {
 		JButton btnOpenFile = new JButton("Create New Conference");
 		btnOpenFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				newConferencePanel = new NewConferencePanel(conferenceList);
+				newConferencePanel = new NewConferencePanel(currentUser, conferenceList);
 				newConferencePanel.show();
+				revalidate();
+				repaint();
 			}
 		});
 	
@@ -125,7 +135,8 @@ public class ConferencePanel extends JPanel {
 		}
 	}*/
 	
+	/*
 	public ArrayList<Conference> getConferenceList() {
 		return conferenceList;
-	}
+	}*/
 }

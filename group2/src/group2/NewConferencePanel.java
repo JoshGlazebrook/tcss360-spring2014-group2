@@ -20,11 +20,12 @@ public class NewConferencePanel extends JPanel {
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;
 	private ArrayList<Conference> conferenceList;
-
+	private User currentUser;
 	/**
 	 * Create the panel.
 	 */
-	public NewConferencePanel(ArrayList<Conference> theConferenceList) {
+	public NewConferencePanel(User theUser,ArrayList<Conference> theConferenceList) {
+		currentUser = theUser;
 		conferenceList = theConferenceList;
 		
 		setLayout(null);
@@ -54,8 +55,9 @@ public class NewConferencePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//save first
+				createConference();
 				frame.dispose();
+				
 			}
 		});
 		add(btnSave);
@@ -88,6 +90,14 @@ public class NewConferencePanel extends JPanel {
 	}
 	
 	public void createConference() {
-		
+		txtName.selectAll();
+		txtDate.selectAll();
+		txtDeadline.selectAll();
+		String name = txtName.getSelectedText();
+		String date = txtDate.getSelectedText();
+		String deadline = txtDeadline.getSelectedText();
+		Conference conference = new Conference(currentUser, name, date, deadline);
+		conferenceList.add(conference);
 	}
 }
+

@@ -40,7 +40,8 @@ public class Conference {
 	 */
 	private PaperManager paperManager;
 	
-	public Conference(final User theStarter, final String theName, final String theDate, final String theDeadline) {
+	public Conference(final User theStarter, final String theName, 
+			final String theDate, final String theDeadline) {
 		programChair = (ProgramChair) theStarter;
 		name = theName;
 		date = theDate;

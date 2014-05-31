@@ -21,13 +21,13 @@ import javax.swing.JComboBox;
  */
 public class LogInPanel extends JPanel {
 	public UserManager userManager = new UserManager();
-	private ConferencePanel conferencePanel = new ConferencePanel();
-	private NewConferencePanel newConferencePanel = new 
-			NewConferencePanel(conferencePanel.getConferenceList());
 	private String userName;
 	private String password;
 	private User currentUser;
 	private NewUserPanel newUser;
+	private ConferencePanel conferencePanel = new ConferencePanel(currentUser);
+	//private NewConferencePanel newConferencePanel = new 
+	//		NewConferencePanel(conferencePanel.getConferenceList());
 	
 	JTextField usernameField;
 	JPasswordField passwordField;
@@ -124,7 +124,8 @@ public class LogInPanel extends JPanel {
 					+ " Please try again.");
 			return false;
 		} else if(userManager.allUsers.size() > 0) {
-			if(userManager.findID(userName).equals(password)) {
+			if(userManager.findID(userName).getPassword().equals(password)) {
+				currentUser = userManager.findID(userName);
 				return true;
 			}
 			return false;
