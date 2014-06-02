@@ -26,8 +26,6 @@ public class LogInPanel extends JPanel {
 	private User currentUser;
 	private NewUserPanel newUser;
 	private ConferencePanel conferencePanel = new ConferencePanel(currentUser);
-	//private NewConferencePanel newConferencePanel = new 
-	//		NewConferencePanel(conferencePanel.getConferenceList());
 	
 	JTextField usernameField;
 	JPasswordField passwordField;
@@ -39,7 +37,6 @@ public class LogInPanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 	
-
 		JLabel titleLabel = new JLabel("Welcome To Scrum It Up! ");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		titleLabel.setBounds(74, 44, 352, 37);
@@ -48,10 +45,12 @@ public class LogInPanel extends JPanel {
 		JButton logInBtn = new JButton("Log In");
 		logInBtn.setBounds(150, 326, 68, 28);
 		logInBtn.addActionListener(new ActionListener() {
+			/**
+			 * Set the panel on the frame to the ConferencePanel.
+			 * @author Jugbir Singh - Jay
+			 * @param e, not used
+			 */
 			public void actionPerformed(ActionEvent e) {
-				//theGUI.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
-				//theGUI.setPanel(conferencePanel);
-				
 				if(validUser() == true){
 					theGUI.setPanel(conferencePanel);
 				}
@@ -82,7 +81,6 @@ public class LogInPanel extends JPanel {
 		usernameField.setBounds(110, 16, 146, 26);
 		panel2.add(usernameField);
 		usernameField.setColumns(10);
-		//userName = usernameField.getText();
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setBounds(15, 52, 69, 20);
@@ -92,38 +90,26 @@ public class LogInPanel extends JPanel {
 		passwordField.setBounds(110, 52, 146, 26);
 		panel2.add(passwordField);
 		passwordField.setColumns(10);
-	    //password = new String(passwordField.getPassword());
-		
-	    /*
-		JLabel conferenceLabel = new JLabel("Confrence:");
-		conferenceLabel.setBounds(15, 91, 69, 16);
-		panel2.add(conferenceLabel);
-		
-		JComboBox conferenceComboBox = new JComboBox();
-		conferenceComboBox.setBounds(110, 86, 146, 26);
-		panel2.add(conferenceComboBox);*/
-		
-		/*
-		JButton newConferenceBtn = new JButton("New Conference");
-		newConferenceBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				newConferencePanel.show();
-			}
-		});
-		newConferenceBtn.setBounds(186, 326, 127, 28);
-		add(newConferenceBtn);*/
 	}
+	
+	/**
+	 * Checks if the user is valid while logging in.
+	 * @author Jugbir Singh - Jay
+	 * @return true if the user is valid
+	 */
 	public boolean validUser() {
 		usernameField.selectAll();
 		userName = usernameField.getSelectedText();
 		passwordField.selectAll();
 		password = passwordField.getSelectedText();
 
+		//Check for null fields 
 		if(userName.equals(null) && password.equals(null)) {
 			JOptionPane.showMessageDialog(this, "Either username or password is incorrect."
 					+ " Please try again.");
 			return false;
-		} else if(userManager.allUsers.size() > 0) {
+			
+		} else if(userManager.allUsers.size() > 0) {	//checks user manager using fields
 			if(userManager.findID(userName).getPassword().equals(password)) {
 				currentUser = userManager.findID(userName);
 				return true;
@@ -136,10 +122,18 @@ public class LogInPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * @author Jugbir Singh - Jay
+	 * @return userManager
+	 */
 	public UserManager getUserManager() {
 		return userManager;
 	}
 	
+	/**
+	 * @author Jugbir Singh - Jay
+	 * @return currentUser
+	 */
 	public User getCurrentUser() {
 		return currentUser;
 	}

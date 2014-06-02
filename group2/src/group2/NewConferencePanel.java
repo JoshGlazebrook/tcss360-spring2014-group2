@@ -21,6 +21,7 @@ public class NewConferencePanel extends JPanel {
 	private JFormattedTextField txtDeadline;
 	private ArrayList<Conference> conferenceList;
 	private User currentUser;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -89,6 +90,10 @@ public class NewConferencePanel extends JPanel {
 		frame.show();
 	}
 	
+	/**
+	 * Create a conference.
+	 * @author Jugbir Singh - Jay
+	 */
 	public void createConference() {
 		txtName.selectAll();
 		txtDate.selectAll();

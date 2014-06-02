@@ -22,13 +22,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ConferencePanel extends JPanel {
-	/*
-	final StringBuilder stringBuilder = new StringBuilder();
-	final JFileChooser fileChooser = new JFileChooser();
-	*/
 	private NewConferencePanel newConferencePanel;
 	private ArrayList<Conference> conferenceList = new ArrayList<Conference>();
-	User currentUser;
+	public User currentUser;
 	
 	/**
 	 * Create the panel.
@@ -82,8 +78,16 @@ public class ConferencePanel extends JPanel {
 		btnAssignReviewers.setBounds(330, 329, 155, 29);
 		add(btnAssignReviewers); */
 		
+		/**
+		 * "Create New Conference" button.
+		 * @author Jugbir Singh - Jay
+		 */
 		JButton btnOpenFile = new JButton("Create New Conference");
 		btnOpenFile.addActionListener(new ActionListener() {
+			/**
+			 * Opens a new panel to the NewConferencePanel
+			 * @param e, not used
+			 */
 			public void actionPerformed(ActionEvent e) {
 				newConferencePanel = new NewConferencePanel(currentUser, conferenceList);
 				newConferencePanel.show();
@@ -94,27 +98,6 @@ public class ConferencePanel extends JPanel {
 	
 		btnOpenFile.setBounds(25, 329, 200, 29);
 		add(btnOpenFile);
-		
-		/*
-		ButtonGroup bg = new ButtonGroup();
-		JRadioButton rdbtnAccept = new JRadioButton("Accept");
-		rdbtnAccept.setBounds(50, 374, 79, 29);
-		bg.add(rdbtnAccept);
-		add(rdbtnAccept);
-		
-		JRadioButton rdbtnReject = new JRadioButton("Reject");
-		rdbtnReject.setBounds(136, 374, 75, 29);
-		bg.add(rdbtnReject);
-		add(rdbtnReject);
-		
-		JButton btnSubmitToConfrence = new JButton("Submit To Confrence");
-		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
-		add(btnSubmitToConfrence);
-		
-		JButton btnRecomendation = new JButton("Recomendation");
-		btnRecomendation.setBounds(298, 374, 141, 29);
-		add(btnRecomendation);
-		*/
 	}
 	
 	/*
@@ -133,10 +116,5 @@ public class ConferencePanel extends JPanel {
 		}else {
 			JOptionPane.showMessageDialog(this, "Please Select a File!");
 		}
-	}*/
-	
-	/*
-	public ArrayList<Conference> getConferenceList() {
-		return conferenceList;
 	}*/
 }

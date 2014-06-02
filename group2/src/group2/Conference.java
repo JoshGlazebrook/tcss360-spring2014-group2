@@ -40,6 +40,13 @@ public class Conference {
 	 */
 	private PaperManager paperManager;
 	
+	/**
+	 * Constructor for the Conference class.
+	 * @param theStarter, the user starting the conference
+	 * @param theName, the name of the conference
+	 * @param theDate, the date of the conference
+	 * @param theDeadline, the deadline of the conference
+	 */
 	public Conference(final User theStarter, final String theName, 
 			final String theDate, final String theDeadline) {
 		programChair = (ProgramChair) theStarter;
@@ -50,15 +57,6 @@ public class Conference {
 		users.add(theStarter);
 		paperManager = new PaperManager();
 	}
-	
-	/*
-	public boolean checkPaperExists(Paper paper) {
-		return papers.hasPaper(paper);
-	}
-	
-	public boolean checkIfReviewed(Paper paper) {
-		return paper.getReviewed();
-	}*/
 	
 	/**
 	 * Add a paper to the PaperManager.

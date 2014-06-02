@@ -28,7 +28,6 @@ public class NewUserPanel extends JPanel {
 	private JPasswordField txtPassword;
 	public UserManager userManager;
 	
-	
 	/**
 	 * Create the panel.
 	 */
@@ -41,29 +40,14 @@ public class NewUserPanel extends JPanel {
 		lblNewUser.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewUser.setBounds(186, 16, 127, 37);
 		add(lblNewUser);
-		/*
-		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(123, 112, 69, 20);
-		add(lblName);*/
 		
 		JLabel lblUserName = new JLabel("User Name:");
 		lblUserName.setBounds(123, 112, 84, 20);
 		add(lblUserName);
-		//168
+		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setBounds(123, 168, 73, 20);
 		add(lblPassword);
-		//227
-		
-		/*
-		JLabel lblUserType = new JLabel("User Type:");
-		lblUserType.setBounds(123, 276, 78, 20);
-		add(lblUserType);*/
-		
-		/*txtName = new JTextField();
-		txtName.setBounds(242, 109, 146, 26);
-		add(txtName);
-		txtName.setColumns(10);*/
 		
 		txtUserName = new JTextField();
 		txtUserName.setBounds(242, 112, 146, 26);
@@ -74,19 +58,14 @@ public class NewUserPanel extends JPanel {
 		txtPassword.setBounds(242, 168, 146, 26);
 		add(txtPassword);
 		txtPassword.setColumns(10);
-		
-		/*
-		final JComboBox UserTypes = new JComboBox();
-		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
-		UserTypes.setBounds(242, 273, 146, 26);
-		add(UserTypes);*/
-		
+	
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			/**
-			 * If save button is clicked, either a user will be created or a message dialog will pop-up.
+			 * If save button is clicked, either a user will be 
+			 * created or a message dialog will pop-up.
 			 * @author Jugbir Singh - Jay
-			 * @param e
+			 * @param e, not used
 			 */
 			public void actionPerformed(ActionEvent e) {
 				if(createUser() == true) {
@@ -98,27 +77,6 @@ public class NewUserPanel extends JPanel {
 		});
 		btnSave.setBounds(210, 240, 69, 28);
 		add(btnSave);
-		
-		/*
-		JLabel lblConfrence = new JLabel("Confrence:");
-		lblConfrence.setBounds(123, 330, 69, 16);
-		add(lblConfrence);
-		
-		JComboBox confrences = new JComboBox();
-		confrences.setBounds(242, 325, 146, 26);
-		add(confrences);*/
-		
-		/*
-		JButton btnNewConfrence = new JButton("New Confrence");
-		btnNewConfrence.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				conferencePanel.show();
-				UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Program Chair"}));
-			}
-		});
-		btnNewConfrence.setBounds(261, 380, 127, 28);
-		add(btnNewConfrence);*/
-
 	}
 	
 	public void show(){
@@ -153,6 +111,7 @@ public class NewUserPanel extends JPanel {
 	 * @author Jugbir Singh - Jay
 	 */
 	public void showMessage() {
-		JOptionPane.showMessageDialog(this, "Username is unavailable: please select a different username");
+		JOptionPane.showMessageDialog(this, "Username is unavailable: please "
+				+ "select a different username");
 	}
 }
