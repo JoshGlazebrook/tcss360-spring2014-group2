@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -87,7 +88,7 @@ public class AuthorPanel extends JPanel {
 		});
 		add(btnSubmit);
 		
-		
+		JComboBox chooseFile = new JComboBox<>();
 		
 		JButton btnRemoveFile = new JButton("Remove File...");
 		btnRemoveFile.addActionListener(new ActionListener() {
