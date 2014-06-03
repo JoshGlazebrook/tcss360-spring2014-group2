@@ -2,6 +2,7 @@ package group2;
 
 import java.awt.Font;
 import java.awt.Frame;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
@@ -49,15 +50,21 @@ public class ProgramChairPanel extends JPanel {
 //			confArray[i] = confList.get(i).getName();
 			//paperArray[i] = curConf.getPaperManager().getPapers();
 		}*/
+		/*
 		String[] paperNames = new String[curConf.getPaperManager().size()];
 		for( int i=0; i<curConf.getPaperManager().size(); i++) {
-			paperNames[i] = 
+			paperNames[i] = curConf.getPaperManager.getKeys()
 		}
 		for(Paper paper: curConf.getPaperManager().getPapers()) {
 			paperName
+		}*/
+		
+		ArrayList<String> paperNameList = new ArrayList<String>();
+		for(Paper paper: curConf.getPaperManager().getPapers()) {
+			paperNameList.add(paper.getName());
 		}
 				
-		final JList list = new JList();
+		final JList list = new JList(paperNameList.toArray());
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(15, 71, 240, 240); //before 480 width

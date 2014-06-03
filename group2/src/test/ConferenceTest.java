@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import group2.Conference;
+import group2.Paper;
 import group2.User;
 
 import org.junit.Test;
