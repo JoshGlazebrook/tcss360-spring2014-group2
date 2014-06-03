@@ -35,7 +35,6 @@ public class NewConferencePanel extends JPanel {
 	public NewConferencePanel(final ArrayList<Conference> confList, final User prgChr,
 			final MainGUI gui) {
 		
-		
 		setLayout(null);
 		setSize(500, 500);
 		
@@ -97,7 +96,7 @@ public class NewConferencePanel extends JPanel {
 	}
 	
 	private boolean checkFields() {
-		return name.isEmpty() || date.isEmpty() || deadLn.isEmpty();
+		return name == null && date == null && deadLn == null;
 	}
 	
 	private void popMsg() {

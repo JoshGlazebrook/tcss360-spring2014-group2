@@ -1,0 +1,60 @@
+Instructions to Reviewers:
+
+Please provide a numeric rating on a 5-point scale for each question, along with a brief
+rationale for each numeric rating. In doing so, please discuss both the strengths and the 
+weaknesses of each paper so that the editors and authors can understand your reasoning.
+
+Please phrase your reviews politely, even 'bad' papers represent a lot of work on the part
+of the authors. The review may be the basis for further revisions of the paper or the work
+that the paper reports. We all know how hurtful and needlessly negative review can be, and 
+how helpful a positive one can be; please try to bear that in mind when you are writing 
+yours. 
+-------------------------------------------------------------------------------------------
+1. Your name:
+2. Conference name:
+3. Paper name:
+4. Paper author:
+
+Confidential Comments to the Subprogram Chair
+
+Comments to the Author
+
+1. Can the content be directly applied by classroom instructors or curriculum designers?
+   [5] Directly and obviously applicable
+   ...
+   [1] Not applicable to classroom instruction or curriculum design
+
+2. Does the work appeal to a broad readership interested in engineering education or is 
+   it narrowly specialized?
+   [5] Broad ... [1] Narrow
+
+3. Does the work address a significant problem?
+   [5] Significant ... [1] Insignificant
+
+4. Does the author build upon relevant references and bodies of knowledge?
+   [5] Revlevant and sufficient references to existing bodies of knowlege 
+   ... 
+   [1] Few if any relevant references
+
+5. If a teaching intervention is reported, is it adequately evaluated in terms  of its
+   impact on learning in actual use?
+   [5] Excellent evaluation ... [1] Inadequate evaluation
+
+6. Does the author use methods appropriate to the goals, both for the instructional
+   intervention and the evaluation of impact on learning?
+   [5] Appropriate methods ... [1] Inappropriate or unclear methods
+
+7. Did the author provide sufficient detail to replicate and evaluate?
+   [5] Sufficient detail ... [1] Insufficient detail
+
+8. Is the paper clearly and carefully written?
+   [5] excellent [4] very good [3] acceptable [2] weak [1] unacceptable
+
+9. Does the paper adhere to accepted standards of style, usage, and composition?
+   [5] excellent [4] very good [3] acceptable [2] weak [1] unacceptable
+
+Summary Rating:
+   [5] strong accept [4] accept [3] neutral [2] reject [1] strong reject
+
+Summary Comments:
+

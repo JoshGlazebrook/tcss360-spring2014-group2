@@ -1,0 +1,7 @@
+Your name: 
+Conference name:
+Paper name:
+Paper author:
+Summary Recommendation:
+	[5] strong accept [4] accept [3] neutral [2] reject [1] strong reject
+Rationale for Recommendation:
