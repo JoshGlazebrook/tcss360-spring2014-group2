@@ -27,11 +27,6 @@ import java.awt.event.ActionEvent;
  *
  */
 public class ConferencePanel extends JPanel {
-	/*
-	final StringBuilder stringBuilder = new StringBuilder();
-	final JFileChooser fileChooser = new JFileChooser();
-	*/
-	
 	ArrayList<Conference> confList = new ArrayList<Conference>();
 	
 	/**

@@ -29,7 +29,6 @@ public class LogInPanel extends JPanel {
 	private final JTextField usernameField = new JTextField();
 	private String userName = "";
 	private String password = "";
-	private User currentUser;
 	
 	/**
 	 * Create the panel.
@@ -87,7 +86,6 @@ public class LogInPanel extends JPanel {
 					popMsg();
 				} else {
 					conferencePanel = new ConferencePanel(conferences, gui, new User(userName, password));
-					gui.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
 					gui.setPanel(conferencePanel);
 				}
 			}
@@ -126,9 +124,5 @@ public class LogInPanel extends JPanel {
 	
 	public UserManager getUserManager() {
 		return userManager;
-	}
-	
-	public User getCurrentUser() {
-		return currentUser;
 	}
 }

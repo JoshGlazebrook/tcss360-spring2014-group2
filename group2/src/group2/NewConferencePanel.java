@@ -35,7 +35,6 @@ public class NewConferencePanel extends JPanel {
 	public NewConferencePanel(final ArrayList<Conference> confList, final User prgChr,
 			final MainGUI gui) {
 		
-		
 		setLayout(null);
 		setSize(500, 500);
 		
