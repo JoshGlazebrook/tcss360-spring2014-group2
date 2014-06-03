@@ -81,7 +81,7 @@ public class SubChairPanel extends JPanel {
 		add(btnOpenFile);
 		
 		ButtonGroup bg = new ButtonGroup();
-		JRadioButton rdbtnRecomend = new JRadioButton("Recomend");
+		JRadioButton rdbtnRecomend = new JRadioButton("Recommend");
 		rdbtnRecomend.setBounds(128, 330, 107, 29);
 		bg.add(rdbtnRecomend);
 		add(rdbtnRecomend);

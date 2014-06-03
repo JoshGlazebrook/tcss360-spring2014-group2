@@ -86,7 +86,7 @@ public class ProgramChairPanel extends JPanel {
 		bg.add(rdbtnReject);
 		add(rdbtnReject);
 		
-		JButton btnSubmitToConfrence = new JButton("Submit To Confrence");
+		JButton btnSubmitToConfrence = new JButton("Submit To Conference");
 		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
 		add(btnSubmitToConfrence);
 		
