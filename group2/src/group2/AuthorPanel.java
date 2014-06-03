@@ -106,8 +106,8 @@ public class AuthorPanel extends JPanel {
 		btnRemoveFile.setBounds(15, 375, 133, 29);
 		add(btnRemoveFile);
 		
-//		JButton btnSelectConfrence = new JButton("Select Confrence");
-//		btnSelectConfrence.addActionListener(new ActionListener() {
+	JButton btnSelectConfrence = new JButton("Select Confrence");
+//	btnSelectConfrence.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 //				String[] conferences = { "Conference 1", "conference 2", "conference 3", "conference 4" };
 //				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
@@ -122,8 +122,8 @@ public class AuthorPanel extends JPanel {
 //				changeLabel(lblDeadline, "10/12/2014");
 //			}
 //		});
-//		btnSelectConfrence.setBounds(15, 330, 149, 29);
-//		add(btnSelectConfrence);
+	btnSelectConfrence.setBounds(15, 330, 149, 29);
+	add(btnSelectConfrence);
 		
 		
 		lblConference.setBounds(getWidth()/2, 330, 127, 20);
