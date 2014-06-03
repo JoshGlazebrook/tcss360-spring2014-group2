@@ -8,11 +8,11 @@ public class ProgramChair extends User {
 		super(theId, thePass);
 	}
 	
-	public acceptOrReject() {
+	public void acceptOrReject() {
 		
 	}
 	
-	public assignSubProgramChair() {
+	public void assignSubProgramChair() {
 		
 	}
 	

@@ -10,7 +10,9 @@ public class User {
 	/**
 	 * The password.
 	 */
-	String password;
+	final String password;
+	
+	String role = "User";
 	
 	/**
 	 * A constructor for User.

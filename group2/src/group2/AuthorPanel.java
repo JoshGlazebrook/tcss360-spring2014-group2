@@ -29,10 +29,9 @@ public class AuthorPanel extends JPanel {
 	private boolean submitted = false;
 
 	/**
-	 * Create the Author Panel and align everything. 
-	 * @author Mina Messak
+	 * Create the panel.
 	 */
-	public AuthorPanel() {
+	public AuthorPanel(final Conference curConf, final Author curAuthor) {
 	
 		setLayout(null);
 		setSize(500, 500);
@@ -40,6 +39,9 @@ public class AuthorPanel extends JPanel {
 //		final JTextArea textArea = new JTextArea();
 		final JEditorPane textArea = new JEditorPane();
 		textArea.setBounds(15, 58, 460, 240);
+		if (curConf.paperManager.hasPaper(curAuthor)) {
+			textArea.setText(curConf.paperManager.getPaper(curAuthor).getData());
+		}
 		
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 58, 480, 240);
@@ -67,12 +69,13 @@ public class AuthorPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(!submitted){
-					JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
-					submitted = true;
-				}else{
-					JOptionPane.showMessageDialog(new Frame(), "You have already submitted a paper for this conference");
-				}
+//				if(!submitted){
+				curConf.paperManager.addPaper(new Paper(curAuthor, textArea.getText()));
+				JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
+//					submitted = true;
+//				}else{
+//					JOptionPane.showMessageDialog(new Frame(), "You have already submitted a paper for this conference");
+//				}
 			}
 		});
 		add(btnSubmit);
@@ -93,24 +96,24 @@ public class AuthorPanel extends JPanel {
 		btnRemoveFile.setBounds(15, 375, 133, 29);
 		add(btnRemoveFile);
 		
-		JButton btnSelectConfrence = new JButton("Select Confrence");
-		btnSelectConfrence.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String[] conferences = { "Conference 1", "conference 2", "conference 3", "conference 4" };
-				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
-				        "Please select a conference! ",
-				        "Conferences",
-				        JOptionPane.QUESTION_MESSAGE, 
-				        null, 
-				        conferences, 
-				        conferences[0]);
-						
-				changeLabel(lblConfrence, dialogBox);
-				changeLabel(lblDeadline, "10/12/2014");
-			}
-		});
-		btnSelectConfrence.setBounds(15, 330, 149, 29);
-		add(btnSelectConfrence);
+//		JButton btnSelectConfrence = new JButton("Select Confrence");
+//		btnSelectConfrence.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				String[] conferences = { "Conference 1", "conference 2", "conference 3", "conference 4" };
+//				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
+//				        "Please select a conference! ",
+//				        "Conferences",
+//				        JOptionPane.QUESTION_MESSAGE, 
+//				        null, 
+//				        conferences, 
+//				        conferences[0]);
+//						
+//				changeLabel(lblConfrence, dialogBox);
+//				changeLabel(lblDeadline, "10/12/2014");
+//			}
+//		});
+//		btnSelectConfrence.setBounds(15, 330, 149, 29);
+//		add(btnSelectConfrence);
 		
 		
 		lblConfrence.setBounds(186, 330, 127, 20);
@@ -126,15 +129,12 @@ public class AuthorPanel extends JPanel {
 		add(lblAuthor);
 
 	}
+	
 	private void changeLabel(JLabel label, String text){
 		label.setText(text);
 	}
-	/**
-	 * Get file and make it into a string that can be seen in the text area. 
-	 * @throws Exception
-	 * @author Mina Messak
-	 */
-	private void getFile() throws Exception{
+	
+	public void getFile() throws Exception{
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 			
 			java.io.File file = fileChooser.getSelectedFile();

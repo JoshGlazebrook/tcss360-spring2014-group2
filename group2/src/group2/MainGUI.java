@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Observable;
 
 import javax.swing.JFrame;
@@ -18,17 +19,16 @@ import javax.swing.JPanel;
  * @author Mina Messak
  * @version 5.22.2014
  */
-public class MainGUI extends Observable {
+public class MainGUI {
 	public JFrame frame = new JFrame();
 	private boolean loggedIn = true;
 	private LogInPanel login = new LogInPanel(this);
-	private JPanel author = new AuthorPanel();
+//	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
 	private JPanel subPM = new SubChairPanel();
-	private JPanel newUser = new NewUserPanel(login.userManager);
-	private JPanel deleteUser = new DeleteUserPanel();
 	private JPanel programChair = new ProgramChairPanel();
-	
+//	private JPanel listConference = new ConferencePanel(this);
+
 	/**
 	 * Launch the application.
 	 */
@@ -63,16 +63,16 @@ public class MainGUI extends Observable {
 		JMenu mnUsers = new JMenu("Users");
 		menuBar.add(mnUsers);
 		
-		JMenuItem mntmAuthor = new JMenuItem("Author");
-		mntmAuthor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loggedIn) setPanel(author);
-				else{
-					JOptionPane.showMessageDialog(author, "Please Log In");
-				}
-			}
-		});
-		mnUsers.add(mntmAuthor);
+//		JMenuItem mntmAuthor = new JMenuItem("Author");
+//		mntmAuthor.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				if(loggedIn) setPanel(author);
+//				else{
+//					JOptionPane.showMessageDialog(author, "Please Log In");
+//				}
+//			}
+//		});
+//		mnUsers.add(mntmAuthor);
 		
 		JMenuItem mntmReviewer = new JMenuItem("Reviewer");
 		mntmReviewer.addActionListener(new ActionListener() {
@@ -112,40 +112,24 @@ public class MainGUI extends Observable {
 		mnUsers.add(mntmProgramChair);
 
 		
-		JMenu mnOther = new JMenu("Other");
+		JMenu mnOther = new JMenu("Options");
 		menuBar.add(mnOther);
-		
-		JMenuItem mntmAddUser = new JMenuItem("Add User");
-		mntmAddUser.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				newUser.show();
-			}
-		});
-		mnOther.add(mntmAddUser);
-		
-		JMenuItem mntmDeleteUser = new JMenuItem("Delete User");
-		mntmDeleteUser.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				deleteUser.show();
-			}
-		});
-		mnOther.add(mntmDeleteUser);
 		
 		JMenuItem mntmLogOut = new JMenuItem("Log Out");
 		mntmLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				login.clearTxt();
+				setPanel(login);
 			}
 		});
 		
-		JMenuItem mntmCreateANew = new JMenuItem("Create a New Conference");
-		mntmCreateANew.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		mnOther.add(mntmCreateANew);
+//		JMenuItem mntmCreateANew = new JMenuItem("Create a New Conference");
+//		mntmCreateANew.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				setPanel(listConference);
+//			}
+//		});
+//		mnOther.add(mntmCreateANew);
 		mnOther.add(mntmLogOut);
 		
 		JMenu mnHelp = new JMenu("Help");

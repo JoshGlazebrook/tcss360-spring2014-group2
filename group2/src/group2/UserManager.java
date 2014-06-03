@@ -3,21 +3,19 @@ package group2;
 import java.util.HashMap;
 
 public class UserManager {
-	HashMap<String, User> allUsers = new HashMap<String, User>();
+	public HashMap<String, String> allUsers = new HashMap<String, String>();
 	
-	User findID(String id) {
+	
+	public boolean findID(String id, String pass) {
 		if(allUsers.containsKey(id)) {
-			return allUsers.get(id);
+			if(allUsers.get(id).equals(pass)) return true;
 		}
-		return null;
+		return false;
 	}
 	
-	boolean signUp(String id, String pass) {
-		if(allUsers.containsKey(id)) {
-			return false;
-		}
-		User user = new User(id, pass);
-		allUsers.put(id, user);
+	public boolean signUp(String id, String pass) {
+		if(allUsers.containsKey(id) || id.isEmpty() || pass.isEmpty()) return false;
+		allUsers.put(id, pass);
 		return true;
 	}
 }

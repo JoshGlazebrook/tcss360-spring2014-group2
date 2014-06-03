@@ -11,26 +11,35 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * @author Mina Messak
+ * @version 5.22.2014
+ */
 public class NewConferencePanel extends JPanel {
 	private JFrame frame = new JFrame("New Conference");
-	private JTextField txtName;
 	private JFormattedTextField txtDate;
 	private JFormattedTextField txtDeadline;
-	private ArrayList<Conference> conferenceList;
-	private User currentUser;
-	
+	private String name;
+	private String date;
+	private String deadLn;
+	//private ArrayList<Conference> conferences;
+
 	/**
 	 * Create the panel.
 	 */
-	public NewConferencePanel(User theUser,ArrayList<Conference> theConferenceList) {
-		currentUser = theUser;
-		conferenceList = theConferenceList;
+	public NewConferencePanel(final ArrayList<Conference> confList, final User prgChr,
+			final MainGUI gui) {
+		
 		
 		setLayout(null);
 		setSize(500, 500);
+		
+		final JTextField txtName;
 		
 		JLabel lblNewConfrence = new JLabel("New Confrence");
 		lblNewConfrence.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -50,19 +59,6 @@ public class NewConferencePanel extends JPanel {
 		lblDate.setBounds(118, 162, 38, 20);
 		add(lblDate);
 		
-		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(189, 398, 122, 29);
-		btnSave.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				createConference();
-				frame.dispose();
-				
-			}
-		});
-		add(btnSave);
-		
 		txtDate = new JFormattedTextField();
 		txtDate.setBounds(237, 159, 146, 26);
 		add(txtDate);
@@ -76,7 +72,36 @@ public class NewConferencePanel extends JPanel {
 		txtDeadline.setBounds(237, 195, 146, 26);
 		add(txtDeadline);
 		txtDeadline.setColumns(10);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.setBounds(189, 398, 122, 29);
+		btnSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				name = txtName.getText();
+				date = new String(txtDate.getText());
+				deadLn = new String(txtDeadline.getText());
+				if(checkFields()) {
+					popMsg();
+				} else {
+					Conference newConf = new Conference(prgChr, name, date, deadLn);
+					confList.add(newConf);
+					gui.setPanel(new ConferencePanel(confList, gui, prgChr));
+				}
+			}
+		});
+		add(btnSave);
+		
 
+	}
+	
+	private boolean checkFields() {
+		return name == null && date == null && deadLn == null;
+	}
+	
+	private void popMsg() {
+		JOptionPane.showMessageDialog(this, "Please fill in the blank");
 	}
 	
 	public void show(){
@@ -89,20 +114,4 @@ public class NewConferencePanel extends JPanel {
 		frame.getContentPane().add(this);
 		frame.show();
 	}
-	
-	/**
-	 * Create a conference.
-	 * @author Jugbir Singh - Jay
-	 */
-	public void createConference() {
-		txtName.selectAll();
-		txtDate.selectAll();
-		txtDeadline.selectAll();
-		String name = txtName.getSelectedText();
-		String date = txtDate.getSelectedText();
-		String deadline = txtDeadline.getSelectedText();
-		Conference conference = new Conference(currentUser, name, date, deadline);
-		conferenceList.add(conference);
-	}
 }
-

@@ -22,15 +22,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ConferencePanel extends JPanel {
-	private NewConferencePanel newConferencePanel;
-	private ArrayList<Conference> conferenceList = new ArrayList<Conference>();
-	public User currentUser;
+	/*
+	final StringBuilder stringBuilder = new StringBuilder();
+	final JFileChooser fileChooser = new JFileChooser();
+	*/
+	
+	ArrayList<Conference> confList = new ArrayList<Conference>();
 	
 	/**
 	 * Create the panel.
 	 */
-	public ConferencePanel(User theCurrentUser) {
-		currentUser = theCurrentUser;
+	public ConferencePanel(final ArrayList<Conference> confList, final MainGUI gui, final User currUser) {
 		setSize(500, 500);
 		setLayout(null);
 		
@@ -42,18 +44,26 @@ public class ConferencePanel extends JPanel {
 		pane.setBounds(15, 71, 480, 240);
 		add(pane);*/
 		
-		String[] array = new String[conferenceList.size()+1];
-		for(int i=0; i<conferenceList.size(); i++) {
-			array[i] = conferenceList.get(i).toString();
+		Conference tempConf;
+		Conference[] testArray = new Conference[5];
+		for(int i = 0; i < 5; i++) {
+			String tempS = "" + i;
+			tempConf = new Conference(new User(tempS, tempS), tempS, tempS, tempS);
+			testArray[i] = tempConf;
 		}
 		
-		//String[] array = {"a", "b", "c"};
-		//final JList list = new JList(array);
-		final JList list = new JList(array);
+		String[] confArray = new String[confList.size()];
+		for (int i = 0; i < confList.size(); i++) {
+//			confArray[i] = confList.get(i).getName();
+			confArray[i] = confList.get(i).getName();
+		}
+		
+		final JList list = new JList(confArray);
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(15, 71, 480, 240);
 		add(list);
+		
 		//JPanel listPanel = new JPanel();
 		
 		JLabel titleLabel = new JLabel("Conferences");
@@ -78,43 +88,60 @@ public class ConferencePanel extends JPanel {
 		btnAssignReviewers.setBounds(330, 329, 155, 29);
 		add(btnAssignReviewers); */
 		
-		/**
-		 * "Create New Conference" button.
-		 * @author Jugbir Singh - Jay
-		 */
-		JButton btnOpenFile = new JButton("Create New Conference");
-		btnOpenFile.addActionListener(new ActionListener() {
-			/**
-			 * Opens a new panel to the NewConferencePanel
-			 * @param e, not used
-			 */
+		JButton btnMakeConf = new JButton("Create New Conference");
+		btnMakeConf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				newConferencePanel = new NewConferencePanel(currentUser, conferenceList);
-				newConferencePanel.show();
-				revalidate();
-				repaint();
+				gui.setPanel(new NewConferencePanel(confList, currUser, gui));
 			}
 		});
 	
-		btnOpenFile.setBounds(25, 329, 200, 29);
-		add(btnOpenFile);
-	}
-	
-	/*
-	public void getFile() throws Exception{
-		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-			
-			java.io.File file = fileChooser.getSelectedFile();
-			
-			Scanner input = new Scanner(file);
-			
-			while(input.hasNext()){
-				stringBuilder.append(input.nextLine());
-				stringBuilder.append("\n");
+		btnMakeConf.setBounds(25, 329, 200, 29);
+		add(btnMakeConf);
+		
+		JButton btnSelectConf = new JButton("Select");
+		btnSelectConf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(confList.size() == 0) return;
+				Conference curConf = confList.get(list.getSelectedIndex());
+				if (curConf.confUser.containsKey(currUser.userName)) {
+					if(curConf.confUser.get(currUser.userName).role.equals("Program Chair")) {
+						gui.setPanel(new ProgramChairPanel());
+					} else if (curConf.confUser.get(currUser.userName).role.equals("Author")) {
+						Author newAuthor = new Author(currUser.userName, currUser.password);
+						newAuthor.role = "Author";
+						gui.setPanel(new AuthorPanel(curConf, newAuthor));
+					}
+				} else {
+					Author newAuthor = new Author(currUser.userName, currUser.password);
+					newAuthor.role = "Author";
+					curConf.confUser.put(newAuthor.userName, newAuthor);
+					gui.setPanel(new AuthorPanel(curConf, newAuthor));
+				}
 			}
-			input.close();
-		}else {
-			JOptionPane.showMessageDialog(this, "Please Select a File!");
-		}
-	}*/
+		});
+	
+		btnSelectConf.setBounds(375, 329, 100, 29);
+		add(btnSelectConf);
+		
+		/*
+		ButtonGroup bg = new ButtonGroup();
+		JRadioButton rdbtnAccept = new JRadioButton("Accept");
+		rdbtnAccept.setBounds(50, 374, 79, 29);
+		bg.add(rdbtnAccept);
+		add(rdbtnAccept);
+		
+		JRadioButton rdbtnReject = new JRadioButton("Reject");
+		rdbtnReject.setBounds(136, 374, 75, 29);
+		bg.add(rdbtnReject);
+		add(rdbtnReject);
+		
+		JButton btnSubmitToConfrence = new JButton("Submit To Confrence");
+		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
+		add(btnSubmitToConfrence);
+		
+		JButton btnRecomendation = new JButton("Recomendation");
+		btnRecomendation.setBounds(298, 374, 141, 29);
+		add(btnRecomendation);
+		*/
+	}
 }

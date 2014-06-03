@@ -12,13 +12,13 @@ public class PaperManager {
 	/** 
 	 * The collection of Papers.
 	 */
-	private HashMap<Integer, Paper> papers;
+	private HashMap<String, Paper> papers;
 	
 	/**
 	 * Constructs a new PaperManager object instance.
 	 */
 	public PaperManager() {
-		papers = new HashMap<Integer, Paper>();
+		papers = new HashMap<String, Paper>();
 	}
 	
 	/**
@@ -26,7 +26,7 @@ public class PaperManager {
 	 * @param paper The Paper to add.
 	 */
 	public void addPaper(Paper paper) {
-		papers.put(paper.getID(), paper);
+		papers.put(paper.getAuthor().userName, paper);
 	}
 	
 	/**
@@ -34,8 +34,8 @@ public class PaperManager {
 	 * @param paper_id The id of the Paper to remove.
 	 * @return True if the paper was removed or doesn't exist, false otherwise.
 	 */
-	public void removePaper(int paper_id) {
-		papers.remove(paper_id);
+	public void removePaper(Author author) {
+		papers.remove(author);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class PaperManager {
 	 * @param paper The Paper object to remove.
 	 */
 	public void removePaper(Paper paper) {
-		papers.remove(paper.getID());
+		papers.remove(paper.getAuthor());
 	}
 	
 	/**
@@ -60,8 +60,8 @@ public class PaperManager {
 	 * @param id The id of the Paper to check for.
 	 * @return True if the Paper exists, false otherwise.
 	 */
-	public boolean hasPaper(int id) {
-		return papers.containsKey(id);
+	public boolean hasPaper(Author author) {
+		return papers.containsKey(author.userName);
 	}
 	
 	/**
@@ -107,12 +107,8 @@ public class PaperManager {
 	 * @param id The id of the Paper to retrieve.
 	 * @return The Paper if it exists, null otherwise.
 	 */
-	public Paper getPaper(int id) {
-			for(Paper x : papers.values()) {
-				if (x.getID() == id)
-					return x;
-			}
+	public Paper getPaper(Author author) {
+			if (papers.containsKey(author.userName)) return papers.get(author.userName);
 			return null;
 	}
-	
 }
