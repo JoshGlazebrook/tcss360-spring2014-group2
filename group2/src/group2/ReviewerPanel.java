@@ -58,7 +58,7 @@ public class ReviewerPanel extends JPanel {
 		btnEdit.setBounds(364, 330, 121, 29);
 		add(btnEdit);
 		
-		JButton btnConfrence = new JButton("Select Confrence");
+		JButton btnConfrence = new JButton("Select Conference");
 		btnConfrence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] conferences = { "conference 1", "conference 2", "conference 3", "conference 4" };
@@ -74,7 +74,7 @@ public class ReviewerPanel extends JPanel {
 		btnConfrence.setBounds(15, 330, 149, 29);
 		add(btnConfrence);
 		
-		JLabel lblConfrenceName = new JLabel("Confrence Name");
+		JLabel lblConfrenceName = new JLabel("Conference Name");
 		lblConfrenceName.setBounds(191, 334, 117, 20);
 		add(lblConfrenceName);
 		

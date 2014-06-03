@@ -87,6 +87,8 @@ public class AuthorPanel extends JPanel {
 		});
 		add(btnSubmit);
 		
+		
+		
 		JButton btnRemoveFile = new JButton("Remove File...");
 		btnRemoveFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
