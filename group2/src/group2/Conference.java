@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Conference {
 	
+	//confUser
 	public HashMap<String, User> confUser;
 	
 	/**
@@ -39,6 +40,7 @@ public class Conference {
 	private List<User> users;
 	
 	/**
+	 * 
 	 * A PaperManager for this conference.
 	 */
 	public PaperManager paperManager;

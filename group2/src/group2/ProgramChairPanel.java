@@ -50,20 +50,13 @@ public class ProgramChairPanel extends JPanel {
 //			confArray[i] = confList.get(i).getName();
 			//paperArray[i] = curConf.getPaperManager().getPapers();
 		}*/
-		/*
-		String[] paperNames = new String[curConf.getPaperManager().size()];
-		for( int i=0; i<curConf.getPaperManager().size(); i++) {
-			paperNames[i] = curConf.getPaperManager.getKeys()
-		}
-		for(Paper paper: curConf.getPaperManager().getPapers()) {
-			paperName
-		}*/
+
 		
 		ArrayList<String> paperNameList = new ArrayList<String>();
 		for(Paper paper: curConf.getPaperManager().getPapers()) {
 			paperNameList.add(paper.getName());
 		}
-				
+	
 		final JList list = new JList(paperNameList.toArray());
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -111,7 +104,7 @@ public class ProgramChairPanel extends JPanel {
 					e1.printStackTrace();
 				}
 				
-				textArea.setText(stringBuilder.toString());
+				//textArea.setText(stringBuilder.toString());
 			}
 		});
 	

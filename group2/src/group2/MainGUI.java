@@ -101,7 +101,7 @@ public class MainGUI {
 		mnUsers.add(mntmSubChair);
 
 		
-		JMenuItem mntmProgramChair = new JMenuItem("Program Chair");
+		/*JMenuItem mntmProgramChair = new JMenuItem("Program Chair");
 		mntmProgramChair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(loggedIn) setPanel(programChair);
@@ -109,8 +109,8 @@ public class MainGUI {
 					JOptionPane.showMessageDialog(programChair, "Please Log In");
 				}
 			}
-		});
-		mnUsers.add(mntmProgramChair);
+		});*/
+		//mnUsers.add(mntmProgramChair);
 
 		
 		JMenu mnOther = new JMenu("Options");
