@@ -6,7 +6,7 @@ package group2;
  *
  */
 public class Paper {
-	//name stuff
+	//name stuff -anh-
 	private String name;
 	private Author author;
 	private String data;
