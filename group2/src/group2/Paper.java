@@ -6,6 +6,7 @@ package group2;
  *
  */
 public class Paper {
+	//name stuff
 	private String name;
 	private Author author;
 	private String data;
