@@ -20,11 +20,6 @@ public class ConferenceManager {
 	}
 	
 	public Conference[] getConferences() {
-		System.out.println(conferences.size());
-		Conference tmp = conferences.get(0);
-		
-		
-		
 		return conferences.toArray(new Conference[0]);
 	}
 	
