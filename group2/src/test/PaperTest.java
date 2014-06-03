@@ -24,7 +24,7 @@ public class PaperTest {
 	public void setUp() throws Exception {
 		author = new Author("name", "password");
 		paper_data = "some paper data";
-		paper = new Paper(author, paper_data);
+		paper = new Paper("name", author, paper_data);
 	}
 
 	/**

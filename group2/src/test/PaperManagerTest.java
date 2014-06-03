@@ -26,22 +26,22 @@ public class PaperManagerTest {
 	@Test
 	public void testAddPaper() {
 		manager.addPaper(paper);
-		assertEquals(paper, manager.getPaper(paper.getID()));
+		assertEquals(paper, manager.getPaper(paper));
 	}
 
 	@Test
 	public void testRemovePaperInt() {
 		manager.addPaper(paper);
-		manager.removePaper(paper.getID());
+		manager.removePaper(paper);
 		System.out.println(paper.getID());
-		assertFalse(manager.hasPaper(paper.getID()));
+		assertFalse(manager.hasPaper(paper));
 	}
 
 	@Test
 	public void testRemovePaperPaper() {
 		manager.addPaper(paper);
 		manager.removePaper(paper);
-		assertFalse(manager.hasPaper(paper.getID()));
+		assertFalse(manager.hasPaper(paper));
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class PaperManagerTest {
 	@Test
 	public void testHasPaperInt() {
 		manager.addPaper(paper);
-		assertTrue(manager.hasPaper(paper.getID()));
+		assertTrue(manager.hasPaper(paper));
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class PaperManagerTest {
 	@Test
 	public void testGetPaper() {
 		manager.addPaper(paper);
-		assertEquals(paper, manager.getPaper(paper.getID()));
+		assertEquals(paper, manager.getPaper(paper));
 	}
 
 }
