@@ -18,7 +18,7 @@ public class JSONHelper {
 	 * @return True if the process completed, false if it failed.
 	 * @throws IOException 
 	 */
-	public static boolean serializeToFile(String filename, Object obj) throws IOException  {
+	public static boolean serializeToFile(String filename, Object obj)  {
 		Gson serializer = new Gson();
 		String result = serializer.toJson(obj);
 		try {
