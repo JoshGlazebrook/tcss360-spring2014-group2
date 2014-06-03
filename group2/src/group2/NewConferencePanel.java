@@ -27,7 +27,6 @@ public class NewConferencePanel extends JPanel {
 	private String name;
 	private String date;
 	private String deadLn;
-	//private ArrayList<Conference> conferences;
 
 	/**
 	 * Create the panel.

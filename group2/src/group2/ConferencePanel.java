@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 
 /**
  * 
@@ -27,7 +27,6 @@ import java.awt.event.ActionEvent;
  *
  */
 public class ConferencePanel extends JPanel {
-	//ArrayList<Conference> confList = new ArrayList<Conference>();
 	
 	/**
 	 * Create the panel.
