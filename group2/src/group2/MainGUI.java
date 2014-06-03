@@ -49,7 +49,7 @@ public class MainGUI {
 	 * Create the frame.
 	 */
 	public MainGUI() {
-		frame.setTitle("Confrence Manager");
+		frame.setTitle("Conference Manager");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

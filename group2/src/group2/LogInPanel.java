@@ -21,7 +21,7 @@ import javax.swing.JComboBox;
  * @version 5.22.2014
  */
 public class LogInPanel extends JPanel {
-	private ArrayList<Conference> conferences = new ArrayList<Conference>();
+	private ConferenceManager conferences = new ConferenceManager();
 	public UserManager userManager = new UserManager();
 	private NewUserPanel newUser = new NewUserPanel(userManager);
 	private ConferencePanel conferencePanel;

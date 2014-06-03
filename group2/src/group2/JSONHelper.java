@@ -30,7 +30,7 @@ public class JSONHelper {
 			writer.write(result);
 			writer.close();
 			return true;
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}

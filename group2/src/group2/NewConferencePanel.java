@@ -32,7 +32,7 @@ public class NewConferencePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public NewConferencePanel(final ArrayList<Conference> confList, final User prgChr,
+	public NewConferencePanel(final ConferenceManager manager, final User prgChr,
 			final MainGUI gui) {
 		
 		setLayout(null);
@@ -85,8 +85,8 @@ public class NewConferencePanel extends JPanel {
 					popMsg();
 				} else {
 					Conference newConf = new Conference(prgChr, name, date, deadLn);
-					confList.add(newConf);
-					gui.setPanel(new ConferencePanel(confList, gui, prgChr));
+					manager.addConference(newConf);
+					gui.setPanel(new ConferencePanel(manager, gui, prgChr));
 				}
 			}
 		});

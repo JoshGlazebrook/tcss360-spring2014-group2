@@ -27,12 +27,12 @@ import java.awt.event.ActionEvent;
  *
  */
 public class ConferencePanel extends JPanel {
-	ArrayList<Conference> confList = new ArrayList<Conference>();
+	//ArrayList<Conference> confList = new ArrayList<Conference>();
 	
 	/**
 	 * Create the panel.
 	 */
-	public ConferencePanel(final ArrayList<Conference> confList, final MainGUI gui, final User currUser) {
+	public ConferencePanel(final ConferenceManager manager, final MainGUI gui, final User currUser) {
 		setSize(500, 500);
 		setLayout(null);
 		
@@ -43,21 +43,13 @@ public class ConferencePanel extends JPanel {
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 71, 480, 240);
 		add(pane);*/
+		String[] confArray = new String[manager.getConferences().length];
+		final Conference[] confList = manager.getConferences();
 		
-		System.out.println("here");
-		Conference tempConf;
-		Conference[] testArray = new Conference[5];
-		for(int i = 0; i < 5; i++) {
-			String tempS = "" + i;
-			tempConf = new Conference(new User(tempS, tempS), tempS, tempS, tempS);
-			testArray[i] = tempConf;
+		for(int i = 0; i < manager.getConferences().length; i++) {
+			confArray[i] = manager.getConferences()[i].getName();
 		}
 		
-		String[] confArray = new String[confList.size()];
-		for (int i = 0; i < confList.size(); i++) {
-//			confArray[i] = confList.get(i).getName();
-			confArray[i] = confList.get(i).getName();
-		}
 		
 		final JList list = new JList(confArray);
 		list.setVisibleRowCount(3);
@@ -92,7 +84,7 @@ public class ConferencePanel extends JPanel {
 		JButton btnMakeConf = new JButton("Create New Conference");
 		btnMakeConf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.setPanel(new NewConferencePanel(confList, currUser, gui));
+				gui.setPanel(new NewConferencePanel(manager, currUser, gui));
 			}
 		});
 	
@@ -102,8 +94,8 @@ public class ConferencePanel extends JPanel {
 		JButton btnSelectConf = new JButton("Select");
 		btnSelectConf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(confList.size() == 0) return;
-				Conference curConf = confList.get(list.getSelectedIndex());
+				if(confList.length == 0) return;
+				Conference curConf = confList[list.getSelectedIndex()];
 				if (curConf.confUser.containsKey(currUser.userName)) {
 					if(curConf.confUser.get(currUser.userName).role.equals("Program Chair")) {
 						gui.setPanel(new ProgramChairPanel(curConf));
