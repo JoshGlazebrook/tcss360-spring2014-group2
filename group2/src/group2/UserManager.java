@@ -31,17 +31,21 @@ public class UserManager {
 		return true;
 	}
 	
+	/**
+	 * Loads all Users from the persistent data file.
+	 */
 	private void loadUsers() {
 		HashMap<String, String> result;
 		
-		//result = JSONHelper.deserializeFromFile("users.json", allUsers.getClass());
 		result = JSONHelper.deserializeFromFile("users.json", new HashMap<String, String>().getClass());
-		
 		
 		if (result != null)
 			allUsers = result;
 	}
 	
+	/**
+	 * Saves all Users to the persistent data file.
+	 */
 	private void saveUsers() {
 		JSONHelper.serializeToFile("users.json", allUsers);
 	}

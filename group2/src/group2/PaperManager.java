@@ -116,6 +116,9 @@ public class PaperManager {
 		return null;
 	}
 	
+	/**
+	 * Loads all Papers from the peristent data file.
+	 */
 	private void loadPapers() {
 		HashMap<String, Paper> result;
 		
@@ -123,9 +126,11 @@ public class PaperManager {
 		
 		if (result != null)
 			papers = result;
-
 	}
 	
+	/**
+	 * Saves all Papers to the persistent data file.
+	 */
 	private void savePapers() {
 		JSONHelper.serializeToFile("papers.json", papers);
 	}
