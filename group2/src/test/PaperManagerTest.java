@@ -19,8 +19,8 @@ public class PaperManagerTest {
 	public void setUp() throws Exception {
 		paper_data = "some paper data";
 		author = new Author("username", "password");
-		paper = new Paper(author, paper_data);
-		manager = new PaperManager();
+		paper = new Paper("paper1", author, paper_data);
+		manager = new PaperManager("name");
 	}
 
 	@Test

@@ -44,6 +44,7 @@ public class ConferencePanel extends JPanel {
 		pane.setBounds(15, 71, 480, 240);
 		add(pane);*/
 		
+		System.out.println("here");
 		Conference tempConf;
 		Conference[] testArray = new Conference[5];
 		for(int i = 0; i < 5; i++) {

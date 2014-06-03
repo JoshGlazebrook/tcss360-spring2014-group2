@@ -52,7 +52,7 @@ public class Conference {
 		deadline = theDeadline;
 		users = new ArrayList<User>();
 		users.add(theStarter);
-		paperManager = new PaperManager();
+		paperManager = new PaperManager(theName);
 		confUser.put(programChair.userName, programChair);
 	}
 	

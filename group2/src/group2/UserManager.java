@@ -37,7 +37,7 @@ public class UserManager {
 	private void loadUsers() {
 		HashMap<String, String> result;
 		
-		result = JSONHelper.deserializeFromFile("users.json", new HashMap<String, String>().getClass());
+		result = JSONHelper.deserializeFromFile("data/users/users.json", new HashMap<String, String>().getClass());
 		
 		if (result != null)
 			allUsers = result;
@@ -47,6 +47,6 @@ public class UserManager {
 	 * Saves all Users to the persistent data file.
 	 */
 	private void saveUsers() {
-		JSONHelper.serializeToFile("users.json", allUsers);
+		JSONHelper.serializeToFile("data/users/users.json", allUsers);
 	}
 }

@@ -13,11 +13,13 @@ public class PaperManager {
 	 * The collection of Papers.
 	 */
 	private HashMap<String, Paper> papers;
+	private String conference_name;
 	
 	/**
 	 * Constructs a new PaperManager object instance.
 	 */
-	public PaperManager() {
+	public PaperManager(String conference_name) {
+		this.conference_name = conference_name;
 		papers = new HashMap<String, Paper>();
 		loadPapers();
 	}
@@ -117,12 +119,12 @@ public class PaperManager {
 	}
 	
 	/**
-	 * Loads all Papers from the peristent data file.
+	 * Loads all Papers from the persistent data file.
 	 */
 	private void loadPapers() {
 		HashMap<String, Paper> result;
 		
-		result = JSONHelper.deserializeFromFile("papers.json", new HashMap<String, Paper>().getClass());
+		result = JSONHelper.deserializeFromFile("data/conferences/" + this.conference_name + "/papers.json", new HashMap<String, Paper>().getClass());
 		
 		if (result != null)
 			papers = result;
@@ -132,7 +134,7 @@ public class PaperManager {
 	 * Saves all Papers to the persistent data file.
 	 */
 	private void savePapers() {
-		JSONHelper.serializeToFile("papers.json", papers);
+		JSONHelper.serializeToFile("data/conferences/" + this.conference_name + "/papers.json", papers);
 	}
 	
 	public int size() {

@@ -16,12 +16,17 @@ public class JSONHelper {
 	 * @param filename The target file location to save data to.
 	 * @param obj The object to serialize to JSON.
 	 * @return True if the process completed, false if it failed.
+	 * @throws IOException 
 	 */
-	public static boolean serializeToFile(String filename, Object obj)  {
+	public static boolean serializeToFile(String filename, Object obj) throws IOException  {
 		Gson serializer = new Gson();
 		String result = serializer.toJson(obj);
 		try {
-			FileWriter writer = new FileWriter(new File(filename));
+			File output = new File(filename);
+			 // Ensure data folder exists.
+			output.getParentFile().mkdirs();
+			
+			FileWriter writer = new FileWriter(output);
 			writer.write(result);
 			writer.close();
 			return true;
