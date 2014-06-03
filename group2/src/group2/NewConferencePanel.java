@@ -39,7 +39,7 @@ public class NewConferencePanel extends JPanel {
 		
 		final JTextField txtName;
 		
-		JLabel lblNewConfrence = new JLabel("New Confrence");
+		JLabel lblNewConfrence = new JLabel("New Conference");
 		lblNewConfrence.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewConfrence.setBounds(149, 27, 202, 37);
 		add(lblNewConfrence);

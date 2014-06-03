@@ -77,7 +77,7 @@ public class AuthorPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 //				if(!submitted){
-				curConf.paperManager.addPaper(new Paper(title.getText(),
+				curConf.addPaper(new Paper(title.getText(),
 						curAuthor, textArea.getText()));
 				JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
 //					submitted = true;

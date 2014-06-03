@@ -8,7 +8,7 @@ public class ConferenceManager {
 	public ConferenceManager() {
 		loadConferences();
 	}
-	
+
 	public void addConference(Conference conf) {
 		conferences.add(conf);
 		saveConferences();
@@ -25,15 +25,20 @@ public class ConferenceManager {
 	
 	private void loadConferences() {
 		Conference[] result = JSONHelper.deserializeFromFile("data/conferences.json", conferences.toArray(new Conference[0]).getClass());
-		
-		if (result != null)
-			conferences.addAll(Arrays.asList(result));
-		
+
+		if (result != null) {
+			for(Conference x : result) {
+				conferences.add(x);
+			}
+		}
 	}
 	
 	private void saveConferences() {
+		System.out.println("saved conferences");
 		JSONHelper.serializeToFile("data/conferences.json", conferences);
 	}
+
+
 	
 	
 }

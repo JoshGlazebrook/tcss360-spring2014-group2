@@ -17,6 +17,7 @@ public class User {
 	 */
 	final String password;
 	
+	
 	String role = "User";
 	
 	/**

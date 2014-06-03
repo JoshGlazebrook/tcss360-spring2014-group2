@@ -3,6 +3,7 @@ package group2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 
 /**
  * The Conference class for the system.
@@ -43,7 +44,7 @@ public class Conference {
 	 * 
 	 * A PaperManager for this conference.
 	 */
-	public PaperManager paperManager;
+	private PaperManager paperManager;
 	
 	public Conference(final User theStarter, final String theName, final String theDate, final String theDeadline) {
 		confUser = new HashMap<String, User>();
@@ -115,13 +116,17 @@ public class Conference {
 		return users;
 	}
 	
+	public Paper[] getPapers() {
+		return paperManager.getPapers();
+	}
+	
 	/**
 	 * Return the paper manager
 	 * @return paperManager
 	 */
-	public PaperManager getPaperManager() {
+	/*public PaperManager getPaperManager() {
 		return paperManager;
-	}
+	}*/
 	
 	/**
 	 * String representation of a conference.

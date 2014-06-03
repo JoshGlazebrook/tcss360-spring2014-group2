@@ -21,7 +21,7 @@ public class PaperManager {
 	public PaperManager(String conference_name) {
 		this.conference_name = conference_name;
 		papers = new HashMap<String, Paper>();
-		loadPapers();
+		//loadPapers();
 	}
 	
 	/**
@@ -30,7 +30,7 @@ public class PaperManager {
 	 */
 	public void addPaper(Paper paper) {
 		papers.put(paper.getName(), paper);
-		savePapers();
+		//savePapers();
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class PaperManager {
 	 */
 	public void removePaper(Author author) {
 		papers.remove(author);
-		savePapers();
+		//savePapers();
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class PaperManager {
 	 */
 	public void removePaper(Paper paper) {
 		papers.remove(paper.getAuthor());
-		savePapers();
+		//savePapers();
 	}
 	
 	/**
@@ -118,24 +118,25 @@ public class PaperManager {
 		return null;
 	}
 	
+	
 	/**
 	 * Loads all Papers from the persistent data file.
 	 */
-	private void loadPapers() {
+	/*private void loadPapers() {
 		HashMap<String, Paper> result;
 		
 		result = JSONHelper.deserializeFromFile("data/conferences/" + this.conference_name + "/papers.json", new HashMap<String, Paper>().getClass());
 		
 		if (result != null)
 			papers = result;
-	}
+	}*/
 	
 	/**
 	 * Saves all Papers to the persistent data file.
 	 */
-	private void savePapers() {
+	/*private void savePapers() {
 		JSONHelper.serializeToFile("data/conferences/" + this.conference_name + "/papers.json", papers);
-	}
+	}*/
 	
 	public int size() {
 		return papers.size();

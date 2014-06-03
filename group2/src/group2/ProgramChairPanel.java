@@ -53,7 +53,7 @@ public class ProgramChairPanel extends JPanel {
 
 		
 		ArrayList<String> paperNameList = new ArrayList<String>();
-		for(Paper paper: curConf.getPaperManager().getPapers()) {
+		for(Paper paper: curConf.getPapers()) {
 			paperNameList.add(paper.getName());
 		}
 	
