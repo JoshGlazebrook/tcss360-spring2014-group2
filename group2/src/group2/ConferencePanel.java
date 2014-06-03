@@ -105,7 +105,7 @@ public class ConferencePanel extends JPanel {
 				Conference curConf = confList.get(list.getSelectedIndex());
 				if (curConf.confUser.containsKey(currUser.userName)) {
 					if(curConf.confUser.get(currUser.userName).role.equals("Program Chair")) {
-						gui.setPanel(new ProgramChairPanel());
+						gui.setPanel(new ProgramChairPanel(curConf));
 					} else if (curConf.confUser.get(currUser.userName).role.equals("Author")) {
 						Author newAuthor = new Author(currUser.userName, currUser.password);
 						newAuthor.role = "Author";
