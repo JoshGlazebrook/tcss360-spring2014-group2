@@ -2,7 +2,7 @@ package group2;
 
 /**
  * Represents a Paper in the conference system.
- * @author Josh
+ * @author Josh, Anh Bui
  *
  */
 public class Paper {

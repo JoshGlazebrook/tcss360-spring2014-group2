@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Manages a collection of Papers for a Conference.
- * @author Josh
+ * @author Josh, Anh Bui
  *
  */
 public class PaperManager {

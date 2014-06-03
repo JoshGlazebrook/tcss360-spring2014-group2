@@ -21,6 +21,11 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author Anh Bui
+ *
+ */
 public class ConferencePanel extends JPanel {
 	/*
 	final StringBuilder stringBuilder = new StringBuilder();

@@ -1,5 +1,10 @@
 package group2;
 
+/**
+ * 
+ * @author Anh Bui
+ *
+ */
 public class User {
 	
 	/**

@@ -2,6 +2,11 @@ package group2;
 
 import java.util.HashMap;
 
+/**
+ * 
+ * @author Anh Bui
+ *
+ */
 public class UserManager {
 	public HashMap<String, String> allUsers = new HashMap<String, String>();
 	

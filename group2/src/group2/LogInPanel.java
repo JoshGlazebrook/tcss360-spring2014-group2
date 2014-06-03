@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 /**
  * 
- * @author Mina Messak
+ * @author Mina Messak, Anh Bui
  * @version 5.22.2014
  */
 public class LogInPanel extends JPanel {

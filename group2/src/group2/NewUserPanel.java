@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 /**
  * 
- * @author Mina Messak
+ * @author Mina Messak, Anh Bui
  * @version 5.22.2014
  */
 public class NewUserPanel extends JPanel {

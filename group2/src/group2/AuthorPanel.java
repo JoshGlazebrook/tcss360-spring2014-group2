@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.text.EditorKit;
 /**
  * 
- * @author Mina Messak
+ * @author Mina Messak, Anh Bui
  * @version 5.22.2014
  */
 public class AuthorPanel extends JPanel {
