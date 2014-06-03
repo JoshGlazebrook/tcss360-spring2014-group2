@@ -111,4 +111,8 @@ public class PaperManager {
 			if (papers.containsKey(author.userName)) return papers.get(author.userName);
 			return null;
 	}
+	
+	public int size() {
+		return papers.size();
+	}
 }

@@ -9,11 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,16 +28,42 @@ public class ProgramChairPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ProgramChairPanel() {
+	public ProgramChairPanel(Conference curConf) {
 		setSize(500, 500);
 		setLayout(null);
 		
+		//
+		/*
+		Conference tempConf;
+		Conference[] testArray = new Conference[5];
+		for(int i = 0; i < 5; i++) {
+			String tempS = "" + i;
+			tempConf = new Conference(new User(tempS, tempS), tempS, tempS, tempS);
+			testArray[i] = tempConf;
+		}*/
+		
+		int paperSize = curConf.getPaperManager().size();
+		String[] paperArray = new String[paperSize];
+		for (int i = 0; i < paperSize; i++) {
+//			confArray[i] = confList.get(i).getName();
+			paperArray[i] = curConf.getPaperManager().
+		}
+		
+		final JList list = new JList(confArray);
+		list.setVisibleRowCount(3);
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setBounds(15, 71, 480, 240);
+		add(list);
+		
+		//
+		
+		/*
 		final JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 71, 460, 240);
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 71, 480, 240);
-		add(pane);
+		add(pane);*/
 		
 		JLabel titleLabel = new JLabel("Program Chair");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -98,11 +126,8 @@ public class ProgramChairPanel extends JPanel {
 	
 	public void getFile() throws Exception{
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-			
 			java.io.File file = fileChooser.getSelectedFile();
-			
 			Scanner input = new Scanner(file);
-			
 			while(input.hasNext()){
 				stringBuilder.append(input.nextLine());
 				stringBuilder.append("\n");
