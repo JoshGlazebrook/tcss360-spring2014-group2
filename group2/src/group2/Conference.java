@@ -114,6 +114,14 @@ public class Conference {
 	}
 	
 	/**
+	 * Return the paper manager
+	 * @return paperManager
+	 */
+	public PaperManager getPaperManager() {
+		return paperManager;
+	}
+	
+	/**
 	 * String representation of a conference.
 	 * @return the name of the conference
 	 */

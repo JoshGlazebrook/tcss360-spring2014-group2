@@ -130,4 +130,8 @@ public class PaperManager {
 	private void savePapers() {
 		JSONHelper.serializeToFile("papers.json", papers);
 	}
+	
+	public int size() {
+		return papers.size();
+	}
 }
