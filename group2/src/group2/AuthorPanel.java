@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.text.EditorKit;
 /**
  * 
@@ -24,7 +25,7 @@ public class AuthorPanel extends JPanel {
 	
 	private final JFileChooser fileChooser = new JFileChooser();
 	private final StringBuilder stringBuilder = new StringBuilder();
-	private JLabel lblConfrence = new JLabel("Confrence Name");
+	private JLabel lblConference = new JLabel("Conference Name");
 	private JLabel lblDeadline = new JLabel("Deadline");
 	private boolean submitted = false;
 
@@ -32,19 +33,24 @@ public class AuthorPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public AuthorPanel(final Conference curConf, final Author curAuthor) {
-	
+		lblConference.setText(curConf.getName());
+		lblDeadline.setText(curConf.getDeadline());
 		setLayout(null);
 		setSize(500, 500);
 		EditorKit kc;
 //		final JTextArea textArea = new JTextArea();
+		final JTextField title = new JTextField();
+		title.setBounds(15, 58, 480, 37);
+		add(title);
+		
 		final JEditorPane textArea = new JEditorPane();
-		textArea.setBounds(15, 58, 460, 240);
-		if (curConf.paperManager.hasPaper(curAuthor)) {
-			textArea.setText(curConf.paperManager.getPaper(curAuthor).getData());
-		}
+		textArea.setBounds(15, 95, 460, 203);
+//		if (curConf.paperManager.hasPaper(curAuthor)) {
+//			textArea.setText(curConf.paperManager.getPaper(curAuthor).getData());
+//		}
 		
 		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 58, 480, 240);
+		pane.setBounds(15, 95, 480, 203);
 		add(pane);
 		
 		JButton btnOpenFile = new JButton("Open File...");
@@ -70,7 +76,8 @@ public class AuthorPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 //				if(!submitted){
-				curConf.paperManager.addPaper(new Paper(curAuthor, textArea.getText()));
+				curConf.paperManager.addPaper(new Paper(title.getText(),
+						curAuthor, textArea.getText()));
 				JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
 //					submitted = true;
 //				}else{
@@ -116,10 +123,10 @@ public class AuthorPanel extends JPanel {
 //		add(btnSelectConfrence);
 		
 		
-		lblConfrence.setBounds(186, 330, 127, 20);
-		add(lblConfrence);
+		lblConference.setBounds(getWidth()/2, 330, 127, 20);
+		add(lblConference);
 		
-		lblDeadline.setBounds(208, 379, 83, 20);
+		lblDeadline.setBounds(getWidth()/2, 379, 83, 20);
 		add(lblDeadline);
 		
 		

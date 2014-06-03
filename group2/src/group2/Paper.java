@@ -6,6 +6,7 @@ package group2;
  *
  */
 public class Paper {
+	private String name;
 	private Author author;
 	private String data;
 	private boolean reviewed;
@@ -15,7 +16,8 @@ public class Paper {
 	 * @param author The author of the paper;
 	 * @param data The paper text itself.
 	 */
-	public Paper(Author author, String data) {
+	public Paper(String name, Author author, String data) {
+		this.name = name;
 		this.author = author;
 		this.data = data;
 	}
@@ -34,6 +36,10 @@ public class Paper {
 	 */
 	public String getData() {
 		return this.data;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	/**

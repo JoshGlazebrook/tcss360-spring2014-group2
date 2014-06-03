@@ -87,7 +87,6 @@ public class LogInPanel extends JPanel {
 					popMsg();
 				} else {
 					conferencePanel = new ConferencePanel(conferences, gui, new User(userName, password));
-					gui.frame.getContentPane().add(conferencePanel).setLocation(50, 0);
 					gui.setPanel(conferencePanel);
 				}
 			}

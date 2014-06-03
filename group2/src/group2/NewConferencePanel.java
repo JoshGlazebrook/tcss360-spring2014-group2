@@ -97,7 +97,7 @@ public class NewConferencePanel extends JPanel {
 	}
 	
 	private boolean checkFields() {
-		return name == null && date == null && deadLn == null;
+		return name.isEmpty() || date.isEmpty() || deadLn.isEmpty();
 	}
 	
 	private void popMsg() {

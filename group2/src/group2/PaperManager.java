@@ -26,7 +26,7 @@ public class PaperManager {
 	 * @param paper The Paper to add.
 	 */
 	public void addPaper(Paper paper) {
-		papers.put(paper.getAuthor().userName, paper);
+		papers.put(paper.getName(), paper);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class PaperManager {
 	 * @return True if the Paper exists, false otherwise.
 	 */
 	public boolean hasPaper(Paper paper) {
-		return papers.containsValue(paper);
+		return papers.containsValue(paper.getName());
 	}
 	
 	/**
@@ -107,8 +107,8 @@ public class PaperManager {
 	 * @param id The id of the Paper to retrieve.
 	 * @return The Paper if it exists, null otherwise.
 	 */
-	public Paper getPaper(Author author) {
-			if (papers.containsKey(author.userName)) return papers.get(author.userName);
-			return null;
+	public Paper getPaper(Paper paper) {
+		if (papers.containsKey(paper.getName())) return papers.get(paper.getName());
+		return null;
 	}
 }
