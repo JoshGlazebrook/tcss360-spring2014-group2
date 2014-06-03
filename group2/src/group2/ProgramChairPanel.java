@@ -49,8 +49,15 @@ public class ProgramChairPanel extends JPanel {
 //			confArray[i] = confList.get(i).getName();
 			//paperArray[i] = curConf.getPaperManager().getPapers();
 		}*/
-		
-		final JList list = new JList(curConf.getPaperManager().getPapers());
+		String[] paperNames = new String[curConf.getPaperManager().size()];
+		for( int i=0; i<curConf.getPaperManager().size(); i++) {
+			paperNames[i] = 
+		}
+		for(Paper paper: curConf.getPaperManager().getPapers()) {
+			paperName
+		}
+				
+		final JList list = new JList();
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(15, 71, 240, 240); //before 480 width
@@ -115,7 +122,7 @@ public class ProgramChairPanel extends JPanel {
 		bg.add(rdbtnReject);
 		add(rdbtnReject);
 		
-		JButton btnSubmitToConfrence = new JButton("Submit To Conference");
+		JButton btnSubmitToConfrence = new JButton("Submit To Confrence");
 		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
 		add(btnSubmitToConfrence);
 		
