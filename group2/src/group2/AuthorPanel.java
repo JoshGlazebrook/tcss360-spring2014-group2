@@ -24,7 +24,7 @@ public class AuthorPanel extends JPanel {
 	
 	private final JFileChooser fileChooser = new JFileChooser();
 	private final StringBuilder stringBuilder = new StringBuilder();
-	private JLabel lblConfrence = new JLabel("Confrence Name");
+	private JLabel lblConfrence = new JLabel("Conference Name");
 	private JLabel lblDeadline = new JLabel("Deadline");
 	private boolean submitted = false;
 

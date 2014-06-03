@@ -19,6 +19,8 @@ public class PaperManager {
 	 */
 	public PaperManager() {
 		papers = new HashMap<String, Paper>();
+		loadPapers();
+		addPaper(new Paper(new Author("df", "Df"), "the paper data"));
 	}
 	
 	/**
@@ -27,6 +29,7 @@ public class PaperManager {
 	 */
 	public void addPaper(Paper paper) {
 		papers.put(paper.getAuthor().userName, paper);
+		savePapers();
 	}
 	
 	/**
@@ -36,6 +39,7 @@ public class PaperManager {
 	 */
 	public void removePaper(Author author) {
 		papers.remove(author);
+		savePapers();
 	}
 	
 	/**
@@ -44,6 +48,7 @@ public class PaperManager {
 	 */
 	public void removePaper(Paper paper) {
 		papers.remove(paper.getAuthor());
+		savePapers();
 	}
 	
 	/**
@@ -110,5 +115,19 @@ public class PaperManager {
 	public Paper getPaper(Author author) {
 			if (papers.containsKey(author.userName)) return papers.get(author.userName);
 			return null;
+	}
+	
+	private void loadPapers() {
+		HashMap<String, Paper> result;
+		
+		result = JSONHelper.deserializeFromFile("papers.json", new HashMap<String, Paper>().getClass());
+		
+		if (result != null)
+			papers = result;
+
+	}
+	
+	private void savePapers() {
+		JSONHelper.serializeToFile("papers.json", papers);
 	}
 }
