@@ -26,7 +26,7 @@ public class MainGUI {
 //	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
 	private JPanel subPM = new SubChairPanel();
-	private JPanel programChair = new ProgramChairPanel();
+//	private JPanel programChair = new ProgramChairPanel();
 //	private JPanel listConference = new ConferencePanel(this);
 
 	/**

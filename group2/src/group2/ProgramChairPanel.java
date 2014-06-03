@@ -42,17 +42,18 @@ public class ProgramChairPanel extends JPanel {
 			testArray[i] = tempConf;
 		}*/
 		
+		/*
 		int paperSize = curConf.getPaperManager().size();
 		String[] paperArray = new String[paperSize];
 		for (int i = 0; i < paperSize; i++) {
 //			confArray[i] = confList.get(i).getName();
-			paperArray[i] = curConf.getPaperManager().
-		}
+			//paperArray[i] = curConf.getPaperManager().getPapers();
+		}*/
 		
-		final JList list = new JList(confArray);
+		final JList list = new JList(curConf.getPaperManager().getPapers());
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setBounds(15, 71, 480, 240);
+		list.setBounds(15, 71, 240, 240); //before 480 width
 		add(list);
 		
 		//

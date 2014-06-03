@@ -112,6 +112,7 @@ public class PaperManager {
 			return null;
 	}
 	
+	
 	public int size() {
 		return papers.size();
 	}
