@@ -28,6 +28,7 @@ public class PaperManager {
 	 */
 	public void addPaper(Paper paper) {
 		papers.put(paper.getName(), paper);
+		savePapers();
 	}
 	
 	/**
