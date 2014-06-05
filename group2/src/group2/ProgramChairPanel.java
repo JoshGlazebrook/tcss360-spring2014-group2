@@ -57,11 +57,27 @@ public class ProgramChairPanel extends JPanel {
 			paperNameList.add(paper.getName());
 		}
 	
-		final JList list = new JList(paperNameList.toArray());
-		list.setVisibleRowCount(3);
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setBounds(15, 71, 240, 240); //before 480 width
-		add(list);
+		final JList paperList = new JList(paperNameList.toArray());
+		paperList.setVisibleRowCount(3);
+		paperList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		paperList.setBounds(15, 71, 230, 240); //before 480 width
+		add(paperList);
+		
+		//
+		
+		ArrayList<String> userNameList = new ArrayList<String>();
+		for(User user: curConf.getUsers()) {
+			userNameList.add(user.getUserName());
+		}
+		
+		//remove the Program Chair from the conference name list
+		userNameList.remove(0);
+		
+		final JList userList = new JList(userNameList.toArray());
+		userList.setVisibleRowCount(3);
+		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		userList.setBounds(255, 71, 230, 240); //before 480 width
+		add(userList);
 		
 		//
 		

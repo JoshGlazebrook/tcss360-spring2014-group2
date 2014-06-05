@@ -96,6 +96,9 @@ public class AuthorPanel extends JPanel {
 //				if(!submitted){
 				curConf.addPaper(new Paper(title.getText(),
 						curAuthor, textArea.getText()));
+				if(!curConf.getUsers().contains(curAuthor)) {
+					curConf.addUser(curAuthor);
+				}
 				JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
 //					submitted = true;
 //				}else{

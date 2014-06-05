@@ -76,6 +76,15 @@ public class Conference {
 		paperManager.addPaper(paper);
 	}
 	
+	
+	/**
+	 * Add a user to the list of users.
+	 * @param theUser, the user
+	 */
+	public void addUser(User theUser){
+		users.add(theUser);
+	}
+	
 	/**
 	 * Returns a ProgramChair.
 	 * @return programChair
