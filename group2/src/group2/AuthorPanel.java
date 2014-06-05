@@ -30,6 +30,7 @@ public class AuthorPanel extends JPanel {
 	private JLabel lblDate = new JLabel("Date");
 	private JLabel lblDeadline = new JLabel("Deadline");
 	private boolean submitted = false;
+	int count = 0;
 
 	/**
 	 * Create the panel.
@@ -87,23 +88,23 @@ public class AuthorPanel extends JPanel {
 		btnOpenFile.setBounds(15, 370, 127, 29);
 		add(btnOpenFile);
 		
+		//180 370 115 29
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(180, 370, 115, 29);
 		btnSubmit.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-//				if(!submitted){
-				curConf.addPaper(new Paper(title.getText(),
-						curAuthor, textArea.getText()));
-				if(!curConf.getUsers().contains(curAuthor)) {
-					curConf.addUser(curAuthor);
+				if(!curConf.getPaperManager().hasPaper(title.getText())) count++;
+				if(count > 4) {
+					JOptionPane.showMessageDialog(new Frame(), "Exceeded number of submissions!");
+					return;
 				}
+
+				curConf.getPaperManager().addPaper(new Paper(title.getText(),
+						curAuthor, textArea.getText()));
+				
 				JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
-//					submitted = true;
-//				}else{
-//					JOptionPane.showMessageDialog(new Frame(), "You have already submitted a paper for this conference");
-//				}
 			}
 		});
 		add(btnSubmit);
@@ -126,24 +127,26 @@ public class AuthorPanel extends JPanel {
 		btnRemoveFile.setBounds(333, 370, 133, 29);
 		add(btnRemoveFile);
 		
-//	JButton btnSelectConfrence = new JButton("Select Confrence");
-//	btnSelectConfrence.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				String[] conferences = { "Conference 1", "conference 2", "conference 3", "conference 4" };
-//				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
-//				        "Please select a conference! ",
-//				        "Conferences",
-//				        JOptionPane.QUESTION_MESSAGE, 
-//				        null, 
-//				        conferences, 
-//				        conferences[0]);
-//						
-//				changeLabel(lblConfrence, dialogBox);
-//				changeLabel(lblDeadline, "10/12/2014");
-//			}
-//		});
-//	btnSelectConfrence.setBounds(15, 450, 149, 29);
-//	add(btnSelectConfrence);
+		JButton btnSelectPaper = new JButton("Select Paper");
+		btnSelectPaper.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String[] papers = curConf.getPaperManager().getTitles(curAuthor.userName);
+					if (papers.length == 0) return;
+					String curPaper = (String) JOptionPane.showInputDialog(new Frame(), 
+					        "Please select a paper! ",
+					        "Conferences",
+					        JOptionPane.QUESTION_MESSAGE, 
+					        null, 
+					        papers, 
+					        papers[0]);
+					if(curPaper == null) return;
+					title.setText(curPaper);
+					textArea.setText(curConf.getPaperManager().getPaper(curPaper).getData());
+							
+				}
+			});
+		btnSelectPaper.setBounds(15, 409, 149, 29);
+		add(btnSelectPaper);
 		
 		lblConference.setBounds(70, 300, 127, 20);
 		add(lblConference);

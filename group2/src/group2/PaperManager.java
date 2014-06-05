@@ -21,7 +21,7 @@ public class PaperManager {
 	public PaperManager(String conference_name) {
 		this.conference_name = conference_name;
 		papers = new HashMap<String, Paper>();
-		//loadPapers();
+		loadPapers();
 	}
 	
 	/**
@@ -30,7 +30,7 @@ public class PaperManager {
 	 */
 	public void addPaper(Paper paper) {
 		papers.put(paper.getName(), paper);
-		//savePapers();
+		savePapers();
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class PaperManager {
 	 */
 	public void removePaper(Author author) {
 		papers.remove(author);
-		//savePapers();
+		savePapers();
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class PaperManager {
 	 */
 	public void removePaper(Paper paper) {
 		papers.remove(paper.getAuthor());
-		//savePapers();
+		savePapers();
 	}
 	
 	/**
@@ -66,8 +66,8 @@ public class PaperManager {
 	 * @param id The id of the Paper to check for.
 	 * @return True if the Paper exists, false otherwise.
 	 */
-	public boolean hasPaper(Author author) {
-		return papers.containsKey(author.userName);
+	public boolean hasPaper(String name) {
+		return papers.containsKey(name);
 	}
 	
 	/**
@@ -91,6 +91,16 @@ public class PaperManager {
 				tmp.add(x);
 		}
 		return tmp.toArray(new Paper[0]);
+	}
+	
+	public String[] getTitles(String authorName) {
+		ArrayList<String> tmp = new ArrayList<String>();
+		
+		for(Paper x : papers.values()) {
+			if (x.getAuthor().getUserName().equals(authorName))
+				tmp.add(x.getName());
+		}
+		return tmp.toArray(new String[0]);
 	}
 	
 	/**
@@ -118,25 +128,29 @@ public class PaperManager {
 		return null;
 	}
 	
+	public Paper getPaper(String name) {
+		if (papers.containsKey(name)) return papers.get(name);
+		return null;
+	}
 	
 	/**
 	 * Loads all Papers from the persistent data file.
 	 */
-	/*private void loadPapers() {
+	private void loadPapers() {
 		HashMap<String, Paper> result;
 		
 		result = JSONHelper.deserializeFromFile("data/conferences/" + this.conference_name + "/papers.json", new HashMap<String, Paper>().getClass());
 		
 		if (result != null)
 			papers = result;
-	}*/
+	}
 	
 	/**
 	 * Saves all Papers to the persistent data file.
 	 */
-	/*private void savePapers() {
+	private void savePapers() {
 		JSONHelper.serializeToFile("data/conferences/" + this.conference_name + "/papers.json", papers);
-	}*/
+	}
 	
 	public int size() {
 		return papers.size();

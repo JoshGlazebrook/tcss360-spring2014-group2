@@ -3,6 +3,7 @@ package group2;
 import java.awt.Font;
 import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
@@ -29,7 +30,7 @@ public class ProgramChairPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ProgramChairPanel(Conference curConf) {
+	public ProgramChairPanel(final Conference curConf) {
 		setSize(500, 500);
 		setLayout(null);
 		
@@ -52,7 +53,7 @@ public class ProgramChairPanel extends JPanel {
 		}*/
 
 		
-		ArrayList<String> paperNameList = new ArrayList<String>();
+		final ArrayList<String> paperNameList = new ArrayList<String>();
 		for(Paper paper: curConf.getPapers()) {
 			paperNameList.add(paper.getName());
 		}
@@ -65,9 +66,9 @@ public class ProgramChairPanel extends JPanel {
 		
 		//
 		
-		ArrayList<String> userNameList = new ArrayList<String>();
+		final ArrayList<String> userNameList = new ArrayList<String>();
 		for(User user: curConf.getUsers()) {
-			userNameList.add(user.getUserName());
+			userNameList.add(user.getUserName() + " " + user.role);
 		}
 		
 		//remove the Program Chair from the conference name list
@@ -94,19 +95,44 @@ public class ProgramChairPanel extends JPanel {
 		titleLabel.setBounds(154, 15, 191, 37);
 		add(titleLabel);
 		
-		JButton btnAssignReviewers = new JButton("Assign Reviewers");
+		JButton btnAssignReviewers = new JButton("Assign Subprogram Chair");
 		btnAssignReviewers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
+				/*String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
 				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
 				        "Please select a reviewer! ",
 				        "Reviewers",
 				        JOptionPane.QUESTION_MESSAGE, 
 				        null, 
 				        reviewers, 
-				        reviewers[0]);
-			}
-		});
+				        reviewers[0]);*/
+				//}
+				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
+					User user = curConf.getUsers().get(userList.getSelectedIndex());
+					Paper paper = null;
+					Paper[] paperArray = curConf.getPaperManager().getPapers();
+					for(Paper thePaper: paperArray) {
+						if(thePaper.getName().equals(userNameList.get(userList.getSelectedIndex()))) {
+							paper = thePaper;
+							break;
+						}
+					}
+					//Map<User, ArrayList<Paper>> subprogramList = curConf.getSubprogramListKeys();
+					if(!curConf.getSubprogramListKeys().containsKey(user)) {
+						ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
+						listOfPapers.add(paper);
+						curConf.getSubprogramListKeys().put(user, listOfPapers);
+					} else {
+						if(curConf.getSubprogramListKeys().get(user).size() <= 4) {
+							if(!curConf.getSubprogramListKeys().get(user).contains(paper)) {
+								curConf.getSubprogramListKeys().get(user).add(paper);
+							}
+						}
+					}
+				} else {
+					showDialog();
+				}
+		}});
 		btnAssignReviewers.setBounds(330, 329, 155, 29);
 		add(btnAssignReviewers);
 		
@@ -160,5 +186,9 @@ public class ProgramChairPanel extends JPanel {
 		}else {
 			JOptionPane.showMessageDialog(this, "Please Select a File!");
 		}
+	}
+	
+	public void showDialog(){
+		JOptionPane.showMessageDialog(this, "Please select a paper and user.");
 	}
 }

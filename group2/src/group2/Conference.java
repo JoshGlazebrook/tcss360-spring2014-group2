@@ -1,8 +1,10 @@
 package group2;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 /**
@@ -40,6 +42,7 @@ public class Conference {
 	 */
 	private List<User> users;
 	
+	private Map<User, ArrayList<Paper>> subprogramList;
 	/**
 	 * 
 	 * A PaperManager for this conference.
@@ -57,6 +60,7 @@ public class Conference {
 		users.add(theStarter);
 		paperManager = new PaperManager(theName);
 		confUser.put(programChair.userName, programChair);
+		subprogramList = new HashMap<User, ArrayList<Paper>>();
 	}
 	
 	/*
@@ -125,17 +129,30 @@ public class Conference {
 		return users;
 	}
 	
+	public User getUser(String userName) {
+		for(int i=0; i<users.size(); i++) {
+			if(users.get(i).getUserName().equals(userName)) {
+				return users.get(i);
+			}
+		}
+		return null;
+	}
+	
 	public Paper[] getPapers() {
 		return paperManager.getPapers();
+	}
+	
+	public Map<User, ArrayList<Paper>> getSubprogramListKeys() {
+		return subprogramList;
 	}
 	
 	/**
 	 * Return the paper manager
 	 * @return paperManager
 	 */
-	/*public PaperManager getPaperManager() {
+	public PaperManager getPaperManager() {
 		return paperManager;
-	}*/
+	}
 	
 	/**
 	 * String representation of a conference.
