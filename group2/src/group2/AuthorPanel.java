@@ -144,7 +144,7 @@ public class AuthorPanel extends JPanel {
 					textArea.setText(curConf.getPaperManager().getPaper(curPaper).getData());
 							
 				}
-			});
+		});
 		btnSelectPaper.setBounds(15, 409, 149, 29);
 		add(btnSelectPaper);
 		
