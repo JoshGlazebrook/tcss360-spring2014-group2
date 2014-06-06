@@ -94,7 +94,7 @@ public class ProgramChairPanel extends JPanel {
 		titleLabel.setBounds(154, 15, 191, 37);
 		add(titleLabel);
 		
-		JButton btnAssignReviewers = new JButton("Assign Subprogram Chair");
+		JButton btnAssignReviewers = new JButton("Assign Paper");
 		btnAssignReviewers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
@@ -107,34 +107,39 @@ public class ProgramChairPanel extends JPanel {
 				        reviewers[0]);*/
 				//}
 				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
-					User user = curConf.confUser.get(userList.getSelectedIndex());
+					User user = curConf.confUser.get(keyList.get(userList.getSelectedIndex()));
 					Paper paper = null;
 					Paper[] paperArray = curConf.getPaperManager().getPapers();
 					for(Paper thePaper: paperArray) {
-						if(thePaper.getName().equals(userNameList.get(userList.getSelectedIndex()))) {
+						if(thePaper.getName().equals(paperNameList.get(paperList.getSelectedIndex()))) {
 							paper = thePaper;
 							break;
 						}
 					}
-					//Map<User, ArrayList<Paper>> subprogramList = curConf.getSubprogramListKeys();
+					
 					if(!curConf.getSubprogramListKeys().containsKey(user)) {
 						ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
 						listOfPapers.add(paper);
 						curConf.getSubprogramListKeys().put(user, listOfPapers);
+						showDialogForPaper();
 					} else {
-						if(curConf.getSubprogramListKeys().get(user).size() <= 4) {
+						if(curConf.getSubprogramListKeys().get(user).size() < 4) {
 							if(!curConf.getSubprogramListKeys().get(user).contains(paper)) {
 								curConf.getSubprogramListKeys().get(user).add(paper);
+								showDialogForPaper();
 							}
+						} else {
+							showDialogMaxPaper();
 						}
 					}
 				} else {
 					showDialogToAssign();
 				}
 		}});
-		btnAssignReviewers.setBounds(330, 329, 155, 29);
+		btnAssignReviewers.setBounds(298, 329, 141, 29);
 		add(btnAssignReviewers);
 		
+		/*
 		JButton btnOpenFile = new JButton("Open File...");
 		btnOpenFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -148,6 +153,9 @@ public class ProgramChairPanel extends JPanel {
 				//textArea.setText(stringBuilder.toString());
 			}
 		});
+		btnOpenFile.setBounds(25, 329, 99, 29);
+		add(btnOpenFile);
+		*/
 		
 		JButton btnSubChair = new JButton("Assign Subprogram Chairs");
 		btnSubChair.addActionListener(new ActionListener() {
@@ -158,12 +166,9 @@ public class ProgramChairPanel extends JPanel {
 				}
 			}
 		});
-		btnSubChair.setBounds(25, 410, 99, 29);
+		btnSubChair.setBounds(15, 329, 200, 29);
 		add(btnSubChair);
 	
-		btnOpenFile.setBounds(25, 329, 99, 29);
-		add(btnOpenFile);
-		
 		ButtonGroup bg = new ButtonGroup();
 		JRadioButton rdbtnAccept = new JRadioButton("Accept");
 		rdbtnAccept.setBounds(50, 374, 79, 29);
@@ -175,10 +180,11 @@ public class ProgramChairPanel extends JPanel {
 		bg.add(rdbtnReject);
 		add(rdbtnReject);
 		
-		JButton btnSubmitToConfrence = new JButton("Submit To Confrence");
+		/*
+		JButton btnSubmitToConfrence = new JButton("Submit To Conference");
 		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
-		add(btnSubmitToConfrence);
-		
+		add(btnSubmitToConfrence);*/
+	
 		JButton btnRecomendation = new JButton("Recomendation");
 		btnRecomendation.setBounds(298, 374, 141, 29);
 		add(btnRecomendation);
@@ -204,8 +210,14 @@ public class ProgramChairPanel extends JPanel {
 	}
 	
 	public void showDialogToPromote() {
-		repaint();
-		revalidate();
 		JOptionPane.showMessageDialog(this, "User has been promoted.");
+	}
+	
+	public void showDialogForPaper(){
+		JOptionPane.showMessageDialog(this, "Paper has been assigned.");
+	}
+	
+	public void showDialogMaxPaper() {
+		JOptionPane.showMessageDialog(this, "No more papers allowed. Try different user.");
 	}
 }
