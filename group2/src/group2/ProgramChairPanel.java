@@ -67,12 +67,11 @@ public class ProgramChairPanel extends JPanel {
 		//
 		
 		final ArrayList<String> userNameList = new ArrayList<String>();
-		for(User user: curConf.getUsers()) {
+		final ArrayList<String> keyList = new ArrayList<String>();
+		for(User user: curConf.confUser.values()) {
+			keyList.add(user.getUserName());
 			userNameList.add(user.getUserName() + " " + user.role);
 		}
-		
-		//remove the Program Chair from the conference name list
-		userNameList.remove(0);
 		
 		final JList userList = new JList(userNameList.toArray());
 		userList.setVisibleRowCount(3);
@@ -108,7 +107,7 @@ public class ProgramChairPanel extends JPanel {
 				        reviewers[0]);*/
 				//}
 				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
-					User user = curConf.getUsers().get(userList.getSelectedIndex());
+					User user = curConf.confUser.get(userList.getSelectedIndex());
 					Paper paper = null;
 					Paper[] paperArray = curConf.getPaperManager().getPapers();
 					for(Paper thePaper: paperArray) {
@@ -130,7 +129,7 @@ public class ProgramChairPanel extends JPanel {
 						}
 					}
 				} else {
-					showDialog();
+					showDialogToAssign();
 				}
 		}});
 		btnAssignReviewers.setBounds(330, 329, 155, 29);
@@ -149,6 +148,18 @@ public class ProgramChairPanel extends JPanel {
 				//textArea.setText(stringBuilder.toString());
 			}
 		});
+		
+		JButton btnSubChair = new JButton("Assign Subprogram Chairs");
+		btnSubChair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(userList.getSelectedIndex() >= 0) {
+					curConf.confUser.get(keyList.get(userList.getSelectedIndex())).role = "Subprogram Chair";
+					showDialogToPromote();
+				}
+			}
+		});
+		btnSubChair.setBounds(25, 410, 99, 29);
+		add(btnSubChair);
 	
 		btnOpenFile.setBounds(25, 329, 99, 29);
 		add(btnOpenFile);
@@ -188,7 +199,13 @@ public class ProgramChairPanel extends JPanel {
 		}
 	}
 	
-	public void showDialog(){
+	public void showDialogToAssign(){
 		JOptionPane.showMessageDialog(this, "Please select a paper and user.");
+	}
+	
+	public void showDialogToPromote() {
+		repaint();
+		revalidate();
+		JOptionPane.showMessageDialog(this, "User has been promoted.");
 	}
 }

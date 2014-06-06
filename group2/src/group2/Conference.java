@@ -37,11 +37,6 @@ public class Conference {
 	 */
 	private final String name;
 	
-	/**
-	 * A list of Users for this conference.
-	 */
-	private List<User> users;
-	
 	private Map<User, ArrayList<Paper>> subprogramList;
 	/**
 	 * 
@@ -56,10 +51,7 @@ public class Conference {
 		name = theName;
 		date = theDate;
 		deadline = theDeadline;
-		users = new ArrayList<User>();
-		users.add(theStarter);
 		paperManager = new PaperManager(theName);
-		confUser.put(programChair.userName, programChair);
 		subprogramList = new HashMap<User, ArrayList<Paper>>();
 	}
 	
@@ -78,15 +70,6 @@ public class Conference {
 	 */
 	public void addPaper(Paper paper) {
 		paperManager.addPaper(paper);
-	}
-	
-	
-	/**
-	 * Add a user to the list of users.
-	 * @param theUser, the user
-	 */
-	public void addUser(User theUser){
-		users.add(theUser);
 	}
 	
 	/**
@@ -119,23 +102,6 @@ public class Conference {
 	 */
 	public String getName() {
 		return name;
-	}
-	
-	/**
-	 * Returns the list of Users
-	 * @return users
-	 */
-	public List<User> getUsers() {
-		return users;
-	}
-	
-	public User getUser(String userName) {
-		for(int i=0; i<users.size(); i++) {
-			if(users.get(i).getUserName().equals(userName)) {
-				return users.get(i);
-			}
-		}
-		return null;
 	}
 	
 	public Paper[] getPapers() {
