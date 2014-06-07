@@ -103,6 +103,18 @@ public class ConferencePanel extends JPanel {
 						newAuthor.role = "Author";
 						gui.setPanel(new AuthorPanel(curConf, newAuthor));
 					}
+					if (curConf.confUser.get(currUser.userName).role.equals("Reviewer")) {
+						gui.setPanel(new ReviewerPanel());
+					}
+					if(curConf.confUser.get(currUser.userName).role.equals("Subprogram Chair")) {
+						User currentUser = null;
+						for(User user: curConf.getSubprogramListKeys().keySet()) {
+							if(user.getUserName().equals(currUser.getUserName())) {
+								currentUser = user;
+							}
+						}
+						gui.setPanel(new SubChairPanel(curConf, currentUser));
+					}
 				} else {
 					Author newAuthor = new Author(currUser.userName, currUser.password);
 					newAuthor.role = "Author";

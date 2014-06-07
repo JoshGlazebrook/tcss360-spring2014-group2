@@ -116,20 +116,21 @@ public class ProgramChairPanel extends JPanel {
 							break;
 						}
 					}
-					
-					if(!curConf.getSubprogramListKeys().containsKey(user)) {
-						ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
-						listOfPapers.add(paper);
-						curConf.getSubprogramListKeys().put(user, listOfPapers);
-						showDialogForPaper();
-					} else {
-						if(curConf.getSubprogramListKeys().get(user).size() < 4) {
-							if(!curConf.getSubprogramListKeys().get(user).contains(paper)) {
-								curConf.getSubprogramListKeys().get(user).add(paper);
-								showDialogForPaper();
-							}
+					if(user.role.equals("Subprogram Chair")) {
+						if(!curConf.getSubprogramListKeys().containsKey(user)) {
+							ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
+							listOfPapers.add(paper);
+							curConf.getSubprogramListKeys().put(user, listOfPapers);
+							showDialogForPaper();
 						} else {
-							showDialogMaxPaper();
+							if(curConf.getSubprogramListKeys().get(user).size() < 4) {
+								if(!curConf.getSubprogramListKeys().get(user).contains(paper)) {
+									curConf.getSubprogramListKeys().get(user).add(paper);
+									showDialogForPaper();
+								}
+							} else {
+								showDialogMaxPaper();
+							}
 						}
 					}
 				} else {
@@ -161,8 +162,12 @@ public class ProgramChairPanel extends JPanel {
 		btnSubChair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(userList.getSelectedIndex() >= 0) {
-					curConf.confUser.get(keyList.get(userList.getSelectedIndex())).role = "Subprogram Chair";
-					showDialogToPromote();
+					if(curConf.confUser.get(keyList.get(userList.getSelectedIndex())).role.
+							equals("Reviewer")) {
+						curConf.confUser.get(keyList.get(userList.getSelectedIndex())).role
+						= "Subprogram Chair";
+						showDialogToPromote();
+					}
 				}
 			}
 		});
