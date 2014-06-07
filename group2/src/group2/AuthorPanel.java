@@ -151,7 +151,7 @@ public class AuthorPanel extends JPanel {
 		JButton btnReviewer = new JButton("Become Reviewer");
 		btnReviewer.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if(!curAuthor.role.equals("Reviewer")){
+					if(!curAuthor.role.equals("Reviewer") && !curAuthor.role.equals("Subprogram Chair")){
 						curAuthor.role = "Reviewer";
 						curConf.confUser.put(curAuthor.getUserName(), curAuthor);
 						showDialogPromoted();

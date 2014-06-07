@@ -95,18 +95,41 @@ public class ConferencePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(confList.length == 0) return;
 				Conference curConf = confList[list.getSelectedIndex()];
+				
 				if(curConf.getProgramChair().userName.equals(currUser.userName)) {
+					
 					gui.setPanel(new ProgramChairPanel(curConf));
+					return;
 				} else if (curConf.confUser.containsKey(currUser.userName)) {
 					if (curConf.confUser.get(currUser.userName).role.equals("Author")) {
 						Author newAuthor = new Author(currUser.userName, currUser.password);
 						newAuthor.role = "Author";
 						gui.setPanel(new AuthorPanel(curConf, newAuthor));
+						return;
 					}
-					if (curConf.confUser.get(currUser.userName).role.equals("Reviewer")) {
+					
+					String[] curRoles = roles(curConf.confUser.get(currUser.userName).role);
+					String curRole = (String) JOptionPane.showInputDialog(new Frame(), 
+							"Please select a role! ",
+							"Roles",
+							JOptionPane.QUESTION_MESSAGE, 
+							null, 
+							curRoles, 
+							curRoles[0]);
+					if(curRole == null) return;
+					
+					if (curRole.equals("Author")) {
+						Author newAuthor = new Author(currUser.userName, currUser.password);
+						newAuthor.role = curConf.confUser.get(currUser.userName).role;
+						gui.setPanel(new AuthorPanel(curConf, newAuthor));
+						return;
+					}
+					
+					if (curRole.equals("Reviewer")) {
 						gui.setPanel(new ReviewerPanel());
+						return;
 					}
-					if(curConf.confUser.get(currUser.userName).role.equals("Subprogram Chair")) {
+					if(curRole.equals("Subprogram Chair")) {
 						User currentUser = null;
 						for(User user: curConf.getSubprogramListKeys().keySet()) {
 							if(user.getUserName().equals(currUser.getUserName())) {
@@ -114,6 +137,7 @@ public class ConferencePanel extends JPanel {
 							}
 						}
 						gui.setPanel(new SubChairPanel(curConf, currentUser));
+						return;
 					}
 				} else {
 					Author newAuthor = new Author(currUser.userName, currUser.password);
@@ -147,5 +171,20 @@ public class ConferencePanel extends JPanel {
 		btnRecomendation.setBounds(298, 374, 141, 29);
 		add(btnRecomendation);
 		*/
+	}
+	
+	private String[] roles(String role) {
+		String[] curRoles;
+		if (role.equals("Subprogram Chair")) {
+			curRoles = new String[3];
+			curRoles[0] = "Author";
+			curRoles[1] = "Reviewer";
+			curRoles[2] = role;
+		} else {
+			curRoles = new String[2];
+			curRoles[0] = "Author";
+			curRoles[1] = role;
+		}
+		return curRoles;
 	}
 }
