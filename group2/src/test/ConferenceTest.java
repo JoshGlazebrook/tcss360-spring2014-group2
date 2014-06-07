@@ -52,12 +52,6 @@ public class ConferenceTest {
 	}
 
 	@Test
-	public void testGetUsers() {
-		List<User> list = conf.getUsers();
-		assertSame(list, conf.getUsers());
-	}
-	
-	@Test
 	public void testGetPapers() {
 		
 	}

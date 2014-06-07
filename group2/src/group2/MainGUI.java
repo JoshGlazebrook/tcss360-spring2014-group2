@@ -26,7 +26,7 @@ public class MainGUI {
 	private LogInPanel login = new LogInPanel(this);
 //	private JPanel author = new AuthorPanel();
 	private JPanel reviewer = new ReviewerPanel();
-	private JPanel subPM = new SubChairPanel();
+//	private JPanel subPM = new SubChairPanel();
 //	private JPanel programChair = new ProgramChairPanel();
 //	private JPanel listConference = new ConferencePanel(this);
 
@@ -86,11 +86,9 @@ public class MainGUI {
 		});
 		mnUsers.add(mntmReviewer);
 
-		JMenuItem mntmSubChair = new JMenuItem("Sub Program Chair");
+		
+		/*JMenuItem mntmSubChair = new JMenuItem("Sub Program Chair");
 		mntmSubChair.addActionListener(new ActionListener() {
-			/**
-			 * Action Listener for button press. 
-			 */
 			public void actionPerformed(ActionEvent e) {
 				if(loggedIn) setPanel(subPM);
 				else{
@@ -98,7 +96,7 @@ public class MainGUI {
 				}
 			}
 		});
-		mnUsers.add(mntmSubChair);
+		mnUsers.add(mntmSubChair);*/
 
 		
 		/*JMenuItem mntmProgramChair = new JMenuItem("Program Chair");
@@ -140,7 +138,7 @@ public class MainGUI {
 		mntmAbout.addActionListener(new ActionListener() {
 			public void
 			actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(subPM, "Scrum It Up! \nSpring 2014");
+				JOptionPane.showMessageDialog(login, "Scrum It Up! \nSpring 2014");
 			}
 		});
 		mnHelp.add(mntmAbout);

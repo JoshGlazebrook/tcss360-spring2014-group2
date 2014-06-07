@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
+import javax.sound.sampled.ReverbType;
+
 /**
  * The Conference class for the system.
  * @author Jugbir Singh - Jay
@@ -38,6 +40,9 @@ public class Conference {
 	private final String name;
 	
 	private Map<User, ArrayList<Paper>> subprogramList;
+	
+	private Map<User, ArrayList<Paper>> reviewerList;
+	
 	/**
 	 * 
 	 * A PaperManager for this conference.
@@ -53,6 +58,7 @@ public class Conference {
 		deadline = theDeadline;
 		paperManager = new PaperManager(theName);
 		subprogramList = new HashMap<User, ArrayList<Paper>>();
+		reviewerList = new HashMap<User, ArrayList<Paper>>();
 	}
 	
 	/*
@@ -110,6 +116,10 @@ public class Conference {
 	
 	public Map<User, ArrayList<Paper>> getSubprogramListKeys() {
 		return subprogramList;
+	}
+	
+	public Map<User, ArrayList<Paper>> getReviewerListKeys() {
+		return reviewerList;
 	}
 	
 	/**

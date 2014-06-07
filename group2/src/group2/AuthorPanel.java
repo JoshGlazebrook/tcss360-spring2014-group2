@@ -148,6 +148,21 @@ public class AuthorPanel extends JPanel {
 		btnSelectPaper.setBounds(15, 409, 149, 29);
 		add(btnSelectPaper);
 		
+		JButton btnReviewer = new JButton("Become Reviewer");
+		btnReviewer.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(!curAuthor.role.equals("Reviewer")){
+						curAuthor.role = "Reviewer";
+						curConf.confUser.put(curAuthor.getUserName(), curAuthor);
+						showDialogPromoted();
+					} else {
+						showDialogRejectedPromote();
+					}
+				}
+		});
+		btnReviewer.setBounds(175, 409, 149, 29);
+		add(btnReviewer);
+		
 		lblConference.setBounds(70, 300, 127, 20);
 		add(lblConference);
 		
@@ -180,5 +195,13 @@ public class AuthorPanel extends JPanel {
 		}else {
 			JOptionPane.showMessageDialog(this, "Please Select a File!");
 		}
+	}
+	
+	public void showDialogPromoted() {
+		JOptionPane.showMessageDialog(this, "Promoted to Reviewer.");
+	}
+	
+	public void showDialogRejectedPromote() {
+		JOptionPane.showMessageDialog(this, "Already a reviewer.");
 	}
 }
