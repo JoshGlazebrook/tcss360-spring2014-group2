@@ -126,7 +126,8 @@ public class ConferencePanel extends JPanel {
 					}
 					
 					if (curRole.equals("Reviewer")) {
-						gui.setPanel(new ReviewerPanel());
+						Reviewer newReviewer = new Reviewer(currUser.userName, currUser.password);
+						gui.setPanel(new ReviewerPanel(curConf, newReviewer));
 						return;
 					}
 					if(curRole.equals("Subprogram Chair")) {
