@@ -103,6 +103,20 @@ public class PaperManager {
 		return tmp.toArray(new String[0]);
 	}
 	
+	public String[] getReviews(Reviewer reviewer) {
+		ArrayList<String> tmp = new ArrayList<String>();
+		
+		for(Paper x : papers.values()) {
+			for(Review r : x.getReviews()) {
+				if(r.getReviewer().equals(reviewer.username)) {
+					tmp.add(x.getName());
+					break;
+				}
+			}
+		}
+		return tmp.toArray(new String[0]);
+	}
+	
 	/**
 	 * Gets all the Papers submitted by the given Author.
 	 * @param author The Author object.

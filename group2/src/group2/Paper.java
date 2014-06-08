@@ -1,5 +1,7 @@
 package group2;
 
+import java.util.ArrayList;
+
 /**
  * Represents a Paper in the conference system.
  * @author Josh, Anh Bui
@@ -11,6 +13,7 @@ public class Paper {
 	private Author author;
 	private String data;
 	private boolean reviewed;
+	private ArrayList<Review> reviews = new ArrayList<Review>();
 	
 	/**
 	 * Constructs a new Paper object.
@@ -41,6 +44,17 @@ public class Paper {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public ArrayList<Review> getReviews() {
+		return reviews;
+	}
+	
+	public Review getCurReview(String curReviewer) {
+		for (Review r : reviews) {
+			if(r.getReviewer().equals(curReviewer)) return r;
+		}
+		return null;
 	}
 	
 	/**

@@ -25,7 +25,7 @@ public class MainGUI {
 	private boolean loggedIn = true;
 	private LogInPanel login = new LogInPanel(this);
 //	private JPanel author = new AuthorPanel();
-	private JPanel reviewer = new ReviewerPanel();
+//	private JPanel reviewer = new ReviewerPanel();
 //	private JPanel subPM = new SubChairPanel();
 //	private JPanel programChair = new ProgramChairPanel();
 //	private JPanel listConference = new ConferencePanel(this);
@@ -61,8 +61,8 @@ public class MainGUI {
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
-		JMenu mnUsers = new JMenu("Users");
-		menuBar.add(mnUsers);
+//		JMenu mnUsers = new JMenu("Users");
+//		menuBar.add(mnUsers);
 		
 //		JMenuItem mntmAuthor = new JMenuItem("Author");
 //		mntmAuthor.addActionListener(new ActionListener() {
@@ -75,16 +75,16 @@ public class MainGUI {
 //		});
 //		mnUsers.add(mntmAuthor);
 		
-		JMenuItem mntmReviewer = new JMenuItem("Reviewer");
-		mntmReviewer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loggedIn) setPanel(reviewer);
-				else{
-					JOptionPane.showMessageDialog(reviewer, "Please Log In");
-				}
-			}
-		});
-		mnUsers.add(mntmReviewer);
+//		JMenuItem mntmReviewer = new JMenuItem("Reviewer");
+//		mntmReviewer.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				if(loggedIn) setPanel(reviewer);
+//				else{
+//					JOptionPane.showMessageDialog(reviewer, "Please Log In");
+//				}
+//			}
+//		});
+//		mnUsers.add(mntmReviewer);
 
 		
 		/*JMenuItem mntmSubChair = new JMenuItem("Sub Program Chair");

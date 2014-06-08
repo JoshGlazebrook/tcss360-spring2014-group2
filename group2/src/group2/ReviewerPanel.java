@@ -22,57 +22,77 @@ public class ReviewerPanel extends JPanel {
 	
 	final StringBuilder stringBuilder = new StringBuilder();
 	final JFileChooser fileChooser = new JFileChooser();
+	String curPaper;
 
 	/**
 	 * Create the panel.
 	 */
-	public ReviewerPanel() {
+	public ReviewerPanel(final Conference curConf, final Reviewer curReviewer) {
 		setLayout(null);
 		setSize(500, 500);
 		
 		final JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 58, 460, 240);
+		textArea.setBounds(15, 58, 460, 180);
+		textArea.setEditable(false);
 
 		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 58, 480, 240);
+		pane.setBounds(15, 58, 480, 180);
 		add(pane);
 		
-		JButton btnOpenFile = new JButton("Open File...");
-		btnOpenFile.addActionListener(new ActionListener() {
+		final JEditorPane reviewArea = new JEditorPane();
+		reviewArea.setBounds(15, 248, 460, 50);
+		
+		JScrollPane paneReview = new JScrollPane(reviewArea);
+		paneReview.setBounds(15, 248, 480, 50);
+		add(paneReview);
+		
+//		JButton btnOpenFile = new JButton("Open File...");
+//		btnOpenFile.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				try {
+//					getFile();
+//				} catch (Exception e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				
+//				textArea.setText(stringBuilder.toString());
+//			}
+//		});
+//		btnOpenFile.setBounds(15, 392, 115, 29);
+//		add(btnOpenFile);
+		
+		JButton btnEdit = new JButton("Submit Review");
+		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					getFile();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				textArea.setText(stringBuilder.toString());
+				if(curPaper == null) return;
+				curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.username).setReview(reviewArea.getText());
 			}
 		});
-		btnOpenFile.setBounds(15, 392, 115, 29);
-		add(btnOpenFile);
-		
-		JButton btnEdit = new JButton("Submit Edits");
 		btnEdit.setBounds(364, 330, 121, 29);
 		add(btnEdit);
 		
-		JButton btnConfrence = new JButton("Select Conference");
-		btnConfrence.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String[] conferences = { "conference 1", "conference 2", "conference 3", "conference 4" };
-				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
-				        "Please select a conference! ",
-				        "Conferences",
-				        JOptionPane.QUESTION_MESSAGE, 
-				        null, 
-				        conferences, 
-				        conferences[0]);	
-			}
+		JButton btnSelectPaper = new JButton("Select Paper");
+		btnSelectPaper.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String[] papers = curConf.getPaperManager().getReviews(curReviewer);
+					if (papers.length == 0) return;
+					curPaper = (String) JOptionPane.showInputDialog(new Frame(), 
+					        "Please select a paper! ",
+					        "Conferences",
+					        JOptionPane.QUESTION_MESSAGE, 
+					        null, 
+					        papers, 
+					        papers[0]);
+					if(curPaper == null) return;
+					textArea.setText(curConf.getPaperManager().getPaper(curPaper).getData());
+					reviewArea.setText(curConf.getPaperManager().getPaper(curPaper).
+							getCurReview(curReviewer.username).getReview());
+				}
 		});
-		btnConfrence.setBounds(15, 330, 149, 29);
-		add(btnConfrence);
+		btnSelectPaper.setBounds(15, 330, 149, 29);
+		add(btnSelectPaper);
 		
 		JLabel lblConfrenceName = new JLabel("Conference Name");
 		lblConfrenceName.setBounds(191, 334, 117, 20);
