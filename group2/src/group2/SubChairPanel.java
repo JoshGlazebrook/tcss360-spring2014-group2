@@ -45,7 +45,7 @@ public class SubChairPanel extends JPanel {
 		pane.setBounds(15, 71, 480, 240);
 		add(pane);*/
 		
-		ArrayList<String> paperNameList = new ArrayList<String>();
+		final ArrayList<String> paperNameList = new ArrayList<String>();
 		for(Paper paper: curConf.getSubprogramListKeys().get(currentUser)) {
 			paperNameList.add(paper.getName());
 		}
@@ -79,8 +79,8 @@ public class SubChairPanel extends JPanel {
 		titleLabel.setBounds(124, 15, 251, 37);
 		add(titleLabel);
 		
-		JButton btnAssignReviewers = new JButton("Assign Reviewers");
-		btnAssignReviewers.addActionListener(new ActionListener() {
+		JButton btnAssignPapers = new JButton("Assign Papers");
+		btnAssignPapers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
 				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
@@ -90,11 +90,45 @@ public class SubChairPanel extends JPanel {
 				        null, 
 				        reviewers, 
 				        reviewers[0]);*/
-				
+				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
+					User user = curConf.confUser.get(keyList.get(userList.getSelectedIndex()));
+					Paper paper = null;
+					ArrayList<Paper> papers = curConf.getSubprogramListKeys().get(currentUser);
+					Paper[] paperArray = new Paper[4];
+					for(int i=0; i<papers.size(); i++) {
+						paperArray[i] = papers.get(i);
+					}
+					for(Paper thePaper: paperArray) {
+						if(thePaper.getName().equals(paperNameList.get(paperList.getSelectedIndex()))) {
+							paper = thePaper;
+							break;
+						}
+					}
+					if(user.role.equals("Reviewer") && !paper.getAuthor()
+							.getUserName().equals(user.getUserName())) {
+						if(!curConf.getReviewerListKeys().containsKey(user)) {
+							ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
+							listOfPapers.add(paper);
+							curConf.getReviewerListKeys().put(user, listOfPapers);
+							showDialogForPaper();
+						} else {
+							if(curConf.getReviewerListKeys().get(user).size() < 4) {
+								if(!curConf.getReviewerListKeys().get(user).contains(paper)) {
+									curConf.getReviewerListKeys().get(user).add(paper);
+									showDialogForPaper();
+								}
+							} else {
+								showDialogMaxPaper();
+							}
+						}
+					}
+				} else {
+					showDialogToAssign();
+				}
 			}
 		});
-		btnAssignReviewers.setBounds(330, 330, 155, 29);
-		add(btnAssignReviewers);
+		btnAssignPapers.setBounds(330, 330, 155, 29);
+		add(btnAssignPapers);
 		
 		JButton btnOpenFile = new JButton("Open File...");
 		btnOpenFile.addActionListener(new ActionListener() {
@@ -140,5 +174,17 @@ public class SubChairPanel extends JPanel {
 		}else {
 			JOptionPane.showMessageDialog(this, "Please Select a File!");
 		}
+	}
+	
+	public void showDialogToAssign(){
+		JOptionPane.showMessageDialog(this, "Please select a paper and user.");
+	}
+	
+	public void showDialogForPaper(){
+		JOptionPane.showMessageDialog(this, "Paper has been assigned.");
+	}
+	
+	public void showDialogMaxPaper() {
+		JOptionPane.showMessageDialog(this, "No more papers allowed. Try different user.");
 	}
 }
