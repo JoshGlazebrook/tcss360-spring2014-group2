@@ -116,7 +116,8 @@ public class ProgramChairPanel extends JPanel {
 							break;
 						}
 					}
-					if(user.role.equals("Subprogram Chair")) {
+					if(user.role.equals("Subprogram Chair") && !curConf.getPaperManager().getPaper(paper).
+							getAuthor().userName.equals(user.getUserName())) {
 						if(!curConf.getSubprogramListKeys().containsKey(user.userName)) {
 							ArrayList<String> listOfPapers = new ArrayList<String>();
 							listOfPapers.add(paper.getName());
