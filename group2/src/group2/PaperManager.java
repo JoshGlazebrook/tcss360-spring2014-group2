@@ -108,7 +108,7 @@ public class PaperManager {
 		
 		for(Paper x : papers.values()) {
 			for(Review r : x.getReviews()) {
-				if(r.getReviewer().equals(reviewer.username)) {
+				if(r.getReviewer().equals(reviewer.userName)) {
 					tmp.add(x.getName());
 					break;
 				}

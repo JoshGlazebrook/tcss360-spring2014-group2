@@ -39,9 +39,9 @@ public class Conference {
 	 */
 	private final String name;
 	
-	private Map<User, ArrayList<Paper>> subprogramList;
+	private Map<String, ArrayList<String>> subprogramList;
 	
-	private Map<User, ArrayList<Paper>> reviewerList;
+	private Map<String, ArrayList<String>> reviewerList;
 	
 	/**
 	 * 
@@ -57,8 +57,8 @@ public class Conference {
 		date = theDate;
 		deadline = theDeadline;
 		paperManager = new PaperManager(theName);
-		subprogramList = new HashMap<User, ArrayList<Paper>>();
-		reviewerList = new HashMap<User, ArrayList<Paper>>();
+		subprogramList = new HashMap<String, ArrayList<String>>();
+		reviewerList = new HashMap<String, ArrayList<String>>();
 	}
 	
 	/*
@@ -114,11 +114,11 @@ public class Conference {
 		return paperManager.getPapers();
 	}
 	
-	public Map<User, ArrayList<Paper>> getSubprogramListKeys() {
+	public Map<String, ArrayList<String>> getSubprogramListKeys() {
 		return subprogramList;
 	}
 	
-	public Map<User, ArrayList<Paper>> getReviewerListKeys() {
+	public Map<String, ArrayList<String>> getReviewerListKeys() {
 		return reviewerList;
 	}
 	

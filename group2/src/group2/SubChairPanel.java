@@ -46,8 +46,8 @@ public class SubChairPanel extends JPanel {
 		add(pane);*/
 		
 		final ArrayList<String> paperNameList = new ArrayList<String>();
-		for(Paper paper: curConf.getSubprogramListKeys().get(currentUser)) {
-			paperNameList.add(paper.getName());
+		for(String paper: curConf.getSubprogramListKeys().get(currentUser.userName)) {
+			paperNameList.add(paper);
 		}
 		
 		final JList paperList = new JList(paperNameList.toArray());
@@ -92,29 +92,33 @@ public class SubChairPanel extends JPanel {
 				        reviewers[0]);*/
 				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
 					User user = curConf.confUser.get(keyList.get(userList.getSelectedIndex()));
-					Paper paper = null;
-					ArrayList<Paper> papers = curConf.getSubprogramListKeys().get(currentUser);
-					Paper[] paperArray = new Paper[4];
+					System.out.println(user.userName);
+					String paper = null;
+					ArrayList<String> papers = curConf.getSubprogramListKeys().get(currentUser.userName);
+					String[] paperArray = new String[4];
 					for(int i=0; i<papers.size(); i++) {
 						paperArray[i] = papers.get(i);
 					}
-					for(Paper thePaper: paperArray) {
-						if(thePaper.getName().equals(paperNameList.get(paperList.getSelectedIndex()))) {
+					for(String thePaper: paperArray) {
+						if(thePaper.equals(paperNameList.get(paperList.getSelectedIndex()))) {
 							paper = thePaper;
 							break;
 						}
 					}
-					if(user.role.equals("Reviewer") && !paper.getAuthor()
-							.getUserName().equals(user.getUserName())) {
-						if(!curConf.getReviewerListKeys().containsKey(user)) {
-							ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
+					if(user.role.equals("Reviewer") && !curConf.getPaperManager().getPaper(paper).
+							getAuthor().userName.equals(user.getUserName())) {
+						if(!curConf.getReviewerListKeys().containsKey(user.userName)) {
+							ArrayList<String> listOfPapers = new ArrayList<String>();
 							listOfPapers.add(paper);
-							curConf.getReviewerListKeys().put(user, listOfPapers);
+							curConf.getReviewerListKeys().put(user.userName, listOfPapers);
+							System.out.println(curConf.getReviewerListKeys().get(user.userName).size());
 							showDialogForPaper();
 						} else {
-							if(curConf.getReviewerListKeys().get(user).size() < 4) {
-								if(!curConf.getReviewerListKeys().get(user).contains(paper)) {
-									curConf.getReviewerListKeys().get(user).add(paper);
+							if(curConf.getReviewerListKeys().get(user.userName).size() < 4) {
+								if(!curConf.getReviewerListKeys().get(user.userName).contains(paper)) {
+									curConf.getReviewerListKeys().get(user.userName).add(paper);
+
+									System.out.println(curConf.getReviewerListKeys().get(user.userName).size());
 									showDialogForPaper();
 								}
 							} else {

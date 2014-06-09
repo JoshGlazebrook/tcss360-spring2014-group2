@@ -51,6 +51,10 @@ public class Paper {
 	}
 	
 	public Review getCurReview(String curReviewer) {
+		if(reviews.size() == 0) {
+			reviews.add(new Review(curReviewer));
+			return reviews.get(0);
+		}
 		for (Review r : reviews) {
 			if(r.getReviewer().equals(curReviewer)) return r;
 		}

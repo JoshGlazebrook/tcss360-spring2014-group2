@@ -116,17 +116,16 @@ public class ProgramChairPanel extends JPanel {
 							break;
 						}
 					}
-					if(user.role.equals("Subprogram Chair") && !paper.getAuthor()
-							.getUserName().equals(user.getUserName())) {
-						if(!curConf.getSubprogramListKeys().containsKey(user)) {
-							ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
-							listOfPapers.add(paper);
-							curConf.getSubprogramListKeys().put(user, listOfPapers);
+					if(user.role.equals("Subprogram Chair")) {
+						if(!curConf.getSubprogramListKeys().containsKey(user.userName)) {
+							ArrayList<String> listOfPapers = new ArrayList<String>();
+							listOfPapers.add(paper.getName());
+							curConf.getSubprogramListKeys().put(user.userName, listOfPapers);
 							showDialogForPaper();
 						} else {
-							if(curConf.getSubprogramListKeys().get(user).size() < 4) {
-								if(!curConf.getSubprogramListKeys().get(user).contains(paper)) {
-									curConf.getSubprogramListKeys().get(user).add(paper);
+							if(curConf.getSubprogramListKeys().get(user.userName).size() < 4) {
+								if(!curConf.getSubprogramListKeys().get(user.userName).contains(paper.getName())) {
+									curConf.getSubprogramListKeys().get(user.userName).add(paper.getName());
 									showDialogForPaper();
 								}
 							} else {
