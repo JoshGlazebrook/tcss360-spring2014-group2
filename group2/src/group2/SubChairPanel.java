@@ -92,7 +92,6 @@ public class SubChairPanel extends JPanel {
 				        reviewers[0]);*/
 				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
 					User user = curConf.confUser.get(keyList.get(userList.getSelectedIndex()));
-					System.out.println(user.userName);
 					String paper = null;
 					ArrayList<String> papers = curConf.getSubprogramListKeys().get(currentUser.userName);
 					String[] paperArray = new String[4];
@@ -111,14 +110,11 @@ public class SubChairPanel extends JPanel {
 							ArrayList<String> listOfPapers = new ArrayList<String>();
 							listOfPapers.add(paper);
 							curConf.getReviewerListKeys().put(user.userName, listOfPapers);
-							System.out.println(curConf.getReviewerListKeys().get(user.userName).size());
 							showDialogForPaper();
 						} else {
 							if(curConf.getReviewerListKeys().get(user.userName).size() < 4) {
 								if(!curConf.getReviewerListKeys().get(user.userName).contains(paper)) {
 									curConf.getReviewerListKeys().get(user.userName).add(paper);
-
-									System.out.println(curConf.getReviewerListKeys().get(user.userName).size());
 									showDialogForPaper();
 								}
 							} else {

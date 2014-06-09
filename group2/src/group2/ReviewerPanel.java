@@ -34,7 +34,7 @@ public class ReviewerPanel extends JPanel {
 		final JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 58, 460, 180);
-//		textArea.setEditable(false);
+		textArea.setEditable(false);
 
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 58, 480, 180);
@@ -77,8 +77,6 @@ public class ReviewerPanel extends JPanel {
 		btnSelectPaper.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 //					String[] papers = curConf.getPaperManager().getReviews(curReviewer);
-					System.out.println(curReviewer.userName);
-					System.out.println(curConf.getReviewerListKeys().containsKey(curReviewer.userName));
 					String[] papers = curConf.getReviewerListKeys().get(curReviewer.userName).toArray(new String[0]);
 					if (papers.length == 0) return;
 					curPaper = (String) JOptionPane.showInputDialog(new Frame(), 
