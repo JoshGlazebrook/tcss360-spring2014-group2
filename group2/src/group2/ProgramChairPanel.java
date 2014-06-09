@@ -1,15 +1,19 @@
 package group2;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -192,6 +196,13 @@ public class ProgramChairPanel extends JPanel {
 		add(btnSubmitToConfrence);*/
 	
 		JButton btnRecomendation = new JButton("Recomendation");
+		btnRecomendation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ProgramList newProg = new ProgramList(curConf);
+				newProg.show();
+			}
+			
+		});
 		btnRecomendation.setBounds(298, 374, 141, 29);
 		add(btnRecomendation);
 
@@ -225,5 +236,44 @@ public class ProgramChairPanel extends JPanel {
 	
 	public void showDialogMaxPaper() {
 		JOptionPane.showMessageDialog(this, "No more papers allowed. Try different user.");
+	}
+}
+
+class ProgramList extends JPanel{
+	JFrame frame = new JFrame();
+	public ProgramList(Conference conf) {
+		setSize(500, 500);
+		setLayout(null);
+		JLabel lblTitle = new JLabel("Papers");
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblTitle.setBounds(186, 16, 127, 37);
+		add(lblTitle);
+		
+		StringBuilder list = new StringBuilder();
+		for(String sub : conf.getSubprogramListKeys().keySet()) {
+			list.append("Subprogram Chair: " + sub + "\n");
+			for(String paper : conf.getSubprogramListKeys().get(sub)) {
+				list.append("    Paper: " + paper + "\n        Reviewers: ");
+				for(Review r : conf.getPaperManager().getPaper(paper).getReviews()) {
+					list.append(r.getReviewer() + ", ");
+				}
+				list.append("\n");
+			}
+		}
+		
+		JEditorPane programList = new JEditorPane();
+		programList.setBounds(15, 71, 480, 240);
+		programList.setText(list.toString());
+		add(programList);
+	}
+	public void show(){
+		frame.setResizable(false);
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.setSize(500, 500);
+		frame.getContentPane().add(this);
+		frame.show();
 	}
 }
