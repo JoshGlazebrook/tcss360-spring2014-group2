@@ -131,12 +131,13 @@ public class ConferencePanel extends JPanel {
 						return;
 					}
 					if(curRole.equals("Subprogram Chair")) {
-						User currentUser = null;
-						for(User user: curConf.getSubprogramListKeys().keySet()) {
-							if(user.getUserName().equals(currUser.getUserName())) {
-								currentUser = user;
-							}
-						}
+//						User currentUser = null;
+//						for(User user: curConf.getSubprogramListKeys().keySet()) {
+//							if(user.getUserName().equals(currUser.getUserName())) {
+//								currentUser = user;
+//							}
+//						}
+						User currentUser = new User(currUser.userName, currUser.password);
 						gui.setPanel(new SubChairPanel(curConf, currentUser));
 						return;
 					}

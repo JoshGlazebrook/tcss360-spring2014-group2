@@ -34,7 +34,7 @@ public class ReviewerPanel extends JPanel {
 		final JEditorPane textArea = new JEditorPane();
 		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 58, 460, 180);
-		textArea.setEditable(false);
+//		textArea.setEditable(false);
 
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 58, 480, 180);
@@ -67,7 +67,7 @@ public class ReviewerPanel extends JPanel {
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(curPaper == null) return;
-				curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.username).setReview(reviewArea.getText());
+				curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.userName).setReview(reviewArea.getText());
 			}
 		});
 		btnEdit.setBounds(364, 330, 121, 29);
@@ -76,7 +76,10 @@ public class ReviewerPanel extends JPanel {
 		JButton btnSelectPaper = new JButton("Select Paper");
 		btnSelectPaper.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String[] papers = curConf.getPaperManager().getReviews(curReviewer);
+//					String[] papers = curConf.getPaperManager().getReviews(curReviewer);
+					System.out.println(curReviewer.userName);
+					System.out.println(curConf.getReviewerListKeys().containsKey(curReviewer.userName));
+					String[] papers = curConf.getReviewerListKeys().get(curReviewer.userName).toArray(new String[0]);
 					if (papers.length == 0) return;
 					curPaper = (String) JOptionPane.showInputDialog(new Frame(), 
 					        "Please select a paper! ",
@@ -87,8 +90,11 @@ public class ReviewerPanel extends JPanel {
 					        papers[0]);
 					if(curPaper == null) return;
 					textArea.setText(curConf.getPaperManager().getPaper(curPaper).getData());
-					reviewArea.setText(curConf.getPaperManager().getPaper(curPaper).
-							getCurReview(curReviewer.username).getReview());
+					if(curConf.getPaperManager().getPaper(curPaper).
+							getCurReview(curReviewer.userName) != null) {
+						reviewArea.setText(curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.userName).getReview());
+					}
+					
 				}
 		});
 		btnSelectPaper.setBounds(15, 330, 149, 29);
