@@ -13,9 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
 /**
- * 
- * @author Mina Messak
+ * @author Mina Messak, Anh Bui
  * @version 5.22.2014
  */
 public class ReviewerPanel extends JPanel {
@@ -32,7 +32,6 @@ public class ReviewerPanel extends JPanel {
 		setSize(500, 500);
 		
 		final JEditorPane textArea = new JEditorPane();
-		//JTextArea textArea = new JTextArea();
 		textArea.setBounds(15, 58, 460, 180);
 		textArea.setEditable(false);
 
@@ -46,22 +45,6 @@ public class ReviewerPanel extends JPanel {
 		JScrollPane paneReview = new JScrollPane(reviewArea);
 		paneReview.setBounds(15, 248, 480, 50);
 		add(paneReview);
-		
-//		JButton btnOpenFile = new JButton("Open File...");
-//		btnOpenFile.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				try {
-//					getFile();
-//				} catch (Exception e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				
-//				textArea.setText(stringBuilder.toString());
-//			}
-//		});
-//		btnOpenFile.setBounds(15, 392, 115, 29);
-//		add(btnOpenFile);
 		
 		JButton btnEdit = new JButton("Submit Review");
 		btnEdit.addActionListener(new ActionListener() {
@@ -77,7 +60,6 @@ public class ReviewerPanel extends JPanel {
 		JButton btnSelectPaper = new JButton("Select Paper");
 		btnSelectPaper.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-//					String[] papers = curConf.getPaperManager().getReviews(curReviewer);
 					String[] papers = curConf.getReviewerListKeys().get(curReviewer.userName).
 							toArray(new String[0]);
 					if (papers.length == 0) return;
@@ -95,7 +77,6 @@ public class ReviewerPanel extends JPanel {
 						reviewArea.setText(curConf.getPaperManager().getPaper(curPaper).
 								getCurReview(curReviewer.userName).getReview());
 					}
-					
 				}
 		});
 		btnSelectPaper.setBounds(15, 330, 149, 29);
@@ -123,19 +104,16 @@ public class ReviewerPanel extends JPanel {
 		lblReviewer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblReviewer.setBounds(189, 15, 122, 37);
 		add(lblReviewer);
-
 	}
+	
 	/**
 	 * File display from text file. 
 	 * @throws Exception
 	 */
-	public void getFile() throws Exception{
+	public void getFile() throws Exception {
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-			
 			java.io.File file = fileChooser.getSelectedFile();
-			
 			Scanner input = new Scanner(file);
-			
 			while(input.hasNext()){
 				stringBuilder.append(input.nextLine());
 				stringBuilder.append("\n");

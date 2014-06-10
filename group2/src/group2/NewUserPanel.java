@@ -17,12 +17,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 /**
  * 
- * @author Mina Messak, Anh Bui
+ * @author Mina Messak, Anh Bui, Jugbir Singh - Jay
  * @version 5.22.2014
  */
 public class NewUserPanel extends JPanel {
 	private JFrame frame = new JFrame("New User");
-	//private JTextField txtName;
 	private String userName;
 	private String password;
 	private User user;
@@ -40,29 +39,14 @@ public class NewUserPanel extends JPanel {
 		lblNewUser.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewUser.setBounds(186, 16, 127, 37);
 		add(lblNewUser);
-		/*
-		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(123, 112, 69, 20);
-		add(lblName);*/
 		
 		JLabel lblUserName = new JLabel("User Name:");
 		lblUserName.setBounds(123, 112, 84, 20);
 		add(lblUserName);
-		//168
+		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setBounds(123, 168, 73, 20);
 		add(lblPassword);
-		//227
-		
-		/*
-		JLabel lblUserType = new JLabel("User Type:");
-		lblUserType.setBounds(123, 276, 78, 20);
-		add(lblUserType);*/
-		
-		/*txtName = new JTextField();
-		txtName.setBounds(242, 109, 146, 26);
-		add(txtName);
-		txtName.setColumns(10);*/
 		
 		final JTextField txtUserName = new JTextField();
 		txtUserName.setBounds(242, 112, 146, 26);
@@ -74,14 +58,9 @@ public class NewUserPanel extends JPanel {
 		add(txtPassword);
 		txtPassword.setColumns(10);
 		
-		/*
-		final JComboBox UserTypes = new JComboBox();
-		UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Author", "Reviewer ", "Sub Program Chair", "Program Chair"}));
-		UserTypes.setBounds(242, 273, 146, 26);
-		add(UserTypes);*/
-		
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
+			
 			/**
 			 * If save button is clicked, either a user will be created or a message dialog will pop-up.
 			 * @author Jugbir Singh - Jay
@@ -99,27 +78,6 @@ public class NewUserPanel extends JPanel {
 		});
 		btnSave.setBounds(210, 240, 69, 28);
 		add(btnSave);
-		
-		/*
-		JLabel lblConfrence = new JLabel("Confrence:");
-		lblConfrence.setBounds(123, 330, 69, 16);
-		add(lblConfrence);
-		
-		JComboBox confrences = new JComboBox();
-		confrences.setBounds(242, 325, 146, 26);
-		add(confrences);*/
-		
-		/*
-		JButton btnNewConfrence = new JButton("New Confrence");
-		btnNewConfrence.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				conferencePanel.show();
-				UserTypes.setModel(new DefaultComboBoxModel(new String[] {"Program Chair"}));
-			}
-		});
-		btnNewConfrence.setBounds(261, 380, 127, 28);
-		add(btnNewConfrence);*/
-
 	}
 	
 	public void show(){
@@ -127,7 +85,6 @@ public class NewUserPanel extends JPanel {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
 		frame.getContentPane().add(this);
 		frame.show();

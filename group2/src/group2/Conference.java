@@ -15,8 +15,9 @@ import javax.sound.sampled.ReverbType;
  * @version 17 May, 2014
  */
 public class Conference {
-	
-	//confUser
+	/**
+	 * A collection of Users in the conference.
+	 */
 	public HashMap<String, User> confUser;
 	
 	/**
@@ -39,17 +40,33 @@ public class Conference {
 	 */
 	private final String name;
 	
+	/**
+	 * A map of subprogram chairs to papers.
+	 */
 	private Map<String, ArrayList<String>> subprogramList;
 	
+	/**
+	 * A map of reviewers to papers.
+	 */
 	private Map<String, ArrayList<String>> reviewerList;
 	
-	private Map<String, String> subprogramRecommend;
 	/**
-	 * 
+	 * A map of paper name to the subprogram recommendation.
+	 */
+	private Map<String, String> subprogramRecommend;
+	
+	/**
 	 * A PaperManager for this conference.
 	 */
 	private PaperManager paperManager;
 	
+	/**
+	 * A constructor for Conference.
+	 * @param theStarter, the conference starter
+	 * @param theName, the conference name
+	 * @param theDate, the start date
+	 * @param theDeadline, the deadline
+	 */
 	public Conference(final User theStarter, final String theName, final String theDate, final String theDeadline) {
 		confUser = new HashMap<String, User>();
 		programChair = new ProgramChair(theStarter.userName, theStarter.password);
@@ -62,15 +79,6 @@ public class Conference {
 		reviewerList = new HashMap<String, ArrayList<String>>();
 		subprogramRecommend = new HashMap<String, String>();
 	}
-	
-	/*
-	public boolean checkPaperExists(Paper paper) {
-		return papers.hasPaper(paper);
-	}
-	
-	public boolean checkIfReviewed(Paper paper) {
-		return paper.getReviewed();
-	}*/
 	
 	/**
 	 * Add a paper to the PaperManager.

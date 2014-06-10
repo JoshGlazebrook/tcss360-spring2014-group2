@@ -8,7 +8,6 @@ import java.util.ArrayList;
  *
  */
 public class Paper {
-	//name stuff -anh-
 	private String name;
 	private Author author;
 	private String data;

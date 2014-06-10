@@ -18,12 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.text.EditorKit;
 /**
  * 
- * @author Mina Messak, Anh Bui
+ * @author Mina Messak, Anh Bui, Jugbir Singh - Jay
  * @version 5.22.2014
  */
 public class AuthorPanel extends JPanel {
-	
-	
 	private final JFileChooser fileChooser = new JFileChooser();
 	private final StringBuilder stringBuilder = new StringBuilder();
 	private JLabel lblConference = new JLabel("Conference Name");
@@ -42,8 +40,6 @@ public class AuthorPanel extends JPanel {
 		setLayout(null);
 		setSize(500, 500);
 		EditorKit kc;
-//		final JTextArea textArea = new JTextArea();
-//		final JTextField title = new JTextField();
 		
 		JLabel nameLabel = new JLabel("Name: ");
 		nameLabel.setBounds(15, 300, 84, 20);
@@ -61,12 +57,8 @@ public class AuthorPanel extends JPanel {
 		title.setBounds(15, 58, 480, 37);
 		add(title);
 
-		
 		final JEditorPane textArea = new JEditorPane();
 		textArea.setBounds(36, 300, 460, 203);
-//		if (curConf.paperManager.hasPaper(curAuthor)) {
-//			textArea.setText(curConf.paperManager.getPaper(curAuthor).getData());
-//		}
 		
 		JScrollPane pane = new JScrollPane(textArea);
 		pane.setBounds(15, 95, 480, 203);
@@ -88,7 +80,6 @@ public class AuthorPanel extends JPanel {
 		btnOpenFile.setBounds(15, 370, 127, 29);
 		add(btnOpenFile);
 		
-		//180 370 115 29
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(180, 370, 115, 29);
 		btnSubmit.addActionListener(new ActionListener() {
@@ -100,10 +91,8 @@ public class AuthorPanel extends JPanel {
 					JOptionPane.showMessageDialog(new Frame(), "Exceeded number of submissions!");
 					return;
 				}
-
 				curConf.getPaperManager().addPaper(new Paper(title.getText(),
 						curAuthor, textArea.getText()));
-				
 				JOptionPane.showMessageDialog(new Frame(), "Paper is submitted");
 			}
 		});
@@ -176,7 +165,6 @@ public class AuthorPanel extends JPanel {
 		lblAuthor.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblAuthor.setBounds(205, 15, 89, 37);
 		add(lblAuthor);
-
 	}
 	
 	private void changeLabel(JLabel label, String text){

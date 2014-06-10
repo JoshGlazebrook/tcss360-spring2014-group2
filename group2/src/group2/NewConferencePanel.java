@@ -16,8 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * 
- * @author Mina Messak, Anh Bui
+ * @author Mina Messak, Anh Bui, Jugbir Singh - Jay
  * @version 5.22.2014
  */
 public class NewConferencePanel extends JPanel {
@@ -90,8 +89,6 @@ public class NewConferencePanel extends JPanel {
 			}
 		});
 		add(btnSave);
-		
-
 	}
 	
 	private boolean checkFields() {
@@ -107,7 +104,6 @@ public class NewConferencePanel extends JPanel {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
 		frame.getContentPane().add(this);
 		frame.show();

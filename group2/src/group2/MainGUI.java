@@ -24,12 +24,7 @@ public class MainGUI {
 	public JFrame frame = new JFrame();
 	private boolean loggedIn = true;
 	private LogInPanel login = new LogInPanel(this);
-//	private JPanel author = new AuthorPanel();
-//	private JPanel reviewer = new ReviewerPanel();
-//	private JPanel subPM = new SubChairPanel();
-//	private JPanel programChair = new ProgramChairPanel();
-//	private JPanel listConference = new ConferencePanel(this);
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -61,56 +56,6 @@ public class MainGUI {
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
-//		JMenu mnUsers = new JMenu("Users");
-//		menuBar.add(mnUsers);
-		
-//		JMenuItem mntmAuthor = new JMenuItem("Author");
-//		mntmAuthor.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if(loggedIn) setPanel(author);
-//				else{
-//					JOptionPane.showMessageDialog(author, "Please Log In");
-//				}
-//			}
-//		});
-//		mnUsers.add(mntmAuthor);
-		
-//		JMenuItem mntmReviewer = new JMenuItem("Reviewer");
-//		mntmReviewer.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if(loggedIn) setPanel(reviewer);
-//				else{
-//					JOptionPane.showMessageDialog(reviewer, "Please Log In");
-//				}
-//			}
-//		});
-//		mnUsers.add(mntmReviewer);
-
-		
-		/*JMenuItem mntmSubChair = new JMenuItem("Sub Program Chair");
-		mntmSubChair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loggedIn) setPanel(subPM);
-				else{
-					JOptionPane.showMessageDialog(subPM, "Please Log In");
-				}
-			}
-		});
-		mnUsers.add(mntmSubChair);*/
-
-		
-		/*JMenuItem mntmProgramChair = new JMenuItem("Program Chair");
-		mntmProgramChair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(loggedIn) setPanel(programChair);
-				else{
-					JOptionPane.showMessageDialog(programChair, "Please Log In");
-				}
-			}
-		});*/
-		//mnUsers.add(mntmProgramChair);
-
-		
 		JMenu mnOther = new JMenu("Options");
 		menuBar.add(mnOther);
 		
@@ -122,13 +67,6 @@ public class MainGUI {
 			}
 		});
 		
-//		JMenuItem mntmCreateANew = new JMenuItem("Create a New Conference");
-//		mntmCreateANew.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				setPanel(listConference);
-//			}
-//		});
-//		mnOther.add(mntmCreateANew);
 		mnOther.add(mntmLogOut);
 		
 		JMenu mnHelp = new JMenu("Help");

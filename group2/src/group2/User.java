@@ -1,9 +1,7 @@
 package group2;
 
 /**
- * 
  * @author Anh Bui
- *
  */
 public class User {
 	
@@ -29,11 +27,6 @@ public class User {
 		userName = theUserName;
 		password = thePassword;
 	}
-	
-	/*
-	public void startConference(){
-		
-	}*/
 	
 	public String getUserName() { 
 		return userName; 

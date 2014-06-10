@@ -6,9 +6,7 @@ import java.util.HashMap;
 import com.google.gson.*;
 
 /**
- * 
  * @author Anh Bui
- *
  */
 public class UserManager {
 	public HashMap<String, String> allUsers = new HashMap<String, String>();
@@ -36,9 +34,7 @@ public class UserManager {
 	 */
 	private void loadUsers() {
 		HashMap<String, String> result;
-		
 		result = JSONHelper.deserializeFromFile("data/users/users.json", new HashMap<String, String>().getClass());
-		
 		if (result != null)
 			allUsers = result;
 	}

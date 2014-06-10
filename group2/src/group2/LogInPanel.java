@@ -16,8 +16,7 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 /**
- * 
- * @author Mina Messak, Anh Bui
+ * @author Mina Messak, Anh Bui, Jugbir Singh - Jay
  * @version 5.22.2014
  */
 public class LogInPanel extends JPanel {
@@ -37,12 +36,10 @@ public class LogInPanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 	
-		
 		JLabel titleLabel = new JLabel("Welcome To Scrum It Up! ");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		titleLabel.setBounds(74, 44, 352, 37);
 		add(titleLabel);
-		
 		
 		JButton addUserBtn = new JButton("Add User");
 		addUserBtn.addActionListener(new ActionListener() {
@@ -91,25 +88,6 @@ public class LogInPanel extends JPanel {
 			}
 		});
 		add(logInBtn);
-		
-	    /*
-		JLabel conferenceLabel = new JLabel("Confrence:");
-		conferenceLabel.setBounds(15, 91, 69, 16);
-		panel2.add(conferenceLabel);
-		
-		JComboBox conferenceComboBox = new JComboBox();
-		conferenceComboBox.setBounds(110, 86, 146, 26);
-		panel2.add(conferenceComboBox);*/
-		
-		/*
-		JButton newConferenceBtn = new JButton("New Conference");
-		newConferenceBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				newConferencePanel.show();
-			}
-		});
-		newConferenceBtn.setBounds(186, 326, 127, 28);
-		add(newConferenceBtn);*/
 	}
 	
 	public void clearTxt() {

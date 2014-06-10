@@ -22,9 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent; 
 
 /**
- * 
- * @author Anh Bui
- *
+ * @author Anh Bui, Jugbir Singh - Jay
+ * @version 9 June, 2014
  */
 public class ConferencePanel extends JPanel {
 	
@@ -35,13 +34,6 @@ public class ConferencePanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 		
-		/*
-		final JEditorPane textArea = new JEditorPane();
-		//JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 71, 460, 240);
-		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 71, 480, 240);
-		add(pane);*/
 		String[] confArray = new String[manager.getConferences().length];
 		final Conference[] confList = manager.getConferences();
 		
@@ -49,36 +41,16 @@ public class ConferencePanel extends JPanel {
 			confArray[i] = manager.getConferences()[i].getName();
 		}
 		
-		
 		final JList list = new JList(confArray);
 		list.setVisibleRowCount(3);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setBounds(15, 71, 480, 240);
 		add(list);
 		
-		//JPanel listPanel = new JPanel();
-		
 		JLabel titleLabel = new JLabel("Conferences");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		titleLabel.setBounds(154, 15, 191, 37);
 		add(titleLabel);
-		
-		/*
-		JButton btnAssignReviewers = new JButton("Assign Reviewers");
-		btnAssignReviewers.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
-				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
-				        "Please select a reviewer! ",
-				        "Reviewers",
-				        JOptionPane.QUESTION_MESSAGE, 
-				        null, 
-				        reviewers, 
-				        reviewers[0]);
-			}
-		});
-		btnAssignReviewers.setBounds(330, 329, 155, 29);
-		add(btnAssignReviewers); */
 		
 		JButton btnMakeConf = new JButton("Create New Conference");
 		btnMakeConf.addActionListener(new ActionListener() {
@@ -131,12 +103,6 @@ public class ConferencePanel extends JPanel {
 						return;
 					}
 					if(curRole.equals("Subprogram Chair")) {
-//						User currentUser = null;
-//						for(User user: curConf.getSubprogramListKeys().keySet()) {
-//							if(user.getUserName().equals(currUser.getUserName())) {
-//								currentUser = user;
-//							}
-//						}
 						User currentUser = new User(currUser.userName, currUser.password);
 						gui.setPanel(new SubChairPanel(curConf, currentUser));
 						return;
@@ -152,27 +118,6 @@ public class ConferencePanel extends JPanel {
 	
 		btnSelectConf.setBounds(375, 329, 100, 29);
 		add(btnSelectConf);
-		
-		/*
-		ButtonGroup bg = new ButtonGroup();
-		JRadioButton rdbtnAccept = new JRadioButton("Accept");
-		rdbtnAccept.setBounds(50, 374, 79, 29);
-		bg.add(rdbtnAccept);
-		add(rdbtnAccept);
-		
-		JRadioButton rdbtnReject = new JRadioButton("Reject");
-		rdbtnReject.setBounds(136, 374, 75, 29);
-		bg.add(rdbtnReject);
-		add(rdbtnReject);
-		
-		JButton btnSubmitToConfrence = new JButton("Submit To Confrence");
-		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
-		add(btnSubmitToConfrence);
-		
-		JButton btnRecomendation = new JButton("Recomendation");
-		btnRecomendation.setBounds(298, 374, 141, 29);
-		add(btnRecomendation);
-		*/
 	}
 	
 	private String[] roles(String role) {

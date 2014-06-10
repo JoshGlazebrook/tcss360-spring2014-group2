@@ -26,8 +26,11 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * @author Jugbir Singh - Jay
+ * @version 9 June, 2014
+ */
 public class ProgramChairPanel extends JPanel {
-	
 	final StringBuilder stringBuilder = new StringBuilder();
 	final JFileChooser fileChooser = new JFileChooser();
 
@@ -37,25 +40,6 @@ public class ProgramChairPanel extends JPanel {
 	public ProgramChairPanel(final Conference curConf) {
 		setSize(500, 500);
 		setLayout(null);
-		
-		//
-		/*
-		Conference tempConf;
-		Conference[] testArray = new Conference[5];
-		for(int i = 0; i < 5; i++) {
-			String tempS = "" + i;
-			tempConf = new Conference(new User(tempS, tempS), tempS, tempS, tempS);
-			testArray[i] = tempConf;
-		}*/
-		
-		/*
-		int paperSize = curConf.getPaperManager().size();
-		String[] paperArray = new String[paperSize];
-		for (int i = 0; i < paperSize; i++) {
-//			confArray[i] = confList.get(i).getName();
-			//paperArray[i] = curConf.getPaperManager().getPapers();
-		}*/
-
 		
 		final ArrayList<String> paperNameList = new ArrayList<String>();
 		for(Paper paper: curConf.getPapers()) {
@@ -67,8 +51,6 @@ public class ProgramChairPanel extends JPanel {
 		paperList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		paperList.setBounds(15, 71, 230, 240); //before 480 width
 		add(paperList);
-		
-		//
 		
 		final ArrayList<String> userNameList = new ArrayList<String>();
 		final ArrayList<String> keyList = new ArrayList<String>();
@@ -83,16 +65,6 @@ public class ProgramChairPanel extends JPanel {
 		userList.setBounds(255, 71, 230, 240); //before 480 width
 		add(userList);
 		
-		//
-		
-		/*
-		final JEditorPane textArea = new JEditorPane();
-		//JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 71, 460, 240);
-		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 71, 480, 240);
-		add(pane);*/
-		
 		JLabel titleLabel = new JLabel("Program Chair");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		titleLabel.setBounds(154, 15, 191, 37);
@@ -101,15 +73,6 @@ public class ProgramChairPanel extends JPanel {
 		JButton btnAssignReviewers = new JButton("Assign Paper");
 		btnAssignReviewers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
-				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
-				        "Please select a reviewer! ",
-				        "Reviewers",
-				        JOptionPane.QUESTION_MESSAGE, 
-				        null, 
-				        reviewers, 
-				        reviewers[0]);*/
-				//}
 				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
 					User user = curConf.confUser.get(keyList.get(userList.getSelectedIndex()));
 					Paper paper = null;
@@ -145,24 +108,6 @@ public class ProgramChairPanel extends JPanel {
 		btnAssignReviewers.setBounds(298, 329, 141, 29);
 		add(btnAssignReviewers);
 		
-		/*
-		JButton btnOpenFile = new JButton("Open File...");
-		btnOpenFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					getFile();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				//textArea.setText(stringBuilder.toString());
-			}
-		});
-		btnOpenFile.setBounds(25, 329, 99, 29);
-		add(btnOpenFile);
-		*/
-		
 		JButton btnSubChair = new JButton("Assign Subprogram Chairs");
 		btnSubChair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -190,22 +135,15 @@ public class ProgramChairPanel extends JPanel {
 		bg.add(rdbtnReject);
 		add(rdbtnReject);
 		
-		/*
-		JButton btnSubmitToConfrence = new JButton("Submit To Conference");
-		btnSubmitToConfrence.setBounds(139, 329, 183, 29);
-		add(btnSubmitToConfrence);*/
-	
 		JButton btnRecomendation = new JButton("Recomendation");
 		btnRecomendation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ProgramList newProg = new ProgramList(curConf);
 				newProg.show();
 			}
-			
 		});
 		btnRecomendation.setBounds(298, 374, 141, 29);
 		add(btnRecomendation);
-
 	}
 	
 	public void getFile() throws Exception{
@@ -272,7 +210,6 @@ class ProgramList extends JPanel{
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-//		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(500, 500);
 		frame.getContentPane().add(this);
 		frame.show();

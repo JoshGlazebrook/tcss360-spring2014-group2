@@ -1,7 +1,7 @@
 package group2;
+
 /**
- * 
- * @author Mina Messak
+ * @author Mina Messak, Jugbir Singh - Jay
  * @version 5.22.2014
  */
 import java.awt.Dimension;
@@ -41,14 +41,6 @@ public class SubChairPanel extends JPanel {
 		setSize(500, 500);
 		setLayout(null);
 
-		/*
-		final JEditorPane textArea = new JEditorPane();
-		//JTextArea textArea = new JTextArea();
-		textArea.setBounds(15, 71, 460, 240);
-		JScrollPane pane = new JScrollPane(textArea);
-		pane.setBounds(15, 71, 480, 240);
-		add(pane);*/
-
 		final ArrayList<String> paperNameList = new ArrayList<String>();
 		for(String paper: curConf.getSubprogramListKeys().get(currentUser.userName)) {
 			paperNameList.add(paper);
@@ -59,8 +51,6 @@ public class SubChairPanel extends JPanel {
 		paperList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		paperList.setBounds(15, 71, 230, 240); //before 480 width
 		add(paperList);
-
-		//
 
 		final ArrayList<String> userNameList = new ArrayList<String>();
 		final ArrayList<String> keyList = new ArrayList<String>();
@@ -77,7 +67,6 @@ public class SubChairPanel extends JPanel {
 		userList.setBounds(255, 71, 230, 240); //before 480 width
 		add(userList);
 
-		//
 		JLabel titleLabel = new JLabel("Subprogram Chair");
 		titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		titleLabel.setBounds(124, 15, 251, 37);
@@ -86,14 +75,6 @@ public class SubChairPanel extends JPanel {
 		JButton btnAssignPapers = new JButton("Assign Papers");
 		btnAssignPapers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*String[] reviewers = { "reviewer 1", "reviewer 2", "reviewer 3", "reviewer 4" };
-				String dialogBox = (String) JOptionPane.showInputDialog(new Frame(), 
-				        "Please select a reviewer! ",
-				        "Reviewers",
-				        JOptionPane.QUESTION_MESSAGE, 
-				        null, 
-				        reviewers, 
-				        reviewers[0]);*/
 				if(paperList.getSelectedIndex() >= 0 && userList.getSelectedIndex() >= 0) {
 					User user = curConf.confUser.get(keyList.get(userList.getSelectedIndex()));
 					String paper = null;
@@ -127,7 +108,6 @@ public class SubChairPanel extends JPanel {
 								showDialogMaxPaper();
 							}
 						}
-
 					}
 				} else {
 					showDialogToAssign();
@@ -159,20 +139,8 @@ public class SubChairPanel extends JPanel {
 		});
 		btnRecommendation.setBounds(175, 380, 150, 29);
 		add(btnRecommendation);
-		
-		/*
-		ButtonGroup bg = new ButtonGroup();
-		JRadioButton rdbtnRecomend = new JRadioButton("Recommend");
-		rdbtnRecomend.setBounds(128, 330, 107, 29);
-		bg.add(rdbtnRecomend);
-		add(rdbtnRecomend);
-
-		JRadioButton rdbtnDecline = new JRadioButton("Decline");
-		rdbtnDecline.setBounds(236, 330, 83, 29);
-		bg.add(rdbtnDecline);
-		add(rdbtnDecline);*/
-
 	}
+	
 	/**
 	 * File display from text file. 
 	 * @throws Exception
@@ -203,7 +171,7 @@ public class SubChairPanel extends JPanel {
 		JOptionPane.showMessageDialog(this, "No more papers allowed. Try different user.");
 	}
 	
-	class SubprogramList extends JPanel{
+	class SubprogramList extends JPanel {
 		JFrame frame = new JFrame();
 		public SubprogramList(Conference conf, String subName) {
 			setSize(500, 500);
@@ -249,7 +217,6 @@ public class SubChairPanel extends JPanel {
 			add(lblTitle);
 			
 			final JEditorPane textArea = new JEditorPane();
-			//JTextArea textArea = new JTextArea();
 			textArea.setBounds(15, 58, 460, 180);
 			textArea.setEditable(false);
 			
@@ -309,7 +276,6 @@ public class SubChairPanel extends JPanel {
 			});
 			btnEdit.setBounds(189, 368, 190, 29);
 			add(btnEdit);
-		
 		}
 		
 		public void show() {

@@ -37,8 +37,4 @@ public class ConferenceManager {
 		System.out.println("saved conferences");
 		JSONHelper.serializeToFile("data/conferences.json", conferences);
 	}
-
-
-	
-	
 }
