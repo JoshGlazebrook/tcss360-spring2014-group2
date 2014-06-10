@@ -43,6 +43,7 @@ public class Conference {
 	
 	private Map<String, ArrayList<String>> reviewerList;
 	
+	private Map<String, String> subprogramRecommend;
 	/**
 	 * 
 	 * A PaperManager for this conference.
@@ -59,6 +60,7 @@ public class Conference {
 		paperManager = new PaperManager(theName);
 		subprogramList = new HashMap<String, ArrayList<String>>();
 		reviewerList = new HashMap<String, ArrayList<String>>();
+		subprogramRecommend = new HashMap<String, String>();
 	}
 	
 	/*
@@ -120,6 +122,10 @@ public class Conference {
 	
 	public Map<String, ArrayList<String>> getReviewerListKeys() {
 		return reviewerList;
+	}
+	
+	public Map<String, String> getSubprogramRecommend() {
+		return subprogramRecommend;
 	}
 	
 	/**

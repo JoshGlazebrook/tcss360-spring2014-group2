@@ -67,7 +67,8 @@ public class ReviewerPanel extends JPanel {
 		btnEdit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(curPaper == null) return;
-				curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.userName).setReview(reviewArea.getText());
+				curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.userName).
+				setReview(reviewArea.getText());
 			}
 		});
 		btnEdit.setBounds(364, 330, 121, 29);
@@ -77,7 +78,8 @@ public class ReviewerPanel extends JPanel {
 		btnSelectPaper.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 //					String[] papers = curConf.getPaperManager().getReviews(curReviewer);
-					String[] papers = curConf.getReviewerListKeys().get(curReviewer.userName).toArray(new String[0]);
+					String[] papers = curConf.getReviewerListKeys().get(curReviewer.userName).
+							toArray(new String[0]);
 					if (papers.length == 0) return;
 					curPaper = (String) JOptionPane.showInputDialog(new Frame(), 
 					        "Please select a paper! ",
@@ -90,7 +92,8 @@ public class ReviewerPanel extends JPanel {
 					textArea.setText(curConf.getPaperManager().getPaper(curPaper).getData());
 					if(curConf.getPaperManager().getPaper(curPaper).
 							getCurReview(curReviewer.userName) != null) {
-						reviewArea.setText(curConf.getPaperManager().getPaper(curPaper).getCurReview(curReviewer.userName).getReview());
+						reviewArea.setText(curConf.getPaperManager().getPaper(curPaper).
+								getCurReview(curReviewer.userName).getReview());
 					}
 					
 				}

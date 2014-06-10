@@ -266,6 +266,7 @@ class ProgramList extends JPanel{
 		programList.setText(list.toString());
 		add(programList);
 	}
+	
 	public void show(){
 		frame.setResizable(false);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));

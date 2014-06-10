@@ -32,7 +32,8 @@ public class SubChairPanel extends JPanel {
 
 	final StringBuilder stringBuilder = new StringBuilder();
 	final JFileChooser fileChooser = new JFileChooser();
-
+	String curReviewer;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -136,16 +137,30 @@ public class SubChairPanel extends JPanel {
 		btnAssignPapers.setBounds(330, 330, 155, 29);
 		add(btnAssignPapers);
 
-		JButton btnOpenFile = new JButton("Assignments");
-		btnOpenFile.addActionListener(new ActionListener() {
+		JButton btnAssignments = new JButton("Assignments");
+		btnAssignments.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SubprogramList newSub = new SubprogramList(curConf, currentUser.userName);
 				newSub.show();
 			}
 		});
-		btnOpenFile.setBounds(15, 380, 99, 29);
-		add(btnOpenFile);
+		btnAssignments.setBounds(15, 380, 150, 29);
+		add(btnAssignments);
 
+		JButton btnRecommendation = new JButton("Recommendation");
+		btnRecommendation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(paperList.getSelectedIndex() >= 0) {
+					RecommendPaper recPaper = new RecommendPaper(curConf, curConf.getPaperManager().
+							getPaper(paperNameList.get(paperList.getSelectedIndex())).getName());
+					recPaper.show();
+				}
+			}
+		});
+		btnRecommendation.setBounds(175, 380, 150, 29);
+		add(btnRecommendation);
+		
+		/*
 		ButtonGroup bg = new ButtonGroup();
 		JRadioButton rdbtnRecomend = new JRadioButton("Recommend");
 		rdbtnRecomend.setBounds(128, 330, 107, 29);
@@ -155,7 +170,7 @@ public class SubChairPanel extends JPanel {
 		JRadioButton rdbtnDecline = new JRadioButton("Decline");
 		rdbtnDecline.setBounds(236, 330, 83, 29);
 		bg.add(rdbtnDecline);
-		add(rdbtnDecline);
+		add(rdbtnDecline);*/
 
 	}
 	/**
@@ -220,6 +235,91 @@ public class SubChairPanel extends JPanel {
 			frame.setSize(500, 500);
 			frame.getContentPane().add(this);
 			frame.show();
+		}
+	}
+	
+	class RecommendPaper extends JPanel{
+		JFrame frame = new JFrame("Conference");
+		public RecommendPaper(final Conference conf, final String paperName) {
+			setSize(500, 500);
+			setLayout(null);
+			JLabel lblTitle = new JLabel("Recommendation");
+			lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 30));
+			lblTitle.setBounds(150, 16, 200, 37);
+			add(lblTitle);
+			
+			final JEditorPane textArea = new JEditorPane();
+			//JTextArea textArea = new JTextArea();
+			textArea.setBounds(15, 58, 460, 180);
+			textArea.setEditable(false);
+			
+			JScrollPane pane = new JScrollPane(textArea);
+			pane.setBounds(15, 58, 480, 180);
+			add(pane);
+			
+			final JEditorPane reviewArea = new JEditorPane();
+			reviewArea.setBounds(15, 248, 460, 50);
+			
+			JScrollPane paneReview = new JScrollPane(reviewArea);
+			paneReview.setBounds(15, 248, 480, 50);
+			add(paneReview);
+			
+			final JEditorPane subArea = new JEditorPane();
+			subArea.setBounds(15, 308, 460, 50);
+			
+			JScrollPane paneSub = new JScrollPane(subArea);
+			paneSub.setBounds(15, 308, 480, 50);
+			add(paneSub);
+			
+			JButton btnSelectPaper = new JButton("Select Paper");
+			btnSelectPaper.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ArrayList<String> listOfReviewers = new ArrayList<String>();
+						for(Review review: conf.getPaperManager().getPaper(paperName).getReviews()) {
+							listOfReviewers.add(review.getReviewer());
+						}
+						String[] papers = listOfReviewers.toArray(new String[0]);
+						if (papers.length == 0) return;
+						curReviewer = (String) JOptionPane.showInputDialog(new Frame(), 
+						        "Please select a reviewer! ",
+						        "Conferences",
+						        JOptionPane.QUESTION_MESSAGE, 
+						        null, 
+						        papers, 
+						        papers[0]);
+						if(curReviewer == null) return;
+						textArea.setText(conf.getPaperManager().getPaper(paperName).getData());
+						for(Review review: conf.getPaperManager().getPaper(paperName).getReviews()) {
+							if(review.getReviewer().equals(curReviewer)) {
+								reviewArea.setText(review.getReview());
+								break;
+							}
+						}
+					}
+			});
+			btnSelectPaper.setBounds(15, 368, 149, 29);
+			add(btnSelectPaper);
+			
+			JButton btnEdit = new JButton("Submit Recommendation");
+			btnEdit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(subArea.getText() == null) return;
+					conf.getSubprogramRecommend().put(paperName, subArea.getText());
+				}
+			});
+			btnEdit.setBounds(189, 368, 190, 29);
+			add(btnEdit);
+		
+		}
+		
+		public void show() {
+				frame.setResizable(false);
+				frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGUI.class.getResource("/group2/logo.jpg")));
+				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				frame.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+				frame.setSize(500, 500);
+				frame.getContentPane().add(this);
+				frame.show();
 		}
 	}
 }
